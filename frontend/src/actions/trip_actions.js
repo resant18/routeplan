@@ -4,32 +4,32 @@ export const RECEIVE_TRIPS = "RECEIVE_TRIPS";
 export const RECEIVE_USER_TRIPS = "RECEIVE_USER_TRIPS";
 export const RECEIVE_NEW_TRIP = "RECEIVE_NEW_TRIP";
 
-export const receiveTrips = tweets => ({
+export const receiveTrips = trips => ({
   type: RECEIVE_TRIPS,
-  tweets
+  trips
 });
 
-export const receiveUserTrips = tweets => ({
+export const receiveUserTrips = trips => ({
   type: RECEIVE_USER_TRIPS,
-  tweets
+  trips
 });
 
-export const receiveNewTrip = tweet => ({
+export const receiveNewTrip = trip => ({
   type: RECEIVE_NEW_TRIP,
-  tweet
+  trip
 });
 
 export const fetchTrips = () => dispatch =>
   getTrips()
-    .then(tweets => dispatch(receiveTrips(tweets)))
+    .then(trips => dispatch(receiveTrips(trips)))
     .catch(err => console.log(err));
 
 export const fetchUserTrips = id => dispatch =>
   getUserTrips(id)
-    .then(tweets => dispatch(receiveUserTrips(tweets)))
+    .then(trips => dispatch(receiveUserTrips(trips)))
     .catch(err => console.log(err));
 
-export const composeTrip = data => dispatch =>
+export const createTrip = data => dispatch =>
   writeTrip(data)
-    .then(tweet => dispatch(receiveNewTrip(tweet)))
+    .then(trip => dispatch(receiveNewTrip(trip)))
     .catch(err => console.log(err));
