@@ -1,4 +1,4 @@
-import { getTrips, getUserTrips, writeTrip } from "../util/trip_api_util";
+import { getTrips, getUserTrips, makeTrip } from "../util/trip_api_util";
 
 export const RECEIVE_TRIPS = "RECEIVE_TRIPS";
 export const RECEIVE_USER_TRIPS = "RECEIVE_USER_TRIPS";
@@ -30,6 +30,6 @@ export const fetchUserTrips = id => dispatch =>
     .catch(err => console.log(err));
 
 export const createTrip = data => dispatch =>
-  writeTrip(data)
+  makeTrip(data)
     .then(trip => dispatch(receiveNewTrip(trip)))
     .catch(err => console.log(err));
