@@ -5,7 +5,7 @@ import { Switch } from 'react-router-dom';
 import NavBarContainer from './navbar/navbar_container';
 import MapQuest from './map/map_quest';
 
-import Trip from './trips/trip';
+import Trip from './trip/trip_form';
 import MainPage from './main/main_page';
 import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form_container';
@@ -29,14 +29,14 @@ const App = () => (
         component={TweetComposeContainer}
       /> */}
     </Switch>
-    <MapQuest
+    {/* <MapQuest
       height={500}
       width={1000}
       center={[37.7749, -122.4194]}
       baseLayer={"dark"}
       zoom={12}
       apiKey={"GtJj838k2uUMChaJbStq3F7qM0WobjXf"}
-    />
+    /> */}
   </div>
 );
 
