@@ -15,13 +15,6 @@ class NavBar extends React.Component {
     this.props.logout();
   }
 
-  componentDidMount() {
-    window.placeSearch({
-      key: 'GtJj838k2uUMChaJbStq3F7qM0WobjXf',
-      container: document.querySelector('#place-search-input')
-    });
-  }
-
   // Selectively render links dependent on whether the user is logged in
   getLinks() {
     if (this.props.loggedIn) {
@@ -47,12 +40,7 @@ class NavBar extends React.Component {
     return (
       <div>
         <h1>Route Plan</h1>
-        {this.getLinks()}
-        <input
-          type='search'
-          id='place-search-input'
-          placeholder='Start Searching...'
-        />
+        {this.getLinks()}        
       </div>
     );
   }
