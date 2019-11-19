@@ -5,7 +5,7 @@ import { Switch } from 'react-router-dom';
 import NavBarContainer from './navbar/navbar_container';
 import MapQuest from './map/map_quest';
 
-import Trip from './trip/trip_form';
+import TripForm from './trip/trip_form';
 import MainPage from './main/main_page';
 import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form_container';
@@ -19,7 +19,7 @@ const App = () => (
       <AuthRoute exact path="/" component={MainPage} />
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
-      <Route exact path="/trip" component={Trip} />
+      <Route exact path="/trip" component={TripForm} />
 
       {/* <ProtectedRoute exact path='/tweets' component={TweetsContainer} />
       <ProtectedRoute exact path='/profile' component={ProfileContainer} />

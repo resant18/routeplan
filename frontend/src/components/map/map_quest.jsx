@@ -7,6 +7,8 @@ class MapQuest extends Component {
     constructor(props) {
         super(props);
         this.state = { ...props };
+
+        this.handleTest = this.handleTest.bind(this);
     }
 
     componentDidMount() {
@@ -18,8 +20,16 @@ class MapQuest extends Component {
             zoom: this.state.zoom
         });
 
-        let directionsControl = window.L.mapquest.directionsControl().addTo(map);
-        console.log(directionsControl);
+
+        let directionsControl = window.L.mapquest.directionsControl();
+        directionsControl.addTo(map);
+        directionsControl.setStart({
+            street: "1555 Blake St",
+            city: "Denver",
+            county: "Denver",
+            state: "CO"
+        });
+
         // let directions = window.L.mapquest.directions();
         // directions.route({
         //     start: this.props.routeStart,
@@ -42,14 +52,21 @@ class MapQuest extends Component {
         map.addControl(window.L.mapquest.locatorControl());
     }
 
+    handleTest() {
+        console.log(window.L.mapquest.directionsControl());
+    }
+
     render() {
         const mapStyle = {
             height: '75vh',
             width: '80%',
         };
         return (
-            <div id="map" style={mapStyle}>
-                <p style={{ textAlign: 'center' }}>Map loading...</p>
+            <div>
+                <button onClick={this.handleTest}>Test</button>
+                <div id="map" style={mapStyle}>
+                    <p style={{ textAlign: 'center' }}>Map loading...</p>
+                </div>
             </div>
         );
     }    

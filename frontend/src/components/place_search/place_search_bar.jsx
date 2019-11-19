@@ -10,18 +10,25 @@ class PlaceSearchBar extends Component {
         super(props);
         this.state = { ...props };
         this.placeSearch = window.placeSearch;
-        this.handleChange = this.handleChange.bind(this);
+        
     }
 
     componentDidMount() {
         const inputBox = ReactDOM.findDOMNode(this.placeSearchInput);
         const ps = this.placeSearch({
             key: keys.MAP_KEY,
-            container: inputBox
+            container: inputBox,
+            useDeviceLocation: true,
+            collection: [
+                'poi',
+                'airport',
+                'address',
+                'adminArea',
+            ]
         });
         
         ps.on('change', e => {                        
-            // console.log(e.result.latlng);
+            console.log(e.result.latlng);
             this.props.input({
               lat: e.result.latlng["lat"],
               lng: e.result.latlng["lng"]
@@ -33,31 +40,14 @@ class PlaceSearchBar extends Component {
         })
     }
 
-    handleChange() {
-        // const inputBox = ReactDOM.findDOMNode(this.placeSearchInput);
-        // const ps = window.placeSearch({
-        //     key: keys.MAP_KEY,
-        //     container: document.querySelector('#place-search-input')
-        // });
-        // ps.on('change', e => {
-        //     debugger
-        //     console.log(e.result.state);
-        // });
-    }
-    
-
     render() {
-        const mapStyle = {
-            height: this.state.height,
-            width: this.state.width
-        };
+        console.log(this.props);
         return (
             <input
                 type='search'
                 id='place-search-input'
                 ref={placeSearchInput => { this.placeSearchInput = placeSearchInput }}
-                placeholder='Start Searching...'
-                onChange={this.handleChange}
+                placeholder={this.state.placeholder}             
             />
         );
     }
