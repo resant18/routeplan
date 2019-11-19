@@ -24,4 +24,4 @@ const TripSchema = new Schema({
   }
 });
 
-module.exports = Tweet = mongoose.model("trips", TripSchema)
+module.exports = Trip = mongoose.model("trips", TripSchema)
