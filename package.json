@@ -1,7 +1,7 @@
 {
-  "name": "TwitterMongo",
+  "name": "RoutePlan",
   "version": "1.0.0",
-  "description": "Twitter MERN Project",
+  "description": "Route Trip Planner",
   "main": "app.js",
   "directories": {
     "test": "test"
@@ -22,15 +22,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/resant18/twitter-mongo.git"
+    "url": "git+https://github.com/resant18/routeplan.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/resant18/twitter-mongo/issues"
+    "url": "https://github.com/resant18/routeplan/issues"
   },
-  "homepage": "https://github.com/resant18/twitter-mongo#readme",
+  "homepage": "https://github.com/resant18/routeplan#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
