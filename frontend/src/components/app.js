@@ -29,14 +29,15 @@ const App = () => (
         component={TweetComposeContainer}
       /> */}
     </Switch>
-    <MapQuest
-      height={500}
+    <MapQuest height={500}
       width={1000}
-      center={[37.7749, -122.4194]}
-      baseLayer={"dark"}
+      center={[37.7749, -122.4194]} 
+      baseLayer={"map"}
       zoom={12}
-      apiKey={"GtJj838k2uUMChaJbStq3F7qM0WobjXf"}
-    />
+      routeStart={[37.7749, -122.4194]}
+      routeEnd={[37.4724, -122.2415]}
+      apiKey={"5WysS7ThGWencRAPbVcjUAV5ws0BepvA"}
+      />
   </div>
 );
 
