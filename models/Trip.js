@@ -11,12 +11,12 @@ const TripSchema = new Schema({
     required: true
   },
   origin: {
-    type: Schema.Types.Mixed,
-    required: true
+    type: Array,
+    default: undefined
   },
   destination: {
-    type: Schema.Types.Mixed,
-    required: true
+    type: Array,
+    default: undefined
   },
   date: {
     type: Date,
