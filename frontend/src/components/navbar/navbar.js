@@ -1,6 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "./navbar.css";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './navbar.css';
+// import '../../lib/place-search';
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -14,22 +15,29 @@ class NavBar extends React.Component {
     this.props.logout();
   }
 
+  componentDidMount() {
+    window.placeSearch({
+      key: 'GtJj838k2uUMChaJbStq3F7qM0WobjXf',
+      container: document.querySelector('#place-search-input')
+    });
+  }
+
   // Selectively render links dependent on whether the user is logged in
   getLinks() {
     if (this.props.loggedIn) {
       return (
         <div>
-          <Link to={"/tweets"}>All Tweets</Link>
-          <Link to={"/profile"}>Profile</Link>
-          <Link to={"/new_tweet"}>Write a Tweet</Link>
+          <Link to={'/tweets'}>All Tweets</Link>
+          <Link to={'/profile'}>Profile</Link>
+          <Link to={'/new_tweet'}>Write a Tweet</Link>
           <button onClick={this.logoutUser}>Logout</button>
         </div>
       );
     } else {
       return (
         <div>
-          <Link to={"/signup"}>Signup</Link>
-          <Link to={"/login"}>Login</Link>
+          <Link to={'/signup'}>Signup</Link>
+          <Link to={'/login'}>Login</Link>
         </div>
       );
     }
@@ -37,9 +45,14 @@ class NavBar extends React.Component {
 
   render() {
     return (
-      <div>        
+      <div>
         <h1>Route Plan</h1>
         {this.getLinks()}
+        <input
+          type='search'
+          id='place-search-input'
+          placeholder='Start Searching...'
+        />
       </div>
     );
   }
