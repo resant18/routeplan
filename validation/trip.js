@@ -19,8 +19,16 @@ module.exports = function validateTripInput(data) {
         errors.text = 'Name field is required';
     }
 
+    if (Validator.isEmpty(data.origin)) {
+        errors.text = 'Origin field is required';
+    }
+
     if (!Validator.isLatLong(data.origin)) {
         errors.origin = 'Origin field is invalid';
+    }
+
+    if (Validator.isEmpty(data.destination)) {
+        errors.text = 'Destination field is required';
     }
 
     if (!Validator.isLatLong(data.destination)) {
