@@ -5,10 +5,7 @@ module.exports = function validateTripInput(data) {
     let errors = {};
 
     data.name = validText(data.name) ? data.name : '';
-    data.user = validText(data.user) ? data.user : '';
-    data.origin = validText(data.origin) ? data.origin : '';
-    data.destination = validText(data.destination) ? data.destination : '';
-    data.date = validText(data.date) ? data.date : '';
+    data.user = validText(data.user) ? data.user : '';    
 
 
     if (Validator.isMongoId(data.user)) {
@@ -19,16 +16,12 @@ module.exports = function validateTripInput(data) {
         errors.text = 'Name field is required';
     }
 
-    if (!Validator.isLatLong(data.origin)) {
+    if (!Validator.isLatLong(String(data.origin))) {
         errors.origin = 'Origin field is invalid';
     }
 
-    if (!Validator.isLatLong(data.destination)) {
+    if (!Validator.isLatLong(String(data.destination))) {
         errors.destination = 'Destination field is invalid';
-    }
-
-    if (Validator.toDate(data.date)) {
-        errors.date = 'Date is invalid';
     }
 
     return {
