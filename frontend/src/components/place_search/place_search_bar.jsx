@@ -8,56 +8,64 @@ class PlaceSearchBar extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { ...props };
-        this.placeSearch = window.placeSearch;
+        this.state = { ...props };        
+        
         this.handleChange = this.handleChange.bind(this);
+        this.handleKeyPress = this.handleKeyPress.bind(this);
+        this._getLocation = this._getLocation.bind(this);
+        this.handleError = this.handleError.bind(this);
     }
 
     componentDidMount() {
         const inputBox = ReactDOM.findDOMNode(this.placeSearchInput);
-        const ps = this.placeSearch({
+        this.ps = window.placeSearch({
             key: keys.MAP_KEY,
-            container: inputBox
-        });
+            container: inputBox,
+            useDeviceLocation: true,
+            collection: [
+                'poi',
+                'airport',
+                'address',
+                'adminArea',
+            ]
+        });                
+
         
-        ps.on('change', e => {                        
-            // console.log(e.result.latlng);
-            this.props.input({
-              lat: e.result.latlng["lat"],
-              lng: e.result.latlng["lng"]
+    }
+
+    _getLocation() {
+        this.ps.on('change', e => {
+            console.log(e.result.latlng);
+                this.props.input({
+                lat: e.result.latlng["lat"],
+                lng: e.result.latlng["lng"]
             });
         });
-
-        ps.on('error', e => {
-            console.log(e);
-        })
     }
 
     handleChange() {
-        // const inputBox = ReactDOM.findDOMNode(this.placeSearchInput);
-        // const ps = window.placeSearch({
-        //     key: keys.MAP_KEY,
-        //     container: document.querySelector('#place-search-input')
-        // });
-        // ps.on('change', e => {
-        //     debugger
-        //     console.log(e.result.state);
-        // });
+        this._getLocation();
     }
-    
 
-    render() {
-        const mapStyle = {
-            height: this.state.height,
-            width: this.state.width
-        };
+    handleKeyPress() {
+        this._getLocation();
+    }
+
+    handleError() {
+        this.ps.on("error", e => {
+          console.log(e);
+        });
+    }
+
+    render() {        
         return (
             <input
                 type='search'
                 id='place-search-input'
                 ref={placeSearchInput => { this.placeSearchInput = placeSearchInput }}
-                placeholder='Start Searching...'
+                placeholder={this.state.placeholder}   
                 onChange={this.handleChange}
+                onKeyPress={this.handleKeyPress}          
             />
         );
     }

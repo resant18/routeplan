@@ -3,7 +3,8 @@ import React from "react";
 class MainPage extends React.Component {
   render() {
     return (
-      <div>        
+      <div> 
+               
         <footer>Copyright Alfredo - Lance - Renata - Timothy</footer>
       </div>
     );
