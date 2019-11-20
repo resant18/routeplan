@@ -10,11 +10,36 @@ class MapQuest extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            error: null,
             isLoaded: false,
-            pointsOfInterest: []
+            pointsOfInterest: [],
+            value: '',
         }
+        this.markers = [];
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
+    }
+
+    componentDidUpdate() {
+        for (let layer of this.markers) {
+            this.map.removeLayer(layer);
+        }
+        this.markers = [];
+        if (this.state.value.length > 0) {
+            for (let pt of this.state.pointsOfInterest) {
+                if (pt.fields.group_sic_code.startsWith(this.state.value)) {
+                    let curMarker = window.L.marker(pt.shapePoints, {
+                        icon: window.L.mapquest.icons.marker({
+                            shadow: false
+                        }),
+                        draggable: false,
+                        opacity: 0.5
+                    })
+                    curMarker.bindPopup(pt.name).addTo(this.map);
+                    this.markers.push(curMarker);
+                }
+            }
+        }
     }
 
     componentDidMount() {
@@ -23,6 +48,7 @@ class MapQuest extends Component {
             params: {
                 key: this.props.apiKey,
                 boundingBox: '37.7724, -122.4415, 37.798634, -122.4194',
+                maxMatches: 500
             },
             paramsSerializer: params => {
                 return qs.stringify(params)
@@ -30,12 +56,11 @@ class MapQuest extends Component {
         })
             .then(
                 (result) => {
-                console.log(result);
                 this.setState({
                     isLoaded: true,
                     pointsOfInterest: result.data.searchResults
                 });
-                console.log(this.state);
+                console.log(this.state.pointsOfInterest);
                 // for (let res of response.data.results) {
 
                 //     window.L.marker(res.place.geometry.coordinates.reverse(), {
@@ -48,13 +73,16 @@ class MapQuest extends Component {
                 // }
             })
             .catch(error => {
-                console.log(error.response)
+                this.setState({
+                    isLoaded: true,
+                    error
+                })
             });
         //--------
 
         window.L.mapquest.key = this.props.apiKey;
 
-        let map = window.L.mapquest.map('map', {
+        this.map = window.L.mapquest.map('map', {
             center: this.props.center,
             layers: window.L.mapquest.tileLayer(this.props.baseLayer),
             zoom: this.props.zoom
@@ -70,9 +98,9 @@ class MapQuest extends Component {
 
         let bounds = [this.props.routeStart, this.props.routeEnd];
         // create an orange rectangle
-        window.L.rectangle(bounds, { color: "#ff7800", weight: 1 }).addTo(map);
+        window.L.rectangle(bounds, { color: "#ff7800", weight: 1 }).addTo(this.map);
         // zoom the map to the rectangle bounds
-        map.fitBounds(bounds);
+        this.map.fitBounds(bounds);
 
         //-----
         window.L.marker(this.props.center, {
@@ -81,21 +109,22 @@ class MapQuest extends Component {
             }),
             draggable: true,
             opacity: 0.5
-        }).bindPopup('center of san francisco').addTo(map);
-        map.addControl(window.L.mapquest.locatorControl());
+        }).bindPopup('center of san francisco').addTo(this.map);
+        this.map.addControl(window.L.mapquest.locatorControl());
     }
 
     handleSubmit(e) {
+        alert('submitted successfully')
         e.preventDefault();
-        alert('works')
-        console.log(this.state);
     }
 
     handleChange(e) {
-        this.setState({q: e.target.value})
+        this.setState({value: e.target.value})
+        console.log(this.state);
     }
 
     render() {
+
         const mapStyle = {
             height: '75vh',
             width: '80%',
@@ -105,7 +134,12 @@ class MapQuest extends Component {
                 <div id="map" style={mapStyle}>
                 </div>
                     <form onSubmit={this.handleSubmit}>
-                        <input type="text" placeholder="query string" value={this.state.q} onChange={this.handleChange}/>
+                        <select onChange={this.handleChange} value={this.state.value}>
+                            <option value="">--Filter by place you'd like to visit--</option>
+                            <option value="5812">Food</option>
+                            <option value="8412">Museums</option>
+                            <option value="7112">Parks</option>
+                        </select>
                         <button type="submit">submit q</button>
                     </form>
             </div>

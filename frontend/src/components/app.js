@@ -36,6 +36,7 @@ const App = () => (
       routeStart={[37.798634, -122.4194]}
       routeEnd={[37.7724, -122.4415]}
       apiKey={"5WysS7ThGWencRAPbVcjUAV5ws0BepvA"}
+      maxMatches={500}
       />
   </div>
 );
