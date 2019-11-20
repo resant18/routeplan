@@ -31,12 +31,17 @@ document.addEventListener('DOMContentLoaded', () => {
       if (decodedUser.exp < currentTime) {
         // Logout the user and redirect to the login page
         store.dispatch(logout());
-        window.location.href = "/login";
+        window.location.href = "/";
       }
     } else {
       // If this is a first time user, start with an empty store
       store = configureStore({});
     }
+
+    // for testing only
+    window.getState = store.getState;
+    window.dispatch = store.dispatch;    
+
     // Render our root component and pass in the store as a prop
     const root = document.getElementById("root");
     ReactDOM.render(<Root store={store} />, root);
