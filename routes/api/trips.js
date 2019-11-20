@@ -11,8 +11,8 @@ const validateTrip = require('../../validation/trip');
 router.get("/test", (req, res) =>
   res.json({ msg: "This is the tweets route" })
 );
-router.get('/trips', (req, res) => {
-  res.json({ msg: "This is the trips route" })
+router.get('/', (req, res) => {
+  // res.json({ msg: "This is the trips route" })
   // debugger
   Trip.find()
     .then(trips => res.json(trips))

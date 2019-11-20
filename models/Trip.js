@@ -11,11 +11,11 @@ const TripSchema = new Schema({
     required: true
   },
   origin: {
-    type: Array,
+    type: [Number, Number],
     default: undefined
   },
   destination: {
-    type: Array,
+    type: [Number, Number],
     default: undefined
   },
   date: {
