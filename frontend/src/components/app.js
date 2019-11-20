@@ -20,14 +20,16 @@ const App = () => (
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
       <ProtectedRoute exact path="/trip" component={TripFormContainer} />
-
-      {/* <ProtectedRoute exact path='/tweets' component={TweetsContainer} />
-      <ProtectedRoute exact path='/profile' component={ProfileContainer} />
-      <ProtectedRoute
-        exact
-        path='/new_tweet'
-        component={TweetComposeContainer}
-      /> */}
+    </Switch>
+    <MapQuest
+      center={[37.7749, -122.4194]} 
+      baseLayer={"map"}
+      zoom={12}
+      routeStart={[37.798634, -122.4194]}
+      routeEnd={[37.7724, -122.4415]}
+      apiKey={"5WysS7ThGWencRAPbVcjUAV5ws0BepvA"}
+      maxMatches={500}
+      />
     </Switch>    
   </div>
 );
