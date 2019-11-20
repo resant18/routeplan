@@ -30,7 +30,6 @@ const App = () => (
       apiKey={"5WysS7ThGWencRAPbVcjUAV5ws0BepvA"}
       maxMatches={500}
       />
-    </Switch>    
   </div>
 );
 
