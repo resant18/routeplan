@@ -2,7 +2,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const users = require('./routes/api/users');
-const tweets = require('./routes/api/tweets');
+const trips = require('./routes/api/trips');
+// const tweets = require('./routes/api/tweets');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const path = require("path");
@@ -34,6 +35,8 @@ if (process.env.NODE_ENV === "production") {
   app.get("/", (req, res) => res.send("Hello World!!"));
 }
 
+
+
 /**
  * MIDDLEWARE
  */
@@ -63,9 +66,8 @@ app.use(bodyParser.json());
 //     res.send('User is saved successfully');
     
 // });
-
 app.use('/api/users', users);
-app.use('/api/tweets', tweets);
+app.use('/api/trips', trips);
 
 
 //Set server port

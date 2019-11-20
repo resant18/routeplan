@@ -11,12 +11,12 @@ const TripSchema = new Schema({
     required: true
   },
   origin: {
-    type: Schema.Types.Mixed,
-    required: true
+    type: Array,
+    default: undefined
   },
   destination: {
-    type: Schema.Types.Mixed,
-    required: true
+    type: Array,
+    default: undefined
   },
   date: {
     type: Date,
@@ -24,4 +24,4 @@ const TripSchema = new Schema({
   }
 });
 
-module.exports = Tweet = mongoose.model("trips", TripSchema)
+module.exports = Trip = mongoose.model("trips", TripSchema)
