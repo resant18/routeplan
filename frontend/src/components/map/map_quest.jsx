@@ -9,6 +9,7 @@ class MapQuest extends Component {
 
     constructor(props) {
         super(props);
+
         this.state = {
             error: null,
             isLoaded: false,
@@ -39,6 +40,7 @@ class MapQuest extends Component {
                 }
             }
         }
+
     }
 
     componentDidMount() {
@@ -90,6 +92,7 @@ class MapQuest extends Component {
 
         // let directionsControl = window.L.mapquest.directionsControl().addTo(map);
         // console.log(directionsControl);
+
         // let directions = window.L.mapquest.directions();
         // directions.route({
         //     start: this.props.routeStart,
@@ -98,6 +101,7 @@ class MapQuest extends Component {
 
         let bounds = [this.props.routeStart, this.props.routeEnd];
         // create an orange rectangle
+
         window.L.rectangle(bounds, { color: "#ff7800", weight: 1 }).addTo(this.map);
         // zoom the map to the rectangle bounds
         this.map.fitBounds(bounds);
@@ -109,6 +113,7 @@ class MapQuest extends Component {
     handleChange(e) {
         this.setState({value: e.target.value})
         console.log(this.state);
+
     }
 
     render() {
@@ -129,6 +134,7 @@ class MapQuest extends Component {
                             <option value="799">Parks</option>
                         </select>
                     </form>
+
             </div>
         );
     }    
