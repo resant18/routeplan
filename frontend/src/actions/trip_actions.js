@@ -4,6 +4,8 @@ export const RECEIVE_TRIPS = "RECEIVE_TRIPS";
 export const RECEIVE_USER_TRIPS = "RECEIVE_USER_TRIPS";
 export const RECEIVE_NEW_TRIP = "RECEIVE_NEW_TRIP";
 export const REMOVE_TRIP = 'REMOVE_TRIP';
+export const RECEIVE_TRIP_ERRORS = "RECEIVE_TRIP_ERRORS";
+
 
 export const receiveTrips = trips => ({
   type: RECEIVE_TRIPS,
@@ -25,6 +27,11 @@ export const removeTrip = tripId => ({
   tripId
 });
 
+export const receiveTripErrors = errors => ({
+  type: RECEIVE_TRIP_ERRORS,
+  errors
+});
+
 export const fetchTrips = () => dispatch =>
   APIUtil.getTrips()
     .then(trips => dispatch(receiveTrips(trips)))
@@ -38,12 +45,12 @@ export const fetchUserTrips = id => dispatch =>
 export const createTrip = data => dispatch =>
   APIUtil.makeTrip(data)
     .then(trip => dispatch(receiveNewTrip(trip)))
-    .catch(err => console.log(err));
+    .catch(err => dispatch(receiveTripErrors(err)));
 
 export const editTrip = data => dispatch => {
   return APIUtil.updateTrip(data)
-    .then(trip => dispatch(receiveNewTrip(data)))
-    .catch(err => console.log(err));
+    .then(trip => dispatch(receiveTrips(trip)))
+    .catch(err => dispatch(receiveTripErrors(err)));
 }
 
 export const destroyTrip = dataId => dispatch => {

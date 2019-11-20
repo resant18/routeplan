@@ -31,8 +31,8 @@ router.post('/new',
     const newTrip = new Trip({
       user: req.user.id,
       name: req.body.name,
-      origin: [37.789509, -122.413956],
-      destination: [38.789509, -123.413956]
+      origin: req.body.origin, //[37.789509, -122.413956],
+      destination: req.body.destination //[38.789509, -123.413956]
     });
 
     newTrip.save().then(trip => res.json(trip));

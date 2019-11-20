@@ -7,26 +7,22 @@ class TripForm extends React.Component {
 
     this.state = {
       name: '',
-      origin: {},
-      destination: {}
+      origin: [],
+      destination: []
     };
 
     this.handleChangeOrigin = this.handleChangeOrigin.bind(this);
     this.handleChangeDestination = this.handleChangeDestination.bind(this);
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  componentWillMount() {}
-
-  componentWillReceiveProps(newState) {}
+  }  
 
   handleChangeOrigin(pos) {    
-    this.setState({origin: pos});
+    this.setState({origin: Object.values(pos)});
   }
 
   handleChangeDestination(pos) {    
-    this.setState({destination: pos});
+    this.setState({destination: Object.values(pos)});
   }
 
   handleInput(e) {
@@ -37,9 +33,9 @@ class TripForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    let trip = Object.assign({}, this.state);
+    let trip = Object.assign({}, this.state);    
     this.props.createTrip(trip)
-      .then(() => this.props.history.push('/trip'));
+      .then(() => this.props.history.push('/trip'));      
   }
 
   renderErrors() {
