@@ -16,7 +16,6 @@ class MapQuest extends Component {
             value: '',
         }
         this.markers = [];
-        this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
 
@@ -48,7 +47,8 @@ class MapQuest extends Component {
             params: {
                 key: this.props.apiKey,
                 boundingBox: '37.7724, -122.4415, 37.798634, -122.4194',
-                maxMatches: 500
+                maxMatches: 500,
+                hostedData: ['mqap.ntpois']
             },
             paramsSerializer: params => {
                 return qs.stringify(params)
@@ -103,19 +103,7 @@ class MapQuest extends Component {
         this.map.fitBounds(bounds);
 
         //-----
-        window.L.marker(this.props.center, {
-            icon: window.L.mapquest.icons.marker({
-                shadow: false
-            }),
-            draggable: true,
-            opacity: 0.5
-        }).bindPopup('center of san francisco').addTo(this.map);
         this.map.addControl(window.L.mapquest.locatorControl());
-    }
-
-    handleSubmit(e) {
-        alert('submitted successfully')
-        e.preventDefault();
     }
 
     handleChange(e) {
@@ -133,14 +121,13 @@ class MapQuest extends Component {
             <div>
                 <div id="map" style={mapStyle}>
                 </div>
-                    <form onSubmit={this.handleSubmit}>
+                    <form>
                         <select onChange={this.handleChange} value={this.state.value}>
                             <option value="">--Filter by place you'd like to visit--</option>
                             <option value="5812">Food</option>
                             <option value="8412">Museums</option>
-                            <option value="7112">Parks</option>
+                            <option value="799">Parks</option>
                         </select>
-                        <button type="submit">submit q</button>
                     </form>
             </div>
         );
