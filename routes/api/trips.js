@@ -34,10 +34,13 @@ router.post('/new',
       return res.status(400).json(errors);
     }
 
-    let o1 = parseFloat(req.body.origin.split(', ')[0]);
-    let o2 = parseFloat(req.body.origin.split(', ')[1]);
-    let d1 = parseFloat(req.body.destination.split(', ')[0]);
-    let d2 = parseFloat(req.body.destination.split(', ')[1]);
+    let body_origin = String(req.body.origin);
+    let body_destination = String(req.body.destination);
+
+    let o1 = parseFloat(body_origin.split(', ')[0]);
+    let o2 = parseFloat(body_origin.split(', ')[1]);
+    let d1 = parseFloat(body_destination.split(', ')[0]);
+    let d2 = parseFloat(body_destination.split(', ')[1]);
 
     const newTrip = new Trip({
       user: req.user.id,
@@ -58,12 +61,15 @@ router.patch('/:tripId', (req, res) => {
     return res.status(400).json(errors);
   }
 
+  let body_origin = String(req.body.origin);
+  let body_destination = String(req.body.destination);
+
   Trip.findById(req.params.tripId)
     .then(trip => {
-      let o1 = req.body.origin.split(', ')[0];
-      let o2 = req.body.origin.split(', ')[1];
-      let d1 = req.body.destination.split(', ')[0];
-      let d2 = req.body.destination.split(', ')[1];
+      let o1 = body_origin.split(', ')[0];
+      let o2 = body_origin.split(', ')[1];
+      let d1 = body_destination.split(', ')[0];
+      let d2 = body_destination.split(', ')[1];
 
       Trip.updateOne({ _id: trip.id }, { name: req.body.name, origin: [o1, o2], destination: [d1, d2] })
         .then(trip => res.json(trip));
