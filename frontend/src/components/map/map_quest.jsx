@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+const axios = require('axios');
+var qs = require('qs');
+var assert = require('assert');
 // import '../../lib/mapquest-js';
 // import '../../lib/mapquest-js.css';
 
@@ -6,29 +9,89 @@ class MapQuest extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { ...props };
 
-        this.handleTest = this.handleTest.bind(this);
+        this.state = {
+            error: null,
+            isLoaded: false,
+            pointsOfInterest: [],
+            value: '',
+        }
+        this.markers = [];
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    componentDidUpdate() {
+        for (let layer of this.markers) {
+            this.map.removeLayer(layer);
+        }
+        this.markers = [];
+        if (this.state.value.length > 0) {
+            for (let pt of this.state.pointsOfInterest) {
+                if (pt.fields.group_sic_code.startsWith(this.state.value)) {
+                    let curMarker = window.L.marker(pt.shapePoints, {
+                        icon: window.L.mapquest.icons.marker({
+                            shadow: false
+                        }),
+                        draggable: false,
+                        opacity: 0.5
+                    })
+                    curMarker.bindPopup(pt.name).addTo(this.map);
+                    this.markers.push(curMarker);
+                }
+            }
+        }
+
     }
 
     componentDidMount() {
-        window.L.mapquest.key = this.state.apiKey;
+        // ajax tests
+        axios.get('https://www.mapquestapi.com/search/v2/rectangle', {
+            params: {
+                key: this.props.apiKey,
+                boundingBox: '37.7724, -122.4415, 37.798634, -122.4194',
+                maxMatches: 500,
+                hostedData: ['mqap.ntpois']
+            },
+            paramsSerializer: params => {
+                return qs.stringify(params)
+            }
+        })
+            .then(
+                (result) => {
+                this.setState({
+                    isLoaded: true,
+                    pointsOfInterest: result.data.searchResults
+                });
+                console.log(this.state.pointsOfInterest);
+                // for (let res of response.data.results) {
 
-        let map = window.L.mapquest.map('map', {
-            center: this.state.center,
-            layers: window.L.mapquest.tileLayer(this.state.baseLayer),
-            zoom: this.state.zoom
+                //     window.L.marker(res.place.geometry.coordinates.reverse(), {
+                //         icon: window.L.mapquest.icons.marker({
+                //             shadow: false
+                //         }),
+                //         draggable: true,
+                //         opacity: 0.5
+                //     }).bindPopup(res.name).addTo(map);
+                // }
+            })
+            .catch(error => {
+                this.setState({
+                    isLoaded: true,
+                    error
+                })
+            });
+        //--------
+
+        window.L.mapquest.key = this.props.apiKey;
+
+        this.map = window.L.mapquest.map('map', {
+            center: this.props.center,
+            layers: window.L.mapquest.tileLayer(this.props.baseLayer),
+            zoom: this.props.zoom
         });
 
-
-        let directionsControl = window.L.mapquest.directionsControl();
-        directionsControl.addTo(map);
-        directionsControl.setStart({
-            street: "1555 Blake St",
-            city: "Denver",
-            county: "Denver",
-            state: "CO"
-        });
+        // let directionsControl = window.L.mapquest.directionsControl().addTo(map);
+        // console.log(directionsControl);
 
         // let directions = window.L.mapquest.directions();
         // directions.route({
@@ -38,35 +101,40 @@ class MapQuest extends Component {
 
         let bounds = [this.props.routeStart, this.props.routeEnd];
         // create an orange rectangle
-        window.L.rectangle(bounds, { color: "#ff7800", weight: 1 }).addTo(map);
-        // zoom the map to the rectangle bounds
-        map.fitBounds(bounds);
 
-        window.L.marker([37.7733, -122.4253], {
-            icon: window.L.mapquest.icons.marker({
-                shadow: false
-            }),
-            draggable: true,
-            opacity: 0.5
-        }).bindPopup('<b>Center of</b> San Francisco, CA').addTo(map);
-        map.addControl(window.L.mapquest.locatorControl());
+        window.L.rectangle(bounds, { color: "#ff7800", weight: 1 }).addTo(this.map);
+        // zoom the map to the rectangle bounds
+        this.map.fitBounds(bounds);
+
+        //-----
+        this.map.addControl(window.L.mapquest.locatorControl());
     }
 
-    handleTest() {
-        console.log(window.L.mapquest.directionsControl());
+    handleChange(e) {
+        this.setState({value: e.target.value})
+        console.log(this.state);
+
     }
 
     render() {
+
         const mapStyle = {
             height: '75vh',
             width: '80%',
         };
         return (
             <div>
-                <button onClick={this.handleTest}>Test</button>
                 <div id="map" style={mapStyle}>
-                    <p style={{ textAlign: 'center' }}>Map loading...</p>
                 </div>
+                    <form>
+                        <select onChange={this.handleChange} value={this.state.value}>
+                            <option value="">--Filter by place you'd like to visit--</option>
+                            <option value="5812">Food</option>
+                            <option value="8412">Museums</option>
+                            <option value="799">Parks</option>
+                        </select>
+                    </form>
+
             </div>
         );
     }    
