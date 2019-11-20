@@ -1,7 +1,7 @@
 import React from "react";
 import PlaceSearchBar from '../place_search/place_search_bar';
 
-class Profile extends React.Component {
+class TripForm extends React.Component {
   constructor(props) {
     super(props);
 
@@ -75,4 +75,4 @@ class Profile extends React.Component {
   }
 }
 
-export default Profile;
+export default TripForm;
