@@ -19,7 +19,7 @@ const App = () => (
       <AuthRoute exact path="/" component={MainPage} />
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
-      <Route exact path="/trip" component={Trip} />
+      {/* <Route exact path="/trip" component={Trip} /> */}
 
       {/* <ProtectedRoute exact path='/tweets' component={TweetsContainer} />
       <ProtectedRoute exact path='/profile' component={ProfileContainer} />
@@ -33,8 +33,8 @@ const App = () => (
       center={[37.7749, -122.4194]} 
       baseLayer={"map"}
       zoom={12}
-      routeStart={[37.798634, -122.408355]}
-      routeEnd={[37.799064, -122.401156]}
+      routeStart={[37.798634, -122.4194]}
+      routeEnd={[37.7724, -122.4415]}
       apiKey={"5WysS7ThGWencRAPbVcjUAV5ws0BepvA"}
       />
   </div>
