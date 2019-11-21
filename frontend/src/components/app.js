@@ -16,10 +16,10 @@ const App = () => (
     <NavBarContainer />
 
     <Switch>
-      <AuthRoute exact path="/" component={MainPageContainer} />
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
       <ProtectedRoute exact path="/trip" component={TripFormContainer} />
+      <Route exact path="/" component={MainPageContainer} />
     </Switch>
     <MapQuest
       center={[37.7749, -122.4194]} 
