@@ -1,5 +1,6 @@
 import React from "react";
 import MainPageItem from './main_page_item';
+import "./main_page.css";
 
 class MainPage extends React.Component {
   componentDidMount() {
@@ -12,11 +13,15 @@ class MainPage extends React.Component {
     }
 
     return (
-      <div> 
-        {this.props.trips.map((trip, idx) => {
-          return <MainPageItem trip={trip} key={idx} />;
-        })}
-        <footer>Copyright Alfredo - Lance - Renata - Timothy</footer>
+      <div className="trips-container">
+        <div className="trips-index">
+          <div className="trips-list">
+            {this.props.trips.map((trip, idx) => {
+              return <MainPageItem trip={trip} key={idx} />;
+            })}
+          </div>
+          <footer>Copyright Alfredo - Lance - Renata - Timothy</footer>
+        </div>
       </div>
     );
   }

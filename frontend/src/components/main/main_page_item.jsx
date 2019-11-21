@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom';
 
 export default function main_page_item(props) {
     return (
-      <div>
-        <div>
-          <Link to={`/${props.trip._id}`} >{props.trip.name}</Link>
-        </div>
+      <div className="trip-container">
+        <Link to={`/${props.trip._id}`} className="item-link">
+            <div className="overlay"></div>
+            <div className="t-title">{props.trip.name}</div>
+        </Link>
       </div>
     );
 }
