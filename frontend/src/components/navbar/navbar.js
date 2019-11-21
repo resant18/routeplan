@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './navbar.css';
-// import '../../lib/place-search';
+
 
 class NavBar extends React.Component {
   constructor(props) {
     super(props);
     this.logoutUser = this.logoutUser.bind(this);
     this.getLinks = this.getLinks.bind(this);
+    this.showModal = this.showModal.bind(this);
   }
 
   logoutUser(e) {
@@ -20,7 +21,7 @@ class NavBar extends React.Component {
     if (this.props.loggedIn) {
       return (
         <div>
-          <Link to="/">New Trip</Link>
+          <button onClick={this.showModal}>New Trip</button>
           <a href="#">Menu</a>          
           <button onClick={this.logoutUser}>Logout</button>
         </div>
@@ -33,6 +34,10 @@ class NavBar extends React.Component {
         </div>
       );
     }
+  }
+
+  showModal() {
+    return () => this.props.showModal('trip-form');
   }
 
   render() {
