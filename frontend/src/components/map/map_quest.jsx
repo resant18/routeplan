@@ -8,6 +8,7 @@ var assert = require('assert');
 class MapQuest extends Component {
     constructor(props) {
         super(props);
+
         this.state = {
             error: null,
             isLoaded: false,
@@ -17,6 +18,7 @@ class MapQuest extends Component {
         this.markers = [];
         this.handleChange = this.handleChange.bind(this);
     }
+
 
     componentDidUpdate() {
         for (let layer of this.markers) {
@@ -38,6 +40,7 @@ class MapQuest extends Component {
                 }
             }
         }
+
     }
 
     componentDidMount() {
@@ -79,6 +82,7 @@ class MapQuest extends Component {
           });
         //--------
         window.L.mapquest.key = this.props.apiKey;
+
         this.map = window.L.mapquest.map('map', {
             center: this.props.center,
             layers: window.L.mapquest.tileLayer(this.props.baseLayer),
@@ -97,6 +101,7 @@ class MapQuest extends Component {
         window.L.rectangle(bounds, { color: "#FF7800", weight: 1 }).addTo(this.map);
         // zoom the map to the rectangle bounds
         this.map.fitBounds(bounds);
+
         //-----
         this.map.addControl(window.L.mapquest.locatorControl());
     }
@@ -104,9 +109,11 @@ class MapQuest extends Component {
     handleChange(e) {
         this.setState({value: e.target.value})
         console.log(this.state);
+
     }
 
     render() {
+
         const mapStyle = {
             height: '75vh',
             width: '80%',
