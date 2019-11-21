@@ -9,7 +9,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  logout: () => dispatch(logout),
+  logout: () => dispatch(logout()),
   showModal: modal => dispatch(showModal(modal)),
   hideModal: () => dispatch(hideModal)
 });
