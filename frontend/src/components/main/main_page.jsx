@@ -7,8 +7,7 @@ class MainPage extends React.Component {
     this.props.fetchTrips();
   }
 
-  render() {    
-    debugger
+  render() {        
     let component;
     if (this.props.trips === undefined) {
       return null;
