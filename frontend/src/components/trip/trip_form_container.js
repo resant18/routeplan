@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import { createTrip } from "../../actions/trip_actions";
 import TripForm from "./trip_form";
 
@@ -15,4 +16,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(TripForm);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(TripForm));
