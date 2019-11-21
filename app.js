@@ -2,7 +2,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const users = require('./routes/api/users');
-const tweets = require('./routes/api/tweets');
+const trips = require('./routes/api/trips');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const path = require("path");
@@ -34,11 +34,35 @@ if (process.env.NODE_ENV === "production") {
   app.get("/", (req, res) => res.send("Hello World!!"));
 }
 
+
+
 /**
  * MIDDLEWARE
  */
 // setup middleware to parse incoming request
 // urlencoded means to let server response json from other software (nested object) ), like Post,ans
+// Allow access on headers and avoid CORS issues
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Access, Authorization, x-access-token',
+  );
+
+  if (req.method === 'OPTIONS') {
+    res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, PATCH, DELETE');
+
+    res.header(
+      'Access-Control-Allow-Headers',
+      'Origin, X-Requested-With, Content-Type, Access, Authorization, x-access-token',
+    );
+
+    return res.status(200).json({});
+  }
+
+  next();
+});
+
 app.use(passport.initialize());
 require('./config/passport')(passport);
 
@@ -63,9 +87,8 @@ app.use(bodyParser.json());
 //     res.send('User is saved successfully');
     
 // });
-
 app.use('/api/users', users);
-app.use('/api/tweets', tweets);
+app.use('/api/trips', trips);
 
 
 //Set server port

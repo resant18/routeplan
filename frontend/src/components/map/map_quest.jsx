@@ -7,9 +7,9 @@ var assert = require('assert');
 // import '../../lib/mapquest-js.css';
 
 class MapQuest extends Component {
-
     constructor(props) {
         super(props);
+
         this.state = {
             error: null,
             value: '',
@@ -21,16 +21,24 @@ class MapQuest extends Component {
     }
 
     componentDidMount() {
+        const proxy_url = "https://cors-anywhere.herokuapp.com/";
+
+        const {routeStart, routeEnd } = this.props;
         // ajax tests
-        axios.get('https://www.mapquestapi.com/search/v2/rectangle', {
+        const boundingBoxParam = String(routeStart.concat(routeEnd));
+        // const boundingBoxParam = "37.81024, -122.41048, 37.807806, -122.4047";
+        console.log(boundingBoxParam);
+
+        axios
+          .get(`${proxy_url}https://www.mapquestapi.com/search/v2/rectangle`, {
             params: {
-                key: this.props.apiKey,
-                boundingBox: this.props.routeStart.concat(this.props.routeEnd).join(', '),
-                maxMatches: 500,
-                hostedData: ['mqap.ntpois'],
+              key: this.props.apiKey,            
+              boundingBox: boundingBoxParam,
+              maxMatches: 500,
+              hostedData: ["mqap.ntpois"]
             },
             paramsSerializer: params => {
-                return qs.stringify(params)
+              return qs.stringify(params);
             }
         })
             .then(
@@ -42,9 +50,10 @@ class MapQuest extends Component {
                 this.setState({
                     error
                 })
-            });
-        //--------
 
+            });
+          });
+        //--------
         window.L.mapquest.key = this.props.apiKey;
 
         this.map = window.L.mapquest.map('map', {
@@ -52,8 +61,8 @@ class MapQuest extends Component {
             layers: window.L.mapquest.tileLayer(this.props.baseLayer),
             zoom: this.props.zoom
         });
-
-        let directions = window.L.mapquest.directions();
+        
+        let directions = window.L.mapquest.directions();        
         directions.route({
             start: this.props.routeStart,
             end: this.props.routeEnd
@@ -64,7 +73,6 @@ class MapQuest extends Component {
         // window.L.rectangle(bounds, { color: "#ff7800", weight: 1 }).addTo(this.map);
         // // zoom the map to the rectangle bounds
         // this.map.fitBounds(bounds);
-
         //-----
         this.map.addControl(window.L.mapquest.locatorControl());
     }
@@ -103,6 +111,7 @@ class MapQuest extends Component {
             height: '75vh',
             width: '80%',
         };
+
         return (
             <div className="col-left">
                 <div id="map" style={mapStyle}>
@@ -124,7 +133,6 @@ class MapQuest extends Component {
                     }
             </div>
         );
-    }    
+    }
 }
-
-export default MapQuest
+export default MapQuest;
