@@ -1,5 +1,5 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 class SignupForm extends React.Component {
   constructor(props) {
@@ -45,7 +45,7 @@ class SignupForm extends React.Component {
 
   renderErrors() {
     return (
-      <ul>
+      <ul className="error-list">
         {Object.keys(this.state.errors).map((error, i) => (
           <li key={`error-${i}`}>{this.state.errors[error]}</li>
         ))}
@@ -55,42 +55,49 @@ class SignupForm extends React.Component {
 
   render() {
     return (
-      <div className="login-form-container">
-        <form onSubmit={this.usernameSubmit}>
-          <div className="login-form">
-            <br />
-            <input
-              type="text"
-              value={this.state.email}
-              onChange={this.update("email")}
-              placeholder="Email"
-            />
-            <br />
-            <input
-              type="text"
-              value={this.state.username}
-              onChange={this.update("username")}
-              placeholder="username"
-            />
-            <br />
-            <input
-              type="password"
-              value={this.state.password}
-              onChange={this.update("password")}
-              placeholder="Password"
-            />
-            <br />
-            <input
-              type="password"
-              value={this.state.password2}
-              onChange={this.update("password2")}
-              placeholder="Confirm Password"
-            />
-            <br />
-            <input type="submit" value="Submit" />
+      <div id="form-container">
+        <form id="session-form" onSubmit={this.usernameSubmit}>
+          <div id="form-elements-container">
+            <h1 className="form-title">Sign up to RoutePlan</h1>
+            <div id="input-container">
+              <input
+                type="text"
+                value={this.state.email}
+                onChange={this.update("email")}
+                placeholder="Email"
+                className="form-input"
+              />
+              <input
+                type="text"
+                value={this.state.username}
+                onChange={this.update("username")}
+                placeholder="username"
+                className="form-input"
+              />
+              <input
+                type="password"
+                value={this.state.password}
+                onChange={this.update("password")}
+                placeholder="Password"
+                className="form-input"
+              />
+              <input
+                type="password"
+                value={this.state.password2}
+                onChange={this.update("password2")}
+                placeholder="Confirm Password"
+                className="form-input"
+              />
+            </div>
+            <div className="submit-container">
+              <input id="submit-btn" className="btn" type="submit" value="Submit" />
+            </div>
             {this.renderErrors()}
           </div>
         </form>
+        <ul className="bottom-form-link">
+          <Link id="toggle-form" className="btn" to={'/login'} >Already have an account? Log in</Link>
+        </ul>
       </div>
     );
   }
