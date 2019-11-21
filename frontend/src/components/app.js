@@ -6,7 +6,7 @@ import NavBarContainer from './navbar/navbar_container';
 import MapQuest from './map/map_quest';
 
 import TripFormContainer from './trip/trip_form_container';
-import MainPage from './main/main_page';
+import MainPageContainer from './main/main_page_container';
 import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form_container';
 // import ProfileContainer from './profile/profile_container';
@@ -16,7 +16,7 @@ const App = () => (
     <NavBarContainer />
 
     <Switch>
-      <AuthRoute exact path="/" component={MainPage} />
+      <AuthRoute exact path="/" component={MainPageContainer} />
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
       <ProtectedRoute exact path="/trip" component={TripFormContainer} />
