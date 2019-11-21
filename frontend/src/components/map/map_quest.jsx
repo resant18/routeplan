@@ -51,7 +51,7 @@ class MapQuest extends Component {
                     error
                 })
 
-            });
+           
           });
         //--------
         window.L.mapquest.key = this.props.apiKey;
