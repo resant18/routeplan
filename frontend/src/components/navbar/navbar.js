@@ -36,8 +36,8 @@ class NavBar extends React.Component {
     }
   }
 
-  showModal() {
-    return () => this.props.showModal('trip-form');
+  showModal() {  
+    this.props.showModal('trip-form');
   }
 
   render() {

@@ -35,6 +35,7 @@ class TripForm extends React.Component {
     e.preventDefault();
     let trip = Object.assign({}, this.state);    
     this.props.createTrip(trip)
+      .then(this.props.hideModal)
       .then(() => this.props.history.push('/trip'));      
   }
 

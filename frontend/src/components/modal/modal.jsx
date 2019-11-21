@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { hideModal } from '../../actions/modal_actions';
 import TripFormContainer from '../trip/trip_form_container';
+import './modal.css';
 
 const Modal = ({ modal, hideModal }) => {  
   let component;
@@ -15,7 +16,7 @@ const Modal = ({ modal, hideModal }) => {
   }
 
   return (
-    <div className='modal-main' onClick={hideModal}>
+    <div className='modal' onClick={hideModal}>
       <section className='modal-content' onClick={e => e.stopPropagation()}>
         {component}
       </section>
