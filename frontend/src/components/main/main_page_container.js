@@ -1,17 +1,14 @@
 import { connect } from "react-redux";
-import MainPage from "./main_page";
 import { fetchTrips } from "../../actions/trip_actions";
-// import { openModal } from "../../actions/modal_actions";
+import MainPage from './main_page';
 
-const mSTP = state => {
-    return {
-      trips: Object.values(state.trips.all)
-    };
-};
-
-const mDTP = dispatch => ({
-  fetchTrips: () => dispatch(fetchTrips()),
-//   openModal: modal => dispatch(openModal(modal))
+const mapStateToProps = state => ({
+  loggedIn: state.session.isAuthenticated,
+  trips: Object.values(state.trips.all)
 });
 
-export default connect(mSTP, mDTP)(MainPage);
+const mapDispatchToProps = dispatch => ({
+  fetchTrips: () => dispatch(fetchTrips()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainPage);
