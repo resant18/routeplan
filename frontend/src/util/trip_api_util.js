@@ -17,5 +17,5 @@ export const updateTrip = data => {
 };
 
 export const deleteTrip = dataId => {
-  return axios.delete('/api/trips', dataId);
+  return axios.delete(`/api/trips/${dataId}`, dataId);
 };

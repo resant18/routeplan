@@ -1,0 +1,79 @@
+.trips-list {
+    border: 1px solid transparent;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    width: 70%;
+    min-height: 1px;
+}
+
+.trip-container {
+    width: 25%;
+    min-width: 150px;
+}
+
+.item-link:link, .item-link:visited {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    border: 0px solid transparent;
+    border-radius: 3px;
+    text-decoration: none;
+    height: 110px;
+    background: gray;
+    padding: 1em 1.5em;
+}
+
+.item-link {
+    line-height: 20px;
+    margin: 8px;
+    position: relative;
+    min-height: 1px;
+}
+
+.overlay {
+    color: white;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 150px;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    transition: background 0.2s ease 0s;
+    z-index: 2;
+}
+
+.overlay:hover {
+    background: rgba(0,0,0,0.2);
+}
+
+.t-title {
+    z-index: 1;
+}
+
+.trips-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #fafbfc;
+}
+
+.trips-index {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 85px;
+}
