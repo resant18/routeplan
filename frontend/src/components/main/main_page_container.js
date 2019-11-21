@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { fetchTrips } from "../../actions/trip_actions";
-import MainPage from "./main_page";
+import MainPage from './main_page';
 
 const mapStateToProps = state => ({
   loggedIn: state.session.isAuthenticated,
