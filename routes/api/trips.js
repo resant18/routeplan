@@ -10,7 +10,7 @@ const tripsController = require('../../controllers/trips_controller');
 router.get('/', tripsController.getAllTrips);
 router.get('/:tripId', tripsController.getTrip);
 router.post('/new', passport.authenticate("jwt", { session: false }), tripsController.createTrip);
-router.patch('/:tripId', tripsController.updateTrip);
-router.delete('/:tripId', tripsController.deleteTrip);
+router.patch('/:tripId', passport.authenticate("jwt", { session: false }), tripsController.updateTrip);
+router.delete('/:tripId', passport.authenticate("jwt", { session: false }), tripsController.deleteTrip);
 
 module.exports = router;
