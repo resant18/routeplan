@@ -66,6 +66,7 @@ class TripForm extends React.Component {
             <input type="submit" value="Submit" />
           </div>
         </form>
+        
       </div>
     );
   }

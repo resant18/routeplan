@@ -34,11 +34,10 @@ class PlaceSearchBar extends Component {
     }
 
     _getLocation() {
-        this.ps.on('change', e => {
-            console.log(e.result.latlng);
-                this.props.input({
-                lat: e.result.latlng["lat"],
-                lng: e.result.latlng["lng"]
+        this.ps.on('change', e => {        
+            this.props.input({
+            lat: e.result.latlng["lat"],
+            lng: e.result.latlng["lng"]
             });
         });
     }

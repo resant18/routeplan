@@ -6,7 +6,6 @@ var assert = require('assert');
 // import '../../lib/mapquest-js.css';
 
 class MapQuest extends Component {
-
     constructor(props) {
         super(props);
 
@@ -19,6 +18,7 @@ class MapQuest extends Component {
         this.markers = [];
         this.handleChange = this.handleChange.bind(this);
     }
+
 
     componentDidUpdate() {
         for (let layer of this.markers) {
@@ -44,44 +44,43 @@ class MapQuest extends Component {
     }
 
     componentDidMount() {
+        const proxy_url = "https://cors-anywhere.herokuapp.com/";
+
+        const {routeStart, routeEnd } = this.props;
         // ajax tests
-        axios.get('https://www.mapquestapi.com/search/v2/rectangle', {
+        const boundingBoxParam = String(routeStart.concat(routeEnd));
+        // const boundingBoxParam = "37.81024, -122.41048, 37.807806, -122.4047";
+        console.log(boundingBoxParam);
+
+        axios
+          .get(`${proxy_url}https://www.mapquestapi.com/search/v2/rectangle`, {
             params: {
-                key: this.props.apiKey,
-                boundingBox: '37.7724, -122.4415, 37.798634, -122.4194',
-                maxMatches: 500,
-                hostedData: ['mqap.ntpois']
+              key: this.props.apiKey,            
+              boundingBox: boundingBoxParam,
+              maxMatches: 500,
+              hostedData: ["mqap.ntpois"]
             },
             paramsSerializer: params => {
-                return qs.stringify(params)
+              return qs.stringify(params);
             }
-        })
-            .then(
-                (result) => {
-                this.setState({
-                    isLoaded: true,
-                    pointsOfInterest: result.data.searchResults
-                });
-                console.log(this.state.pointsOfInterest);
-                // for (let res of response.data.results) {
+          })
+          .then(result => {
+              console.log('result:')
+              console.log(result);
 
-                //     window.L.marker(res.place.geometry.coordinates.reverse(), {
-                //         icon: window.L.mapquest.icons.marker({
-                //             shadow: false
-                //         }),
-                //         draggable: true,
-                //         opacity: 0.5
-                //     }).bindPopup(res.name).addTo(map);
-                // }
-            })
-            .catch(error => {
-                this.setState({
-                    isLoaded: true,
-                    error
-                })
+            this.setState({
+              isLoaded: true,
+              pointsOfInterest: result.data.searchResults
             });
+            console.log(this.state.pointsOfInterest);
+          })
+          .catch(error => {
+            this.setState({
+              isLoaded: true,
+              error
+            });
+          });
         //--------
-
         window.L.mapquest.key = this.props.apiKey;
 
         this.map = window.L.mapquest.map('map', {
@@ -89,20 +88,17 @@ class MapQuest extends Component {
             layers: window.L.mapquest.tileLayer(this.props.baseLayer),
             zoom: this.props.zoom
         });
+        // let directionsControl = window.L.mapquest.directionsControl().addTo(this.map);
+        
+        let directions = window.L.mapquest.directions();        
 
-        // let directionsControl = window.L.mapquest.directionsControl().addTo(map);
-        // console.log(directionsControl);
-
-        // let directions = window.L.mapquest.directions();
-        // directions.route({
-        //     start: this.props.routeStart,
-        //     end: this.props.routeEnd
-        // });
-
+        directions.route({
+            start: this.props.routeStart,
+            end: this.props.routeEnd
+        });
         let bounds = [this.props.routeStart, this.props.routeEnd];
         // create an orange rectangle
-
-        window.L.rectangle(bounds, { color: "#ff7800", weight: 1 }).addTo(this.map);
+        window.L.rectangle(bounds, { color: "#FF7800", weight: 1 }).addTo(this.map);
         // zoom the map to the rectangle bounds
         this.map.fitBounds(bounds);
 
@@ -122,6 +118,7 @@ class MapQuest extends Component {
             height: '75vh',
             width: '80%',
         };
+
         return (
             <div>
                 <div id="map" style={mapStyle}>
@@ -134,10 +131,8 @@ class MapQuest extends Component {
                             <option value="799">Parks</option>
                         </select>
                     </form>
-
             </div>
         );
-    }    
+    }
 }
-
-export default MapQuest
+export default MapQuest;
