@@ -1,10 +1,19 @@
-import { connect } from "react-redux";
-import { logout } from "../../actions/session_actions";
-
-import NavBar from "./navbar";
+import { connect } from 'react-redux';
+import { withRouter } from "react-router-dom";
+import { logout } from '../../actions/session_actions';
+import { showModal, hideModal } from '../../actions/modal_actions';
+import NavBar from './navbar';
 
 const mapStateToProps = state => ({
   loggedIn: state.session.isAuthenticated
 });
 
-export default connect(mapStateToProps, { logout })(NavBar);
+const mapDispatchToProps = dispatch => ({
+  logout: () => dispatch(logout()),
+  showModal: modal => dispatch(showModal(modal)),
+  hideModal: () => dispatch(hideModal)
+});
+
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NavBar));
+
