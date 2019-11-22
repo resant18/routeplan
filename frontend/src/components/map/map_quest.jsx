@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-import React, { Component } from 'react'; 
-=======
 import React, { Component } from 'react';
 import Sidebar from './sidebar'
->>>>>>> master
 const axios = require('axios');
 var qs = require('qs');
 var assert = require('assert');
