@@ -75,9 +75,10 @@ SyHM5YXEECxfMWwSVnZi_LWvlDVpBuGEa0VjvdU-8EstUwDb_yiNvXHYx';
     render() {
         return (
             <div className="poi">
-            <h3>{this.props.name}</h3>
-            {this.state.data && <img src={this.state.data.image_url}></img>}
-            <button>Add to trip</button>
+                <h3>{this.props.name}</h3>
+                {this.state.data && <img src={this.state.data.image_url}></img>}
+                <div>Rating: {this.state.data.rating}</div>
+                <button>Add to trip</button>
             </div>
         )
     }
