@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 const axios = require('axios');
-const yelp = require('yelp-fusion');
 var qs = require('qs');
 
 export default class Poi extends Component {
