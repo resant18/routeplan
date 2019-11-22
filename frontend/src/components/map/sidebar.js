@@ -15,7 +15,7 @@ export default class Sidebar extends Component {
         return (
             <div className="col-right">
                 {this.props.pointsOfInterest.map((pt, i) => {
-                    return (<Poi name={pt.name}/>)
+                    return (<Poi name={pt.name} city={pt.fields.city}/>)
                 })}
             </div>
         )

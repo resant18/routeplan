@@ -8,7 +8,6 @@ class MainPage extends React.Component {
   }
 
   render() {    
-    debugger
     let component;
     if (this.props.trips === undefined) {
       return null;
