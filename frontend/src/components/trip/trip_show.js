@@ -3,21 +3,28 @@ import MapQuest from '../map/map_quest';
 const keys = require("../../config/api_keys");
 
 class TripShow extends React.Component {
-  componentDidMount() {    
-    if (!this.props.origin.length || !this.props.destination.length) {        
-      if (this.props.tripId) {
-        this.props.fetchTrip(this.props.tripId);
-        console.log('fetch trip...')
-      }
-      else return null;
-    };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      origin: this.props.origin,
+      destination: this.props.destination
+    }
+  }
+
+  componentDidMount() {  
+    debugger  
+    this.props.fetchTrip(this.props.tripId)
+      .then(this.setState({
+        origin: this.props.origin,
+        destination: this.props.destination
+      }))
   }
 
 
   render() {        
     const { origin, destination } = this.props;
-
-    if (origin === undefined || destination === undefined) return null;
+    
     if (!origin.length || !destination.length) return null;
 
     return (
