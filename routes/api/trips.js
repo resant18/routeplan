@@ -14,4 +14,5 @@ router.post('/new',
 router.patch('/:tripId', tripsController.updateTrip);
 router.delete('/:tripId', tripsController.deleteTrip);
 
+
 module.exports = router;

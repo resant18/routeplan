@@ -7,6 +7,7 @@ class TripForm extends React.Component {
 
     this.state = {
       name: '',
+      error: null,
       origin: [],
       destination: []
     };
@@ -36,7 +37,12 @@ class TripForm extends React.Component {
     let trip = Object.assign({}, this.state);    
     this.props.createTrip(trip)
       .then(this.props.hideModal)
-      .then(() => this.props.history.push('/trip'));      
+      .then(() => this.props.history.push('/trip'))
+      .catch(err => {
+        this.setState({
+          err
+        })
+      });
   }
 
   renderErrors() {

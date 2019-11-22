@@ -5,7 +5,7 @@ import "./main_page.css";
 class MainPage extends React.Component {  
   render() {            
     let component = <TripIndexContainer />
-    
+
     return (
       <div>
         <main>{component}</main>

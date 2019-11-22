@@ -13,14 +13,15 @@ class TripShow extends React.Component {
     };
   }
 
+
   render() {        
     const { origin, destination } = this.props;
 
     if (!origin.length || !destination.length) return null;
 
-    console.log(this.props.locationFrom);
-    console.log('origin:' + origin);
-    console.log("destination:" + destination);
+    // console.log(this.props.locationFrom);
+    // console.log('origin:' + origin);
+    // console.log("destination:" + destination);
 
     return (
       <div>

@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 import React, { Component } from 'react'; 
+=======
+import React, { Component } from 'react';
+import Sidebar from './sidebar'
+>>>>>>> master
 const axios = require('axios');
 var qs = require('qs');
 var assert = require('assert');
@@ -11,36 +16,12 @@ class MapQuest extends Component {
 
         this.state = {
             error: null,
-            isLoaded: false,
-            pointsOfInterest: [],
             value: '',
         }
+        this.pointsOfInterest = [];
+        this.filteredPoints = [];
         this.markers = [];
         this.handleChange = this.handleChange.bind(this);
-    }
-
-
-    componentDidUpdate() {
-        for (let layer of this.markers) {
-            this.map.removeLayer(layer);
-        }
-        this.markers = [];
-        if (this.state.value.length > 0) {
-            for (let pt of this.state.pointsOfInterest) {
-                if (pt.fields.group_sic_code.startsWith(this.state.value)) {
-                    let curMarker = window.L.marker(pt.shapePoints, {
-                        icon: window.L.mapquest.icons.marker({
-                            shadow: false
-                        }),
-                        draggable: false,
-                        opacity: 0.5
-                    })
-                    curMarker.bindPopup(pt.name).addTo(this.map);
-                    this.markers.push(curMarker);
-                }
-            }
-        }
-
     }
 
     componentDidMount() {
@@ -59,27 +40,22 @@ class MapQuest extends Component {
               key: this.props.apiKey,            
               boundingBox: boundingBoxParam,
               maxMatches: 500,
-              hostedData: ["mqap.ntpois"]
             },
             paramsSerializer: params => {
               return qs.stringify(params);
             }
-          })
-          .then(result => {
-              console.log('result:')
-              console.log(result);
+        })
+            .then(
+                (result) => {
+                    this.pointsOfInterest = result.data.searchResults;
+                    console.log(this.pointsOfInterest)
+                })
+            .catch(error => {
+                this.setState({
+                    error
+                })
 
-            this.setState({
-              isLoaded: true,
-              pointsOfInterest: result.data.searchResults
-            });
-            console.log(this.state.pointsOfInterest);
-          })
-          .catch(error => {
-            this.setState({
-              isLoaded: true,
-              error
-            });
+           
           });
         //--------
         window.L.mapquest.key = this.props.apiKey;
@@ -89,31 +65,54 @@ class MapQuest extends Component {
             layers: window.L.mapquest.tileLayer(this.props.baseLayer),
             zoom: this.props.zoom
         });
-        // let directionsControl = window.L.mapquest.directionsControl().addTo(this.map);
         
         let directions = window.L.mapquest.directions();        
-
         directions.route({
             start: this.props.routeStart,
-            end: this.props.routeEnd
+            end: this.props.routeEnd,
+            options: {
+                routeType: 'pedestrian'
+            }
         });
-        let bounds = [this.props.routeStart, this.props.routeEnd];
-        // create an orange rectangle
-        window.L.rectangle(bounds, { color: "#FF7800", weight: 1 }).addTo(this.map);
-        // zoom the map to the rectangle bounds
-        this.map.fitBounds(bounds);
 
+        // let bounds = [this.props.routeStart, this.props.routeEnd];
+        // // create an orange rectangle
+        // window.L.rectangle(bounds, { color: "#ff7800", weight: 1 }).addTo(this.map);
+        // // zoom the map to the rectangle bounds
+        // this.map.fitBounds(bounds);
         //-----
         this.map.addControl(window.L.mapquest.locatorControl());
     }
 
     handleChange(e) {
         this.setState({value: e.target.value})
-        console.log(this.state);
+    }
 
+    filterMap() {
+        for (let layer of this.markers) {
+            this.map.removeLayer(layer);
+        }
+        this.filteredPoints = [];
+        if (this.state.value.length > 0) {
+            for (let pt of this.pointsOfInterest) {
+                if (pt.fields.group_sic_code.startsWith(this.state.value)) {
+                    this.filteredPoints.push(pt);
+                    let curMarker = window.L.marker(pt.shapePoints, {
+                        icon: window.L.mapquest.icons.marker({
+                            shadow: false
+                        }),
+                        draggable: false,
+                        opacity: 0.5
+                    });
+                    curMarker.bindPopup(pt.name + '<br/>' + pt.fields.address + ', ' + pt.fields.city).addTo(this.map);
+                    this.markers.push(curMarker);
+                }
+            }
+        }
     }
 
     render() {
+        this.filterMap();
 
         const mapStyle = {
             height: '75vh',
@@ -122,17 +121,24 @@ class MapQuest extends Component {
         };
 
         return (
-            <div>
+            <div className="col-left">
                 <div id="map" style={mapStyle}>
                 </div>
                     <form>
                         <select onChange={this.handleChange} value={this.state.value}>
                             <option value="">--Filter by place you'd like to visit--</option>
-                            <option value="5812">Food</option>
+                            <option value="5812">Restaurants</option>
                             <option value="8412">Museums</option>
                             <option value="799">Parks</option>
+                            <option value="5813">Bars</option>
+                            <option value="5942">Books</option>
+                            <option value="602101">ATM</option>
+                            <option value="5461">Bakeries</option>
                         </select>
                     </form>
+                    {this.filteredPoints.length > 0 &&
+                        <Sidebar pointsOfInterest={this.filteredPoints}/>
+                    }
             </div>
         );
     }
