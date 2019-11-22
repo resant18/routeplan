@@ -12,8 +12,9 @@ import TripShowContainer from './trip/trip_show_container';
 
 
 const App = () => (
-  <div>
+  <div className="main">
     <NavBarContainer />
+    
     <Modal />
     
     <Switch>

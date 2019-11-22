@@ -1,21 +1,172 @@
-.NavBar {
+.main {
+  background-color: #333;
+}
+
+.navbar-content {
+    margin-right: 1.5rem;
+}
+
+.navbar {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
+    align-items: center;
+    min-height: 85px;
 }
 
-.NavBar button {
-    height: 20px;
+.header-name {
+    margin-right: 1.5rem;
+    color: #ffffff;
 }
 
-.Links1 {
+h3.title {
+  font-size: 1.25rem;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+#logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 1.5rem;
+  color: #fff;
+}
+
+#logo-container > i {
+  color: #ffffff;
+  font-size: 40px;
+}
+
+footer {
+    text-align: center;
+    color: #fff;
+}
+
+.btn-logout {
+  background-color: #cf513d;
+  border: 2px solid transparent;
+  border-radius: 3px;
+  color: #ffffff;
+  width: 100%;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.btn-logout:hover {
+  background-color: #eb5a46;
+  cursor: pointer;
+}
+
+.btn-success {
+  background-color: #5AAC44;
+  border: 2px solid transparent;
+  border-radius: 3px;
+  color: #ffffff;
+  width: 100%;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.btn-success:hover {
+  cursor: pointer;
+  background-color: #61BD4F;
+}
+
+.btn {
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: 6px 12px;
+  font-size: 1.25rem;
+  border-radius: 6px;
+  -webkit-transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.btn a:link, .btn a:visited {
+  color: #fff;
+}
+
+.btn:hover, .btn:focus {
+  text-decoration: none;
+}
+
+.plus {
+  margin: 6px 12px;
+}
+/* line 272, /Users/alfredosumosav/Desktop/trallo/app/assets/stylesheets/static_pages.scss */
+.plus .btn {
+  background: white;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+/* line 279, /Users/alfredosumosav/Desktop/trallo/app/assets/stylesheets/static_pages.scss */
+.plus:hover .btn {
+  background: rgba(0, 0, 0, 0.4);
+  color: white;
+}
+
+.logo-thumb {
+    border: 1px solid transparent;
+    border-radius: 50%;
     width: 100px;
-    display: flex;
-    justify-content: space-between;
+    height: 100px;
+    margin: 7px;
 }
 
-.Links2 {
-    width: 400px;
+/* IDs */
+
+#welcome {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+}
+
+#welcome .title {
+    color: #fff;
+}
+
+#session-actions-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#login {
+  color: #ffffff;
+  border: 1px solid transparent;
+  border-radius: .2rem;
+  padding: .25rem;
+}
+
+#logo {
+  color: #ffffff;
+  font-size: 1.5625rem;
+  margin: 1.5rem;
+  text-decoration: none;
+}
+
+#signup {
+  /* background-color: white; */
+  color: #fff;
+  border: 1px solid transparent;
+  /* border-radius: .2rem; */
+  padding: .25rem;
+}
+
+#signup a:visited {
+    text-decoration: none;
+}
+
+#signup:hover {
+  text-decoration: none;
 }
