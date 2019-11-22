@@ -17,20 +17,17 @@ class TripShow extends React.Component {
   render() {        
     const { origin, destination } = this.props;
 
+    if (origin === undefined || destination === undefined) return null;
     if (!origin.length || !destination.length) return null;
-
-    // console.log(this.props.locationFrom);
-    // console.log('origin:' + origin);
-    // console.log("destination:" + destination);
 
     return (
       <div>
         <MapQuest
-          center={origin} //{[37.7749, -122.4194]}   //{this.props.origin}
+          center={origin} 
           baseLayer={"map"}
           zoom={12}
-          routeStart={origin} //{[37.798634, -122.4194]} //{this.props.origin}
-          routeEnd={destination} //{[37.7724, -122.4415]} //{this.props.destination}
+          routeStart={origin} 
+          routeEnd={destination} 
           apiKey={keys.MAP_KEY}
           maxMatches={500}
         />

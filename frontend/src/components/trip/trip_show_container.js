@@ -9,13 +9,11 @@ const mapStateToProps = (state, ownProps) => {
   let locationFrom;
   if (tripId) {
     origin = (state.trips.show === undefined ? [] : state.trips.show.origin);
-    destination = (state.trips.show === undefined ? [] : state.trips.show.destination);    
-    locationFrom = 'show';
-  } else {
+    destination = (state.trips.show === undefined ? [] : state.trips.show.destination);        
+  } else {    
     origin = (state.trips.new === undefined ? [] : state.trips.new.origin);
     destination = (state.trips.new === undefined ? [] : state.trips.new.destination);    
-    tripId = (state.trips.new === undefined ? [] : state.trips.new._id);
-    locationFrom = "new";
+    tripId = (state.trips.new === undefined ? [] : state.trips.new._id);    
   }
 
   return {

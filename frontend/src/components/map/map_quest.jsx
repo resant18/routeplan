@@ -69,6 +69,7 @@ class MapQuest extends Component {
 
   drawRoute(routeProps) {
     let directions = window.L.mapquest.directions();
+
     directions.route({
       start: routeProps.routeStart,
       end: routeProps.routeEnd,
@@ -76,15 +77,6 @@ class MapQuest extends Component {
         routeType: "pedestrian"
       }
     });
-  }
-
-  componentWillUpdate(nextProps, nextState) {
-    debugger;
-    const boundingBoxParam = this._setBoundingBox(nextProps);
-    this.fetchMapData(boundingBoxParam);
-
-    this.drawRoute(nextProps);
-    this.map.addControl(window.L.mapquest.locatorControl());
   }
 
   //   componentDidUpdate() {
@@ -144,7 +136,18 @@ class MapQuest extends Component {
   //     this.map.addControl(window.L.mapquest.locatorControl());
   //   }
 
+  componentWillUpdate(nextProps, nextState) {   
+    // debugger 
+    const boundingBoxParam = this._setBoundingBox(nextProps);
+    this.fetchMapData(boundingBoxParam);
+    
+    this.drawRoute(nextProps);   
+    
+    this.map.addControl(window.L.mapquest.locatorControl());
+  }
+
   componentDidMount() {
+    // debugger
     const boundingBoxParam = this._setBoundingBox(this.props);
     this.fetchMapData(boundingBoxParam);
 
