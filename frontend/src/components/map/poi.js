@@ -32,6 +32,7 @@ SyHM5YXEECxfMWwSVnZi_LWvlDVpBuGEa0VjvdU-8EstUwDb_yiNvXHYx';
             .then(
                 (res) => {
                     this.setState({data: res.data.businesses[0]})
+                    debugger
                 }
             )
             .catch(err => {
