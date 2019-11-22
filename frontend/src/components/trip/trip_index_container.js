@@ -1,14 +1,14 @@
 import { connect } from "react-redux";
 import { fetchTrips } from "../../actions/trip_actions";
-import MainPage from './main_page';
+import TripIndex from '../trip/trip_index';
 
 const mapStateToProps = state => ({
   loggedIn: state.session.isAuthenticated,
-  trips: Object.values(state.trips.all)
+  trips: Object.values(state.trips.all) || []
 });
 
 const mapDispatchToProps = dispatch => ({
   fetchTrips: () => dispatch(fetchTrips()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(MainPage);
+export default connect(mapStateToProps, mapDispatchToProps)(TripIndex);
