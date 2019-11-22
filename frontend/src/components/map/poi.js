@@ -54,10 +54,14 @@ SyHM5YXEECxfMWwSVnZi_LWvlDVpBuGEa0VjvdU-8EstUwDb_yiNvXHYx';
     }
 
     render() {
+        let defaultImg = 'https://img.pngio.com/danny-devito-face-png-vector-clipart-psd-peoplepngcom-danny-devito-face-png-388_563.png';
+        if (this.state.data && this.state.data.image) {
+            defaultImg = this.state.data.image_url;
+        }
         return (
             <div className="poi">
                 <h3>{this.props.name}</h3>
-                {this.state.data && <img src={this.state.data.image_url}></img>}
+                <img src={defaultImg}></img>
                 {this.state.data && <div>Yelp Rating: {this.state.data.rating || 'None'}</div>}
                 <button onClick={this.handleClick}>Add to trip</button>
             </div>
