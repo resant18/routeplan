@@ -4,7 +4,7 @@ const keys = require("../../config/api_keys");
 
 class TripShow extends React.Component {
   constructor(props) {
-    super(props);   
+    super(props);
   }
 
   

@@ -34,6 +34,7 @@ SyHM5YXEECxfMWwSVnZi_LWvlDVpBuGEa0VjvdU-8EstUwDb_yiNvXHYx';
                     this.setState({data: res.data.businesses[0]})
                 }
             )
+            // .then(() => new Promise(resolve => setTimeout(resolve, 400)))
             .catch(err => {
                 console.log(err)
             });
