@@ -56,7 +56,10 @@ class MapQuest extends Component {
         let directions = window.L.mapquest.directions();
         directions.route({
             start: this.props.routeStart,
-            end: this.props.routeEnd
+            end: this.props.routeEnd,
+            options: {
+                routeType: 'pedestrian'
+            }
         });
 
         // let bounds = [this.props.routeStart, this.props.routeEnd];
