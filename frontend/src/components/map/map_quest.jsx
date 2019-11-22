@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'; 
 const axios = require('axios');
 var qs = require('qs');
 var assert = require('assert');
@@ -50,6 +50,7 @@ class MapQuest extends Component {
         // ajax tests
         const boundingBoxParam = String(routeStart.concat(routeEnd));
         // const boundingBoxParam = "37.81024, -122.41048, 37.807806, -122.4047";
+        console.log('bounding param:');
         console.log(boundingBoxParam);
 
         axios
@@ -117,6 +118,7 @@ class MapQuest extends Component {
         const mapStyle = {
             height: '75vh',
             width: '80%',
+            zIndex: 1
         };
 
         return (
