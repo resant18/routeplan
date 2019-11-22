@@ -3,9 +3,18 @@ const validateTrip = require("../validation/trip");
 
 exports.getAllTrips = (req, res) => {
     Trip.find()
+      .sort({date: -1})
       .then(trips => res.json(trips))
       .catch(err => res.status(404).json({ notripsfound: "No trips found" }));
 }
+
+exports.getUserTrips = (req, res) => {
+  Trip.find({user: { _id: req.params.userId }})
+    .then(trips => res.json(trips))
+    .catch(err =>
+      res.status(404).json({ notripsfound: "No trip found with that ID" })
+    );
+};
 
 exports.getTrip = (req, res) => {
     Trip.findById(req.params.tripId)

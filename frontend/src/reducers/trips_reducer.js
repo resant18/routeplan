@@ -1,6 +1,7 @@
 import {
   RECEIVE_TRIPS,
   RECEIVE_USER_TRIPS,
+  RECEIVE_TRIP,
   RECEIVE_NEW_TRIP,
   REMOVE_TRIP
 } from "../actions/trip_actions";
@@ -10,20 +11,23 @@ const TripsReducer = ( state = { all: {}, user: {}, new: undefined }, action ) =
   let newState = Object.assign({}, state);
 
   switch (action.type) {
+    case RECEIVE_TRIP:
+      newState.show = action.trip.data;
+      return newState;
     case RECEIVE_TRIPS:
-        newState.all = action.trips.data
-        return newState;      
+      newState.all = action.trips.data;
+      return newState;
     case RECEIVE_USER_TRIPS:
-        newState.user = action.trips.data
-        return newState;      
+      newState.user = action.trips.data;
+      return newState;
     case RECEIVE_NEW_TRIP:
-        newState.new = action.trip.data      
-        return newState;
+      newState.new = action.trip.data;
+      return newState;
     case REMOVE_TRIP:
-        delete newState[action.tripId];
-        return newState;
+      delete newState[action.tripId];
+      return newState;
     default:
-        return state;
+      return state;
   }
 };
 
