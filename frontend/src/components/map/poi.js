@@ -32,7 +32,6 @@ SyHM5YXEECxfMWwSVnZi_LWvlDVpBuGEa0VjvdU-8EstUwDb_yiNvXHYx';
             .then(
                 (res) => {
                     this.setState({data: res.data.businesses[0]})
-                    debugger
                 }
             )
             .catch(err => {
@@ -48,7 +47,7 @@ SyHM5YXEECxfMWwSVnZi_LWvlDVpBuGEa0VjvdU-8EstUwDb_yiNvXHYx';
         return (
             <div className="poi">
             <h3>{this.props.name}</h3>
-            <img src={this.state.data.image_url}></img>
+            {this.state.data && <img src={this.state.data.image_url}></img>}
             <button>Add to trip</button>
             </div>
         )

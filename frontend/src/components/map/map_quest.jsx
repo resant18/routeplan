@@ -35,7 +35,6 @@ class MapQuest extends Component {
               key: this.props.apiKey,            
               boundingBox: boundingBoxParam,
               maxMatches: 500,
-              hostedData: ["mqap.ntpois"]
             },
             paramsSerializer: params => {
               return qs.stringify(params);
