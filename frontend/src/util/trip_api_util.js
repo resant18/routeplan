@@ -1,11 +1,15 @@
 import axios from 'axios';
 
-export const getTrips = () => {
+export const getAllTrips = () => {
   return axios.get('/api/trips');
 };
 
 export const getUserTrips = id => {
   return axios.get(`/api/trips/user/${id}`);
+};
+
+export const getTrip = (tripId) => {
+  return axios.get(`/api/trips/${tripId}`);
 };
 
 export const makeTrip = data => {
