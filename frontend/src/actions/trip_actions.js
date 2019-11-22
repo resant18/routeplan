@@ -1,35 +1,59 @@
-import { getTrips, getUserTrips, writeTrip } from "../util/trip_api_util";
+import * as APIUtil from "../util/trip_api_util";
 
 export const RECEIVE_TRIPS = "RECEIVE_TRIPS";
 export const RECEIVE_USER_TRIPS = "RECEIVE_USER_TRIPS";
 export const RECEIVE_NEW_TRIP = "RECEIVE_NEW_TRIP";
+export const REMOVE_TRIP = 'REMOVE_TRIP';
+export const RECEIVE_TRIP_ERRORS = "RECEIVE_TRIP_ERRORS";
 
-export const receiveTrips = tweets => ({
+
+export const receiveTrips = trips => ({
   type: RECEIVE_TRIPS,
-  tweets
+  trips
 });
 
-export const receiveUserTrips = tweets => ({
+export const receiveUserTrips = trips => ({
   type: RECEIVE_USER_TRIPS,
-  tweets
+  trips
 });
 
-export const receiveNewTrip = tweet => ({
+export const receiveNewTrip = trip => ({
   type: RECEIVE_NEW_TRIP,
-  tweet
+  trip
+});
+
+export const removeTrip = tripId => ({
+  type: REMOVE_TRIP,
+  tripId
+});
+
+export const receiveTripErrors = errors => ({
+  type: RECEIVE_TRIP_ERRORS,
+  errors
 });
 
 export const fetchTrips = () => dispatch =>
-  getTrips()
-    .then(tweets => dispatch(receiveTrips(tweets)))
+  APIUtil.getTrips()
+    .then(trips => dispatch(receiveTrips(trips)))
     .catch(err => console.log(err));
 
 export const fetchUserTrips = id => dispatch =>
-  getUserTrips(id)
-    .then(tweets => dispatch(receiveUserTrips(tweets)))
+  APIUtil.getUserTrips(id)
+    .then(trips => dispatch(receiveUserTrips(trips)))
     .catch(err => console.log(err));
 
-export const composeTrip = data => dispatch =>
-  writeTrip(data)
-    .then(tweet => dispatch(receiveNewTrip(tweet)))
-    .catch(err => console.log(err));
+export const createTrip = data => dispatch =>
+  APIUtil.makeTrip(data)
+    .then(trip => dispatch(receiveNewTrip(trip)))
+    .catch(err => dispatch(receiveTripErrors(err)));
+
+export const editTrip = data => dispatch => {
+  return APIUtil.updateTrip(data)
+    .then(trip => dispatch(receiveTrips(trip)))
+    .catch(err => dispatch(receiveTripErrors(err)));
+}
+
+export const destroyTrip = dataId => dispatch => {
+  return APIUtil.deleteTrip(dataId)
+    .then(() => dispatch(removeTrip(dataId)));
+}
