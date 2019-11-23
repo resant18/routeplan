@@ -23,7 +23,7 @@ class NavBar extends React.Component {
           <div id="welcome">
             <h3 className="title">Hi, {this.props.currentUser.username}</h3>
             <div className="plus">
-              <button className="btn" onClick={this.showModal}>New Trip +</button>
+              <button id="new-trip-btn" className="btn" onClick={this.showModal}>New Trip +</button>
             </div>
             <div className="btn-container">
               <button className="header-button btn-logout" onClick={this.logoutUser}>Logout</button>

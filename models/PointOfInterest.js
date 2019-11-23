@@ -20,7 +20,11 @@ const PlaceSchema = new Schema({
   },
   desc: {
     type: String
-  },  
+  }, 
+  trips: {
+    type: Schema.Types.ObjectId,
+    ref: "trips"
+  }, 
   date: {
     type: Date,
     default: Date.now

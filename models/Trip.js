@@ -18,6 +18,9 @@ const TripSchema = new Schema({
     type: [Number, Number],
     default: undefined
   },
+  pois: {
+    type: Object    
+  },
   date: {
     type: Date,
     default: Date.now

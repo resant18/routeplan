@@ -31,15 +31,20 @@ class TripShow extends React.Component {
 
     return (
       <div>
-        <MapQuest
-          center={origin} 
-          baseLayer={"map"}
-          zoom={12}
-          routeStart={origin} 
-          routeEnd={destination} 
-          apiKey={keys.MAP_KEY}
-          maxMatches={500}
-        />
+        <div>
+          <MapQuest
+            center={origin}
+            baseLayer={"map"}
+            zoom={12}
+            routeStart={origin}
+            routeEnd={destination}
+            apiKey={keys.MAP_KEY}
+            maxMatches={500}
+          />
+        </div>
+        <div>
+          {/* <TripShowDetailContainer /> */}
+        </div>
       </div>
     );
   }
