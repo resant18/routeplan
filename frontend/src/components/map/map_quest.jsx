@@ -58,7 +58,6 @@ class MapQuest extends Component {
       })
       .then(result => {
         this.pointsOfInterest = result.data.searchResults;
-        console.log(this.pointsOfInterest);
       })
       .catch(error => {
         this.setState({
@@ -141,9 +140,7 @@ class MapQuest extends Component {
     const boundingBoxParam = this._setBoundingBox(nextProps);
     this.fetchMapData(boundingBoxParam);
     
-    this.drawRoute(nextProps);   
-    
-    this.map.addControl(window.L.mapquest.locatorControl());
+    this.drawRoute(nextProps);
   }
 
   componentDidMount() {

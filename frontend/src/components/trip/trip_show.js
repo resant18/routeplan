@@ -13,7 +13,6 @@ class TripShow extends React.Component {
   }
 
   componentDidMount() {  
-    debugger  
     this.props.fetchTrip(this.props.tripId)
       .then(this.setState({
         origin: this.props.origin,
@@ -24,6 +23,7 @@ class TripShow extends React.Component {
 
   render() {        
     const { origin, destination } = this.props;
+    console.log(this.state);
     
     if (!origin.length || !destination.length) return null;
 
