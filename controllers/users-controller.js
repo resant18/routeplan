@@ -16,6 +16,15 @@ exports.getCurrentUser = (req, res) => {
     });
 };
 
+// exports.getUser = (req, res) => {
+//   const user = User.findOne({ _id: req.params.id }).then(user => user); 
+//   res.json({
+//     id: req.params.id,
+//     username: user.username,
+//     email: user.email
+//   });
+// };
+
 exports.registerUser = (req, res) => {
     const { errors, isValid } = validateRegisterInput(req.body);
 
@@ -69,7 +78,7 @@ exports.loginUser = (req, res) => {
 
       bcrypt.compare(password, user.password).then(isMatch => {
         if (isMatch) {
-          const payload = { id: user.id };
+          const payload = { id: user.id, username: user.username };
 
           jwt.sign(
             payload,
