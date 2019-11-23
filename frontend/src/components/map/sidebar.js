@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Poi from './poi'
+import PoiContainer from './poi_container'
 import TripShowDetail from '../trip/trip_show_detail';
 
 export default class Sidebar extends Component {
@@ -27,7 +27,7 @@ export default class Sidebar extends Component {
           <div style={sidebarStyle}>
             <TripShowDetail selectedPois={this.state.selectedPois} />
             {this.props.pointsOfInterest.map((pt, i) => (
-              <Poi
+              <PoiContainer
                 poi={pt}
                 key={i}
                 name={pt.name}
