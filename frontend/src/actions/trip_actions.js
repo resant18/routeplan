@@ -38,6 +38,8 @@ export const receiveTripErrors = errors => ({
   errors
 });
 
+
+// thunk action creators
 export const fetchTrips = () => dispatch =>
   APIUtil.getAllTrips()
     .then(trips => dispatch(receiveTrips(trips)))

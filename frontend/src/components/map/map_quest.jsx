@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import Sidebar from "./sidebar";
+import React, { Component } from 'react';
+import Sidebar from './sidebar'
+const axios = require('axios');
+var qs = require('qs');
+var assert = require('assert');
 
-const axios = require("axios");
-var qs = require("qs");
-var assert = require("assert");
 // import '../../lib/mapquest-js';
 // import '../../lib/mapquest-js.css';
 
