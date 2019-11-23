@@ -22,6 +22,7 @@ const App = () => (
       <ProtectedRoute exact path="/trips/:tripId" component={TripShowContainer} />
       <Route exact path="/" component={MainPage} />
     </Switch>
+    <footer>Copyright Alfredo - Lance - Renata - Timothy</footer>
   </div>
 );
 
