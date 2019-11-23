@@ -3,9 +3,9 @@ import * as APIUtil from '../util/trip_poi_api_util';
 export const RECEIVE_TRIP_POIS = 'RECEIVE_TRIP_POIS';
 export const RECEIVE_TRIP_ERRORS = "RECEIVE_TRIP_ERRORS";
 
-export const receiveTripPois = poi => ({
+export const receiveTripPois = trip => ({
     type: RECEIVE_TRIP_POIS,
-    poi
+    trip
 });
 
 export const receiveTripErrors = errors => ({
