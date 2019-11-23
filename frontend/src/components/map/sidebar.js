@@ -1,23 +1,41 @@
 import React, { Component } from 'react';
 import Poi from './poi'
-const axios = require('axios');
-var qs = require('qs');
+import TripShowDetail from '../trip/trip_show_detail';
 
 export default class Sidebar extends Component {
     constructor(props) {
         super(props);
+        
+        this.handleAddPoiToTrip = this.handleAddPoiToTrip.bind(this);
+        this.state = {
+            tripPois: []
+        }        
     }
 
-    componentDidUpdate() {
+    handleAddPoiToTrip(poi) {                
+        this.setState({
+            tripPois: this.state.tripPois.concat(poi) 
+        })        
     }
 
     render() {
+        const sidebarStyle = {
+            backgroundColor: 'white'
+        }
+
         return (
-            <div className="col-right">
-                {this.props.pointsOfInterest.map((pt, i) => {
-                    return (<Poi name={pt.name} city={pt.fields.city}/>)
-                })}
-            </div>
-        )
+          <div style={sidebarStyle}>
+            <TripShowDetail pois={this.state.tripPois} />
+            {this.props.pointsOfInterest.map((pt, i) => (
+              <Poi
+                poi={pt}
+                key={i}
+                name={pt.name}
+                city={pt.fields.city}
+                selectedPois={this.handleAddPoiToTrip}
+              />
+            ))}
+          </div>
+        );
     }
 }

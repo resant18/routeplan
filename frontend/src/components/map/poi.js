@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import TripShowDetail from '../trip/trip_show_detail';
 // import CurrentTrip from './current_trip'
 const axios = require('axios');
 var qs = require('qs');
@@ -6,9 +7,9 @@ var qs = require('qs');
 export default class Poi extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            addedToTrip: false,
-            data: []
+        this.state = {            
+            data: [],
+            selectedPois: []
         }
     }
 
@@ -36,7 +37,7 @@ SyHM5YXEECxfMWwSVnZi_LWvlDVpBuGEa0VjvdU-8EstUwDb_yiNvXHYx';
             )
             // .then(() => new Promise(resolve => setTimeout(resolve, 400)))
             .catch(err => {
-                console.log(err)
+                //console.log(err)
             });
     }
 
@@ -48,22 +49,30 @@ SyHM5YXEECxfMWwSVnZi_LWvlDVpBuGEa0VjvdU-8EstUwDb_yiNvXHYx';
         this.yelpCall();
     }
 
-    handleClick = e => {
-        this.setState({addedToTrip: true});
-    }
+    
 
+    handleAddToTrip(poi) {        
+        
+        this.props.selectedPois(poi);
+    }
+    
     render() {
-        let defaultImg = 'https://img.pngio.com/danny-devito-face-png-vector-clipart-psd-peoplepngcom-danny-devito-face-png-388_563.png';
+        let defaultImg =
+          "https://i7.pngguru.com/preview/186/969/183/heart-love-symbol-brand-metroui-google-places-thumbnail.jpg"; //'https://img.pngio.com/danny-devito-face-png-vector-clipart-psd-peoplepngcom-danny-devito-face-png-388_563.png';
         if (this.state.data && this.state.data.image) {
             defaultImg = this.state.data.image_url;
         }
         return (
-            <div className="poi">
-                <h3>{this.props.name}</h3>
-                <img src={defaultImg}></img>
-                {this.state.data && <div>Yelp Rating: {this.state.data.rating || 'None'}</div>}
-                <button onClick={this.handleClick}>Add to trip</button>
-            </div>
-        )
+          <div>
+            <div className="poi-item">
+              <h3>{this.props.name}</h3>
+              {/* <img src={defaultImg}></img> */}
+              {this.state.data && (
+                <div>Yelp Rating: {this.state.data.rating || "None"}</div>
+              )}
+              <button onClick={this.handleAddToTrip.bind(this, this.props.poi)}>Add to trip</button>
+            </div>            
+          </div>
+        );
     }
 }
