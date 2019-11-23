@@ -1,5 +1,6 @@
 import React from "react";
 import MapQuest from '../map/map_quest';
+import TripShowDetailContainer from "./trip_show_detail_container";
 const keys = require("../../config/api_keys");
 
 class TripShow extends React.Component {
@@ -12,8 +13,7 @@ class TripShow extends React.Component {
     }
   }
 
-  componentDidMount() {  
-    debugger  
+  componentDidMount() {        
     this.props.fetchTrip(this.props.tripId)
       .then(this.setState({
         origin: this.props.origin,
@@ -29,15 +29,20 @@ class TripShow extends React.Component {
 
     return (
       <div>
-        <MapQuest
-          center={origin} 
-          baseLayer={"map"}
-          zoom={12}
-          routeStart={origin} 
-          routeEnd={destination} 
-          apiKey={keys.MAP_KEY}
-          maxMatches={500}
-        />
+        <div>
+          <MapQuest
+            center={origin}
+            baseLayer={"map"}
+            zoom={12}
+            routeStart={origin}
+            routeEnd={destination}
+            apiKey={keys.MAP_KEY}
+            maxMatches={500}
+          />
+        </div>
+        <div>
+          {/* <TripShowDetailContainer /> */}
+        </div>
       </div>
     );
   }

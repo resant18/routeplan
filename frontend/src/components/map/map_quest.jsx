@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Sidebar from './sidebar'
+import TripShowDetail from '../trip/trip_show_detail';
 const axios = require('axios');
 var qs = require('qs');
 var assert = require('assert');
@@ -213,7 +214,7 @@ class MapQuest extends Component {
         </form>
         {this.filteredPoints.length > 0 && (
           <Sidebar pointsOfInterest={this.filteredPoints} />
-        )}
+        )}        
       </div>
     );
   }
