@@ -6,16 +6,13 @@ import TripShow from './trip_show';
 const mapStateToProps = (state, ownProps) => {  
   let origin, destination;
   let tripId = ownProps.match.params.tripId;
-  let locationFrom;
-  if (tripId) {
-    origin = (state.trips.show === undefined ? [] : state.trips.show.origin);
-    destination = (state.trips.show === undefined ? [] : state.trips.show.destination);    
-    locationFrom = 'show';
+  
+  if (state.trips.selected) {
+    origin = state.trips.selected.origin;
+    destination = state.trips.selected.destination;    
   } else {
-    origin = (state.trips.new === undefined ? [] : state.trips.new.origin);
-    destination = (state.trips.new === undefined ? [] : state.trips.new.destination);    
-    tripId = (state.trips.new === undefined ? [] : state.trips.new._id);
-    locationFrom = "new";
+    origin = [];
+    destination = [];    
   }
 
   return {
@@ -23,8 +20,7 @@ const mapStateToProps = (state, ownProps) => {
     currentUser: state.session.user,
     tripId,
     origin,
-    destination,
-    locationFrom
+    destination
   };
 };
 

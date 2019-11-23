@@ -12,7 +12,7 @@ const TripsReducer = ( state = { all: {}, user: {}, new: undefined }, action ) =
 
   switch (action.type) {
     case RECEIVE_TRIP:
-      newState.show = action.trip.data;
+      newState.selected = action.trip.data;
       return newState;
     case RECEIVE_TRIPS:
       newState.all = action.trips.data;
@@ -21,7 +21,7 @@ const TripsReducer = ( state = { all: {}, user: {}, new: undefined }, action ) =
       newState.user = action.trips.data;
       return newState;
     case RECEIVE_NEW_TRIP:
-      newState.new = action.trip.data;
+      newState.selected = action.trip.data;
       return newState;
     case REMOVE_TRIP:
       delete newState[action.tripId];

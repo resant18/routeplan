@@ -35,13 +35,15 @@ class TripForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     let trip = Object.assign({}, this.state);    
-    this.props.createTrip(trip)
+    this.props
+      .createTrip(trip)
+      .then(trip => trip.trip.data._id)
+      .then((tripId) => this.props.history.push(`/trips/${tripId}`))
       .then(this.props.hideModal)
-      .then(() => this.props.history.push('/trip'))
       .catch(err => {
         this.setState({
           err
-        })
+        });
       });
   }
 
