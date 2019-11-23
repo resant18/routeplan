@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
-import TripShowDetail from '../trip/trip_show_detail';
-// import CurrentTrip from './current_trip'
 const axios = require('axios');
-var qs = require('qs');
+const qs = require('qs');
 
 export default class Poi extends Component {
     constructor(props) {
@@ -50,9 +48,8 @@ SyHM5YXEECxfMWwSVnZi_LWvlDVpBuGEa0VjvdU-8EstUwDb_yiNvXHYx';
     }
 
     
-
-    handleAddToTrip(poi) {        
-        
+    // This function pass selected POI up to Sidebar component
+    handleAddToTrip(poi) {               
         this.props.selectedPois(poi);
     }
     

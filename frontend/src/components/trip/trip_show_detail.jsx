@@ -13,14 +13,14 @@ class TripShowDetail extends Component {
     render() {                
         // const { name } = this.props.trips.selected;  
         
-        console.log(this.props.pois);   
+        console.log(this.props.selectedPois);   
           
         return (
             <div className="trip-show-detail">
                 <h3>Trip Detail</h3>
                 <strong>Trip Name here</strong>
                 {
-                    this.props.pois.map( (poi, i) => 
+                    this.props.selectedPois.map( (poi, i) => 
                         <div key={i}>{poi.name}</div>
                     )
                 }        

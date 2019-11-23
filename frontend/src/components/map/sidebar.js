@@ -8,13 +8,13 @@ export default class Sidebar extends Component {
         
         this.handleAddPoiToTrip = this.handleAddPoiToTrip.bind(this);
         this.state = {
-            tripPois: []
+            selectedPois: []
         }        
     }
 
     handleAddPoiToTrip(poi) {                
         this.setState({
-            tripPois: this.state.tripPois.concat(poi) 
+            selectedPois: this.state.selectedPois.concat(poi) 
         })        
     }
 
@@ -25,7 +25,7 @@ export default class Sidebar extends Component {
 
         return (
           <div style={sidebarStyle}>
-            <TripShowDetail pois={this.state.tripPois} />
+            <TripShowDetail selectedPois={this.state.selectedPois} />
             {this.props.pointsOfInterest.map((pt, i) => (
               <Poi
                 poi={pt}
