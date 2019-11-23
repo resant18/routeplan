@@ -128,7 +128,6 @@ class MapQuest extends Component {
   }
 
   render() {
-    console.log('HELLO')
     this.filterMap();
 
     const mapStyle = {
