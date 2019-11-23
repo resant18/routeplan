@@ -1,5 +1,6 @@
 import React from "react";
 import MapQuest from '../map/map_quest';
+import {getTrip} from '../../util/trip_api_util'
 const keys = require("../../config/api_keys");
 
 class TripShow extends React.Component {
@@ -7,25 +8,26 @@ class TripShow extends React.Component {
     super(props);
 
     this.state = {
-      origin: this.props.origin,
-      destination: this.props.destination
+      origin: [],
+      destination: []
     }
   }
 
   componentDidMount() {  
-    this.props.fetchTrip(this.props.tripId)
-      .then(this.setState({
-        origin: this.props.origin,
-        destination: this.props.destination
-      }))
+    getTrip(this.props.tripId).then(res => {
+      this.setState({
+        origin: res.data.origin,
+        destination: res.data.destination
+      })
+    })
+    // this.props.fetchTrip(this.props.tripId)
   }
 
 
-  render() {        
-    const { origin, destination } = this.props;
-    console.log(this.state);
-    
-    if (!origin.length || !destination.length) return null;
+  render() {
+    let origin = this.state.origin;
+    let destination = this.state.destination;
+    if (!(origin.length && destination.length)) return null;
 
     return (
       <div>
