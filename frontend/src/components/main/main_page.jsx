@@ -9,7 +9,6 @@ class MainPage extends React.Component {
     return (
       <div>
         <main>{component}</main>
-        <footer>Copyright Alfredo - Lance - Renata - Timothy</footer>
       </div>
     );
   }
