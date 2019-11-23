@@ -39,6 +39,12 @@
     min-height: 1px;
 }
 
+.overlay:hover {
+    margin: -1px;
+    border: 1px solid #454545;
+    border-radius: 5px;
+}
+
 .overlay {
     color: white;
     text-align: center;
