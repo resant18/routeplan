@@ -59,7 +59,6 @@ class MapQuest extends Component {
       })
       .then(result => {
         this.pointsOfInterest = result.data.searchResults;
-        console.log(this.pointsOfInterest);
       })
       .catch(error => {
         this.setState({
@@ -80,75 +79,15 @@ class MapQuest extends Component {
     });
   }
 
-  //   componentDidUpdate() {
-  //     const proxy_url = "https://cors-anywhere.herokuapp.com/";
-
-  //     const { routeStart, routeEnd } = this.props;
-  //     // ajax tests
-  //     const boundingBoxParam = String(routeStart.concat(routeEnd));
-  //     // const boundingBoxParam = "37.81024, -122.41048, 37.807806, -122.4047";
-  //     console.log("bounding param:");
-  //     console.log(boundingBoxParam);
-
-  //     axios
-  //       .get(`${proxy_url}https://www.mapquestapi.com/search/v2/rectangle`, {
-  //         params: {
-  //           key: this.props.apiKey,
-  //           boundingBox: boundingBoxParam,
-  //           maxMatches: 500
-  //         },
-  //         paramsSerializer: params => {
-  //           return qs.stringify(params);
-  //         }
-  //       })
-  //       .then(result => {
-  //         this.pointsOfInterest = result.data.searchResults;
-  //         console.log(this.pointsOfInterest);
-  //       })
-  //       .catch(error => {
-  //         this.setState({
-  //           error
-  //         });
-  //       });
-  //     //--------
-  //     window.L.mapquest.key = this.props.apiKey;
-
-  //     this.map = window.L.mapquest.map("map", {
-  //       center: this.props.center,
-  //       layers: window.L.mapquest.tileLayer(this.props.baseLayer),
-  //       zoom: this.props.zoom
-  //     });
-
-  //     let directions = window.L.mapquest.directions();
-  //     directions.route({
-  //       start: this.props.routeStart,
-  //       end: this.props.routeEnd,
-  //       options: {
-  //         routeType: "pedestrian"
-  //       }
-  //     });
-
-  //     // let bounds = [this.props.routeStart, this.props.routeEnd];
-  //     // // create an orange rectangle
-  //     // window.L.rectangle(bounds, { color: "#ff7800", weight: 1 }).addTo(this.map);
-  //     // // zoom the map to the rectangle bounds
-  //     // this.map.fitBounds(bounds);
-  //     //-----
-  //     this.map.addControl(window.L.mapquest.locatorControl());
-  //   }
-
-  componentWillUpdate(nextProps, nextState) {   
+  UNSAFE_componentWillUpdate(nextProps, nextState) {   
     // debugger 
     const boundingBoxParam = this._setBoundingBox(nextProps);
     this.fetchMapData(boundingBoxParam);
     
-    this.drawRoute(nextProps);   
-    
-    this.map.addControl(window.L.mapquest.locatorControl());
+    this.drawRoute(nextProps);
   }
 
   componentDidMount() {
-    // debugger
     const boundingBoxParam = this._setBoundingBox(this.props);
     this.fetchMapData(boundingBoxParam);
 
@@ -212,9 +151,9 @@ class MapQuest extends Component {
             <option value="5461">Bakeries</option>
           </select>
         </form>
-        {this.filteredPoints.length > 0 && (
+        {/* {this.filteredPoints.length > 0 && ( */}
           <Sidebar pointsOfInterest={this.filteredPoints} />
-        )}        
+        {/* )}         */}
       </div>
     );
   }

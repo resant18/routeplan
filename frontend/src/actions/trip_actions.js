@@ -63,7 +63,7 @@ export const createTrip = data => dispatch =>
 
 export const editTrip = data => dispatch => {
   return APIUtil.updateTrip(data)
-    .then(trip => dispatch(receiveTrips(trip)))
+    .then(trip => dispatch(receiveTrip(trip)))
     .catch(err => dispatch(receiveTripErrors(err)));
 }
 

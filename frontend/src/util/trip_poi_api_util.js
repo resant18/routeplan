@@ -1,5 +1,10 @@
 import axios from 'axios';
 
 export const addPoiToTrip = (data) => {
-  return axios.get('/api/pois/new', data);
+  return axios.post('/api/pois/new', data);
+};
+
+export const removePoiFromTrip = (tripId, poiId) => {
+  debugger
+  return axios.delete(`/api/pois/${tripId}/${poiId}`, {tripId, poiId});
 };

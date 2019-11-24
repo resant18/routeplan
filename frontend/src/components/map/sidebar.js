@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PoiContainer from './poi_container'
-import TripShowDetail from '../trip/trip_show_detail';
+import TripShowDetailContainer from '../trip/trip_show_detail_container';
 
 export default class Sidebar extends Component {
     constructor(props) {
@@ -12,6 +12,7 @@ export default class Sidebar extends Component {
         }        
     }
 
+    // This function accept the new POI send from POI container component
     handleAddPoiToTrip(poi) {                
         this.setState({
             selectedPois: this.state.selectedPois.concat(poi) 
@@ -23,10 +24,12 @@ export default class Sidebar extends Component {
             backgroundColor: 'white'
         }
 
-        return (
-          <div style={sidebarStyle}>
-            <TripShowDetail selectedPois={this.state.selectedPois} />
-            {this.props.pointsOfInterest.map((pt, i) => (
+        let component;
+
+        if (this.props.pointsOfInterest.length === 0) {
+            component = ""; 
+        } else {
+            component = this.props.pointsOfInterest.map((pt, i) => (
               <PoiContainer
                 poi={pt}
                 key={i}
@@ -34,7 +37,13 @@ export default class Sidebar extends Component {
                 city={pt.fields.city}
                 selectedPois={this.handleAddPoiToTrip}
               />
-            ))}
+            ));
+        }
+
+        return (
+          <div style={sidebarStyle}>
+            <TripShowDetailContainer selectedPois={this.state.selectedPois}/>
+            {component}
           </div>
         );
     }

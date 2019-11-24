@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { addPoiToTrip } from '../../actions/poi_actions';
 const axios = require('axios');
 const qs = require('qs');
@@ -51,19 +52,21 @@ class PoiContainer extends Component {
 
     
     // This function pass selected POI up to Sidebar component
-    handleAddToTrip(poi) {     
+    handleAddToTrip(poi) {             
+        this.props.addPoiToTrip({
+            tripId: this.props.tripId,
+            poi: poi.fields
+        })
+        .then(() => {            
+            this.props.selectedPois(poi); 
+        })
         
-        // this.props.addPoiToTrip({
-        //     _id: this.props.tripId,
-        //     poi  
-        // });    
-        this.props.selectedPois(poi);
     }
     
     render() {
         let defaultImg =
           "https://i7.pngguru.com/preview/186/969/183/heart-love-symbol-brand-metroui-google-places-thumbnail.jpg"; //'https://img.pngio.com/danny-devito-face-png-vector-clipart-psd-peoplepngcom-danny-devito-face-png-388_563.png';
-        if (this.state.data.image_url) {
+        if (this.state.data && this.state.data.image_url) {
             defaultImg = this.state.data.image_url;
         }
         return (
@@ -82,7 +85,7 @@ class PoiContainer extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-    // tripId: ownProps.match.params.tripId,
+    tripId: ownProps.match.params.tripId,
     poi: ownProps.poi,
     key: ownProps.key,
     name: ownProps.name,
@@ -94,6 +97,6 @@ const mapDispatchToProps = dispatch => ({
     addPoiToTrip: (poi) => dispatch(addPoiToTrip(poi))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(PoiContainer);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PoiContainer));
 
 
