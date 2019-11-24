@@ -16,3 +16,15 @@ exports.addPoiToTrip = (req, res) => {
     );
 };
 
+exports.removePoiFromTrip = (req, res) => {
+  Trip.findById(req.body.tripId)
+    .then(trip => {
+      Trip.updateOne({ _id: trip.id }, { $pull: { pois: [req.body.poiId] } })
+        .then(() => Trip.findById(req.body.tripId))
+        .then(trip => res.json(trip));
+    })
+    .catch(err =>
+      res.status(404).json({ notripfound: "No trip found with that ID" })
+    );
+}
+
