@@ -42,7 +42,7 @@ export default class Sidebar extends Component {
 
         return (
           <div style={sidebarStyle}>
-            <TripShowDetailContainer selectedPois={this.state.selectedPois} pois={this.props.pois}/>
+            <TripShowDetailContainer selectedPois={this.state.selectedPois}/>
             {component}
           </div>
         );

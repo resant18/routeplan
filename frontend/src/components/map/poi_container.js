@@ -58,6 +58,7 @@ class PoiContainer extends Component {
             poi: poi.fields
         });    
         this.props.selectedPois(poi);
+        debugger
     }
     
     render() {
