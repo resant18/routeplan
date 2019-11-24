@@ -55,7 +55,7 @@ class PoiContainer extends Component {
     handleAddToTrip(poi) {             
         this.props.addPoiToTrip({
             tripId: this.props.tripId,
-            poi: {[poi.fields.id]: poi.fields }  
+            poi: poi.fields
         });    
         this.props.selectedPois(poi);
     }
@@ -63,7 +63,7 @@ class PoiContainer extends Component {
     render() {
         let defaultImg =
           "https://i7.pngguru.com/preview/186/969/183/heart-love-symbol-brand-metroui-google-places-thumbnail.jpg"; //'https://img.pngio.com/danny-devito-face-png-vector-clipart-psd-peoplepngcom-danny-devito-face-png-388_563.png';
-        if (this.state.data.image_url) {
+        if (this.state.data) {
             defaultImg = this.state.data.image_url;
         }
         return (

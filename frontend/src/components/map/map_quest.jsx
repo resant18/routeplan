@@ -212,9 +212,9 @@ class MapQuest extends Component {
             <option value="5461">Bakeries</option>
           </select>
         </form>
-        {this.filteredPoints.length > 0 && (
+        {/* {this.filteredPoints.length > 0 && ( */}
           <Sidebar pointsOfInterest={this.filteredPoints} />
-        )}        
+        {/* )}         */}
       </div>
     );
   }
