@@ -56,9 +56,11 @@ class PoiContainer extends Component {
         this.props.addPoiToTrip({
             tripId: this.props.tripId,
             poi: poi.fields
-        });    
-        this.props.selectedPois(poi);
-        debugger
+        })
+        .then(() => {            
+            this.props.selectedPois(poi); 
+        })
+        
     }
     
     render() {

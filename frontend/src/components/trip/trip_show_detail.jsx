@@ -2,24 +2,16 @@ import React, { Component } from 'react'
 
 class TripShowDetail extends Component {
   constructor(props) {
-    super(props);
-    // this.state = {
-    //   selectedPois: this.props.selectedPois || [],
-    //   pois: this.props.pois || []
-    // };    
+    super(props);       
   }
 
-  componentDidMount() {    
-    // if (this.props.trip === undefined) {
-      this.props.fetchTrip(this.props.tripId);      
-    // }
+  componentDidMount() {        
+      this.props.fetchTrip(this.props.tripId);          
   }
 
-  componentDidUpdate(prevProps) {
-    
+  componentDidUpdate(prevProps) {    
     if (this.props.selectedPois !== prevProps.selectedPois) {
-      this.props.fetchTrip(this.props.tripId);
-
+      this.props.fetchTrip(this.props.tripId);      
     }
   }
 
@@ -33,8 +25,7 @@ class TripShowDetail extends Component {
       <div className="trip-show-detail">
         <h3>Trip Detail</h3>
         <h4>{name}</h4>
-        {pois === undefined ? null : pois.map((poi, i) => {  
-                  
+        {pois === undefined ? null : pois.map((poi, i) => {                    
               return (
                 <div key={poi.id} className="poi">
                   <div>
