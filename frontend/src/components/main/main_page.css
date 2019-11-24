@@ -29,7 +29,7 @@
     text-decoration: none;
     height: 110px;
     background: #454545;
-    padding: 1em 1.5em;
+    padding: 2em 0.15em 0;
 }
 
 .item-link {
@@ -37,6 +37,7 @@
     margin: 8px;
     position: relative;
     min-height: 1px;
+    z-index: 0;
 }
 
 .overlay:hover {
@@ -56,7 +57,7 @@
     height: 100%;
     background: transparent;
     transition: background 0.2s ease 0s;
-    z-index: 2;
+    z-index: -2;
 }
 
 .overlay:hover {
