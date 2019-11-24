@@ -4,15 +4,13 @@ import TripShow from './trip_show';
 
 
 const mapStateToProps = (state, ownProps) => {  
-  let origin, destination;
   let tripId = ownProps.match.params.tripId;
+  let origin = [];
+  let destination = [];
   
   if (state.trips.selected) {
     origin = state.trips.selected.origin;
     destination = state.trips.selected.destination;    
-  } else {
-    origin = [];
-    destination = [];    
   }
 
   return {
