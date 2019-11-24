@@ -5,8 +5,9 @@ import {
   RECEIVE_NEW_TRIP,
   REMOVE_TRIP,
 } from "../actions/trip_actions";
+import { RECEIVE_TRIP_POIS, REMOVE_TRIP_POIS } from "../actions/poi_actions";
 
-const TripsReducer = ( state = { all: {}, user: {}, new: undefined, }, action ) => {
+const TripsReducer = ( state = { all: {}, user: {}, selected: undefined }, action ) => {
   Object.freeze(state);
   let newState = Object.assign({}, state);
 
@@ -25,6 +26,10 @@ const TripsReducer = ( state = { all: {}, user: {}, new: undefined, }, action ) 
       return newState;
     case REMOVE_TRIP:
       delete newState[action.tripId];
+      return newState;
+    case (RECEIVE_TRIP_POIS, REMOVE_TRIP_POIS):
+      debugger
+      newState.selected = action.trip.data;
       return newState;
     default:
       return state;

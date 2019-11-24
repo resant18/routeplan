@@ -3,13 +3,13 @@ const express = require('express');
 const mongoose = require('mongoose');
 const users = require('./routes/api/users');
 const trips = require('./routes/api/trips');
+const pois = require('./routes/api/pois');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const path = require("path");
 
 // Local Dependencies
 const DB_URL = require('./config/keys').mongoURI;
-const User = require('./models/User');
 
 // Instantiate Express Server
 const app = express();
@@ -89,6 +89,7 @@ app.use(bodyParser.json());
 // });
 app.use('/api/users', users);
 app.use('/api/trips', trips);
+app.use('/api/pois', pois);
 
 
 //Set server port
