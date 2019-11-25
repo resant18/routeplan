@@ -1,3 +1,5 @@
-module.exports = {
-  MAP_KEY: '5WysS7ThGWencRAPbVcjUAV5ws0BepvA'  //'GtJj838k2uUMChaJbStq3F7qM0WobjXf'
-};
+if (process.env.NODE_ENV === "production") {
+  module.exports = require("./api_keys_prod");
+} else {
+  module.exports = require("./api_keys_dev");
+}

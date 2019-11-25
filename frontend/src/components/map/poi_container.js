@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { addPoiToTrip } from '../../actions/poi_actions';
 const axios = require('axios');
 const qs = require('qs');
+const API_KEY = require('../../config/api_keys');
 
 class PoiContainer extends Component {
     constructor(props) {
@@ -15,8 +16,7 @@ class PoiContainer extends Component {
     }
 
     yelpCall() {
-        const apiKey =
-          "mOp_g5UnBzGDCmW5_fpxXmCCaitoXrzlIwxKlEEL8Dvre40PECjRrMVWqNLMaZBeILGQWGEZ6KQyyATXlfgVAwHvw_UuzBSDVV-kDwGsR-fzmzkvgeSyL5xQeG3YXXYx";
+        const apiKey = API_KEY.YELP_KEY;
         // Place holder for Yelp Fusion's API Key. Grab them                                    
         // from https://www.yelp.com/developers/v3/manage_app                                   
 
