@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { addPoiToTrip } from '../../actions/poi_actions';
+import './poi.css'
+import defaultSvg from '../../assets/default-place.svg'
 const axios = require('axios');
 const qs = require('qs');
 const API_KEY = require('../../config/api_keys');
@@ -61,11 +63,10 @@ class PoiContainer extends Component {
             this.props.selectedPois(poi); 
         })
         
-    }
+    }"https://i7.pngguru.com/preview/186/969/183/heart-love-symbol-brand-metroui-google-places-thumbnail.jpg"
     
     render() {
-        let defaultImg =
-          "https://i7.pngguru.com/preview/186/969/183/heart-love-symbol-brand-metroui-google-places-thumbnail.jpg"; //'https://img.pngio.com/danny-devito-face-png-vector-clipart-psd-peoplepngcom-danny-devito-face-png-388_563.png';
+        let defaultImg = defaultSvg;
         if (this.state.data && this.state.data.image_url) {
             defaultImg = this.state.data.image_url;
         }
@@ -86,7 +87,7 @@ class PoiContainer extends Component {
           <div>
             <div className="poi-item">
               <h3>{this.props.name}</h3>
-              <img src={defaultImg}></img>
+              <img className='poi-pic' src={defaultImg}></img>
               {this.state.data && (
                         <div>{rateMapping[this.state.data.rating] || <img src="https://i.imgur.com/k0udNsq.png"></img>}</div>
               )}

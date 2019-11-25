@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PoiContainer from './poi_container'
+import './sidebar.css'
 import TripShowDetailContainer from '../trip/trip_show_detail_container';
 
 export default class Sidebar extends Component {
@@ -41,9 +42,13 @@ export default class Sidebar extends Component {
         }
 
         return (
-          <div style={sidebarStyle}>
-            <TripShowDetailContainer selectedPois={this.state.selectedPois}/>
-            {component}
+          <div className='trip-detail-container' style={sidebarStyle}>
+            <div className='poi-container'>
+              {component}
+            </div>
+            <div className='trip-show-container'>
+                <TripShowDetailContainer selectedPois={this.state.selectedPois} />  
+            </div>
           </div>
         );
     }

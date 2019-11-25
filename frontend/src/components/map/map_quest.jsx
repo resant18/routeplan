@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Sidebar from './sidebar'
 import Select from 'react-select'
+import TripShowDetail from '../trip/trip_show_detail';
+import './sidebar.css'
 const axios = require('axios');
 var qs = require('qs');
 var assert = require('assert');
@@ -147,16 +149,16 @@ class MapQuest extends Component {
     ];
 
     return (
-      <div className="map-show">
-        <div className="map-area">
-          <div id="map" style={mapStyle}></div>
+      <div className="col-right">
+        <div id="map" style={mapStyle}></div>
+        <div className="trip-details">
           <div style={{width: "300px"}}>
             <Select options={options} placeholder="--Filter by category--" onChange={this.handleChange}/>
           </div>
+          {/* {this.filteredPoints.length > 0 && ( */}
+            <Sidebar pointsOfInterest={this.filteredPoints} />
+          {/* )}         */}
         </div>
-        {/* {this.filteredPoints.length > 0 && ( */}
-          <Sidebar pointsOfInterest={this.filteredPoints} />
-        {/* )}         */}
       </div>
     );
   }

@@ -1,0 +1,21 @@
+.col-right{
+    display: flex;
+};
+
+.form_btn{
+    position: relative;
+}
+
+.trip-details{
+    position: relative;
+}
+
+.trip-detail-container{
+    position: relative;
+    top: 7px;
+    width: 292px;
+    right: -5px;
+    overflow-y: scroll;
+    height: 69vh;
+
+};
