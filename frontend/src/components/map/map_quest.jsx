@@ -155,9 +155,9 @@ class MapQuest extends Component {
           <div style={{width: "300px"}}>
             <Select options={options} placeholder="--Filter by category--" onChange={this.handleChange}/>
           </div>
-          {/* {this.filteredPoints.length > 0 && ( */}
+
             <Sidebar pointsOfInterest={this.filteredPoints} />
-          {/* )}         */}
+
         </div>
       </div>
     );
