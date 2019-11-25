@@ -11,9 +11,9 @@
 
 .item-actions {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
-  background: #ffffff1a;
+  background: rgba(0,0,0,0.35);
 }
 
 .item-container {
@@ -37,5 +37,5 @@
 }
 
 .t-action:hover {
-  background: rgba(255,255,255,0.5);
+  background: rgba(255,255,255,0.25);
 }

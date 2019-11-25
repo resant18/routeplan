@@ -21,8 +21,7 @@ export default class TripIndex extends React.Component {
                   let a;
                   a = Math.floor(Math.random() * images.length);
                   let ri;
-                  // ri = images[a];
-                  ri = image;
+                  ri = images[a];
                   return <TripItem destroyTrip={this.props.destroyTrip} editTrip={this.props.editTrip} im={ri} trip={trip} key={idx} />;
                 })}
               </div>

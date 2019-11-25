@@ -58,9 +58,9 @@ body {
     min-width: 160px;
     width: 100%;
     height: 100%;
-    background: transparent;
+    background: rgba(0,0,0,0.25);
     transition: background 0.2s ease 0s;
-    z-index: -2;
+    z-index: 0;
 }
 
 .overlay:hover {
