@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Sidebar from './sidebar'
-import TripShowDetail from '../trip/trip_show_detail';
+import Select from 'react-select'
 const axios = require('axios');
 var qs = require('qs');
 var assert = require('assert');
@@ -96,8 +96,8 @@ class MapQuest extends Component {
     this.map.addControl(window.L.mapquest.locatorControl());
   }
 
-  handleChange(e) {
-    this.setState({ value: e.target.value });
+  handleChange = selectedOption => {
+    this.setState({ value: selectedOption.value });
   }
 
   filterMap() {
@@ -136,21 +136,24 @@ class MapQuest extends Component {
       zIndex: 1
     };
 
+    const options = [
+      { value: '5812', label: 'Restaurants' },
+      { value: '8412', label: 'Museums' },
+      { value: '799', label: 'Parks' },
+      { value: '5813', label: 'Bars' },
+      { value: '5942', label: 'Books' },
+      { value: '602101', label: 'ATM' },
+      { value: '5461', label: 'Bakeries' }
+    ];
+
     return (
-      <div className="col-left">
-        <div id="map" style={mapStyle}></div>
-        <form>
-          <select onChange={this.handleChange} value={this.state.value}>
-            <option value="">--Filter by place you'd like to visit--</option>
-            <option value="5812">Restaurants</option>
-            <option value="8412">Museums</option>
-            <option value="799">Parks</option>
-            <option value="5813">Bars</option>
-            <option value="5942">Books</option>
-            <option value="602101">ATM</option>
-            <option value="5461">Bakeries</option>
-          </select>
-        </form>
+      <div className="map-show">
+        <div className="map-area">
+          <div id="map" style={mapStyle}></div>
+          <div style={{width: "300px"}}>
+            <Select options={options} placeholder="--Filter by category--" onChange={this.handleChange}/>
+          </div>
+        </div>
         {/* {this.filteredPoints.length > 0 && ( */}
           <Sidebar pointsOfInterest={this.filteredPoints} />
         {/* )}         */}

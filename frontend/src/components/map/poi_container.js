@@ -69,13 +69,26 @@ class PoiContainer extends Component {
         if (this.state.data && this.state.data.image_url) {
             defaultImg = this.state.data.image_url;
         }
+
+        // https://imgur.com/a/r89Zfjk
+        const rateMapping = {
+            1: 'https://i.imgur.com/188xWM4.png',
+            1.5: 'https://i.imgur.com/188xWM4.png',
+            2: 'https://i.imgur.com/0ju9JrY.png',
+            2.5: 'https://i.imgur.com/c2tN4zA.png',
+            3: 'https://i.imgur.com/mB5jFJj.png',
+            3.5: 'https://i.imgur.com/qr6e6IJ.png',
+            4: 'https://i.imgur.com/fU6ZjD9.png',
+            4.5: 'https://i.imgur.com/FoKELFt.png',
+            5: 'https://i.imgur.com/8JscCtn.png'
+        }
         return (
           <div>
             <div className="poi-item">
               <h3>{this.props.name}</h3>
               <img src={defaultImg}></img>
               {this.state.data && (
-                <div>Yelp Rating: {this.state.data.rating || "None"}</div>
+                        <div>{rateMapping[this.state.data.rating] || <img src="https://i.imgur.com/k0udNsq.png"></img>}</div>
               )}
               <button onClick={this.handleAddToTrip.bind(this, this.props.poi)}>Add to trip</button>
             </div>            
