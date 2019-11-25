@@ -6,6 +6,38 @@
   height: 100%;
   border: 0px solid transparent;
   border-radius: 3px;
+  z-index: -1;
+}
+
+.item-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background: rgba(0,0,0,0.35);
+}
+
+.item-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.t-action {
+  z-index: 1;
+  width: 50%;
+  font-size: 24px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid transparent;
+  border-radius: 3px;
+}
+
+.t-action:hover {
+  background: rgba(255,255,255,0.25);
 }
 
 #place-search-input {
@@ -30,4 +62,3 @@
   display: block;
   margin-bottom: 20px;
 }
-

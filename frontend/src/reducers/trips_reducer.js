@@ -25,7 +25,7 @@ const TripsReducer = ( state = { all: {}, user: {}, selected: undefined }, actio
       newState.selected = action.trip.data;
       return newState;
     case REMOVE_TRIP:
-      delete newState[action.tripId];
+      delete newState.all[newState.all.indexOf(newState.all.filter(e => e._id === action.tripId)[0])];
       return newState;
     case (RECEIVE_TRIP_POIS, REMOVE_TRIP_POIS):
       debugger
