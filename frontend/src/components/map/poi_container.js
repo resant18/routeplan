@@ -63,7 +63,7 @@ class PoiContainer extends Component {
             this.props.selectedPois(poi); 
         })
         
-    }"https://i7.pngguru.com/preview/186/969/183/heart-love-symbol-brand-metroui-google-places-thumbnail.jpg"
+    }
     
     render() {
         let defaultImg = defaultSvg;
