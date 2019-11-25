@@ -54,12 +54,14 @@ class TripForm extends React.Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
+        <div><span className="form-label">Trip Plan</span></div>
+        <form onSubmit={this.handleSubmit} id="place-search-form">
           <div>
-            <PlaceSearchBar 
-              key="origin" 
+            <PlaceSearchBar
+              key="origin"
               placeholder="Start point"
-              input={this.handleChangeOrigin} />
+              input={this.handleChangeOrigin}
+            />
           </div>
           <div>
             <PlaceSearchBar
@@ -69,13 +71,23 @@ class TripForm extends React.Component {
             />
           </div>
           <div>
-            <input type="text" placeholder="Trip name" onChange={this.handleInput} />
+            <input
+              className="form-input"
+              type="text"
+              placeholder="Trip name"
+              onChange={this.handleInput}
+            />
           </div>
-          <div>
-            <input type="submit" value="Submit" />
+          <div className="form-button">
+            <input className="btn" type="submit" value="Submit" />
+            <input
+              className="btn"
+              type="button"
+              value="Cancel"
+              onClick={this.props.hideModal}
+            />
           </div>
         </form>
-        
       </div>
     );
   }
