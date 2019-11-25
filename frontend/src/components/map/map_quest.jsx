@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Sidebar from './sidebar'
 import TripShowDetail from '../trip/trip_show_detail';
+import './sidebar.css'
 const axios = require('axios');
 var qs = require('qs');
 var assert = require('assert');
@@ -137,23 +138,25 @@ class MapQuest extends Component {
     };
 
     return (
-      <div className="col-left">
+      <div className="col-right">
         <div id="map" style={mapStyle}></div>
-        <form>
-          <select onChange={this.handleChange} value={this.state.value}>
-            <option value="">--Filter by place you'd like to visit--</option>
-            <option value="5812">Restaurants</option>
-            <option value="8412">Museums</option>
-            <option value="799">Parks</option>
-            <option value="5813">Bars</option>
-            <option value="5942">Books</option>
-            <option value="602101">ATM</option>
-            <option value="5461">Bakeries</option>
-          </select>
-        </form>
-        {/* {this.filteredPoints.length > 0 && ( */}
-          <Sidebar pointsOfInterest={this.filteredPoints} />
-        {/* )}         */}
+        <div className='trip-details'>
+            <form className='form_btn'>
+                <select onChange={this.handleChange} value={this.state.value}>
+                  <option value="">--Filter by place you'd like to visit--</option>
+                  <option value="5812">Restaurants</option>
+                  <option value="8412">Museums</option>
+                  <option value="799">Parks</option>
+                  <option value="5813">Bars</option>
+                  <option value="5942">Books</option>
+                  <option value="602101">ATM</option>
+                  <option value="5461">Bakeries</option>
+                </select>
+            </form>
+          {/* {this.filteredPoints.length > 0 && ( */}
+            <Sidebar pointsOfInterest={this.filteredPoints} />
+          {/* )}         */}
+        </div>
       </div>
     );
   }

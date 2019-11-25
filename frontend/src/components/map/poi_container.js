@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { addPoiToTrip } from '../../actions/poi_actions';
+import './poi.css'
 const axios = require('axios');
 const qs = require('qs');
 const API_KEY = require('../../config/api_keys');
@@ -73,7 +74,7 @@ class PoiContainer extends Component {
           <div>
             <div className="poi-item">
               <h3>{this.props.name}</h3>
-              <img src={defaultImg}></img>
+              <img className='poi-pic' src={defaultImg}></img>
               {this.state.data && (
                 <div>Yelp Rating: {this.state.data.rating || "None"}</div>
               )}
