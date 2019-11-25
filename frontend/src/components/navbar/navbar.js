@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './navbar.css';
+import logo from '../../assets/logo.jpg';
+
 
 
 class NavBar extends React.Component {
@@ -50,7 +52,7 @@ class NavBar extends React.Component {
       <nav className="navbar">
         <div id="logo-container">
           {/* <i className="fab fa-trello"></i> */}
-          <img className="logo-thumb" src="https://i.pinimg.com/474x/2a/ab/f9/2aabf9cf0568205df4d033981c750e71--typography-logo-design-design-logos.jpg"></img>
+          <img className="logo-thumb" src={logo} alt="Route Plan logo"></img>
           <Link id="logo" to={"/"}>
             RoutePlan
           </Link>
