@@ -13,9 +13,9 @@
 .trip-detail-container{
     position: relative;
     top: 7px;
-    width: 253px;
+    width: 292px;
     right: -5px;
     overflow-y: scroll;
-    height: 72vh;
+    height: 69vh;
 
 };

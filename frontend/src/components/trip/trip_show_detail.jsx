@@ -22,7 +22,7 @@ class TripShowDetail extends Component {
     const { name, origin, destination, pois } = this.props.trip;
 
     return (
-      <div className="trip-show-detail">
+      <div className="trip-show-detail" style={{"padding-left": "15px"}}>
         <h3>Trip Detail</h3>
         <h4>{name}</h4>
         {pois === undefined ? null : pois.map((poi, i) => {                    

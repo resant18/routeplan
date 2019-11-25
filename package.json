@@ -41,6 +41,7 @@
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
     "qs": "^6.9.1",
+    "react-select": "^3.0.8",
     "validator": "^12.0.0",
     "yelp-fusion": "^3.0.0"
   },
