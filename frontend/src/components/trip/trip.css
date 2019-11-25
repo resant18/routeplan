@@ -7,3 +7,27 @@
   border: 0px solid transparent;
   border-radius: 3px;
 }
+
+#place-search-input {
+  height: 44px;
+}
+
+#place-search-form div input {
+  margin-bottom: 15px;
+}
+
+#place-search-form .form-button {
+  margin-top: 10px;
+}
+
+#place-search-form .btn {
+  margin-right: 20px;
+}
+
+.form-label {
+  color: white;
+  font-size: 2em;
+  display: block;
+  margin-bottom: 20px;
+}
+
