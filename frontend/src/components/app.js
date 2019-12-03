@@ -7,6 +7,7 @@ import MainPage from './main/main_page';
 import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form_container';
 import TripShowContainer from './trip/trip_show_container';
+import ProfileContainer from './profile/profile_container';
 
 
 const App = () => (
@@ -20,6 +21,7 @@ const App = () => (
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
       <ProtectedRoute exact path="/trip" component={TripShowContainer} />
       <ProtectedRoute exact path="/trips/:tripId" component={TripShowContainer} />
+      <ProtectedRoute exact path="/users/:userId" component={ProfileContainer} />
       <Route exact path="/" component={MainPage} />
     </Switch>
     <footer>Copyright Alfredo - Lance - Renata - Timothy</footer>
