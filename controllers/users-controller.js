@@ -25,6 +25,14 @@ exports.getCurrentUser = (req, res) => {
 //   });
 // };
 
+exports.hello = (req, res) => {
+  User.findById(req.params.userId)
+    .then(user => res.json(user))
+    .catch(err =>
+      res.status(404).json({ nouserfound: "No user found with that ID" })
+    );
+};
+
 exports.registerUser = (req, res) => {
     const { errors, isValid } = validateRegisterInput(req.body);
 
