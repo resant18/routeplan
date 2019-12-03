@@ -5,6 +5,5 @@ export const addPoiToTrip = (data) => {
 };
 
 export const removePoiFromTrip = (tripId, poiId) => {
-  debugger
   return axios.delete(`/api/pois/${tripId}/${poiId}`, {tripId, poiId});
 };

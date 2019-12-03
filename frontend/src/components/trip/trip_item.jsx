@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import './trip.css';
 
 
@@ -8,8 +8,11 @@ class TripItem extends React.Component {
   handleDelete(e) {
     e.stopPropagation();
     e.preventDefault();
-    debugger
-    this.props.destroyTrip(this.props.trip._id);
+    if (this.props.loggedIn) {
+      this.props.destroyTrip(this.props.trip._id);
+    } else {
+      this.props.history.push('/login');
+    }
   }
 
   render() {
@@ -33,4 +36,4 @@ class TripItem extends React.Component {
   }
 }
 
-export default TripItem;
+export default withRouter(TripItem);
