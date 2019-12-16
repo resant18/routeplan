@@ -18,16 +18,17 @@ class TripShowDetail extends Component {
   render() {
     
     if (this.props.trip === undefined) return null;
-
+    
     const { name, origin, destination, pois } = this.props.trip;
-
+    
+    debugger
     return (
-      <div className="trip-show-detail" style={{"padding-left": "15px"}}>
+      <div className="trip-show-detail" style={{"paddingLeft": "15px"}}>
         <h3>Trip Detail</h3>
         <h4>{name}</h4>
         {pois === undefined ? null : pois.map((poi, i) => {                    
               return (
-                <div key={poi.id} className="poi">
+                <div key={poi.name} className="poi">
                   <div>
                     <strong>{poi.name}</strong>
                   </div>
