@@ -24,7 +24,7 @@ class PoiContainer extends Component {
     var delayInMilliseconds = 1000; //1 second
 
     setTimeout(() => {
-      debugger;
+      // debugger;
       //your code to be executed after 1 second
       axios
         .get(
@@ -47,7 +47,7 @@ class PoiContainer extends Component {
           }
         )
         .then(res => {
-          debugger;
+          // debugger;
           this.setState({ data: res.data.businesses[0] });
         })
         // .then(() => new Promise(resolve => setTimeout(resolve, 400)))

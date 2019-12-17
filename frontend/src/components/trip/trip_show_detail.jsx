@@ -21,7 +21,7 @@ class TripShowDetail extends Component {
     
     const { name, origin, destination, pois } = this.props.trip;
     
-    debugger
+    // debugger
     return (
       <div className="trip-show-detail" style={{"paddingLeft": "15px"}}>
         <h3>Trip Detail</h3>

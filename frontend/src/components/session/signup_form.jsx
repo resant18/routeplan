@@ -18,7 +18,7 @@ class SignupForm extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.signedIn === true) {
-      debugger
+      // debugger
       let user2 = {
         email: this.state.email,
         password: this.state.password
