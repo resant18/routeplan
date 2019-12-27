@@ -71,7 +71,19 @@ class MapQuest extends Component {
 
   drawRoute(routeProps) {
     let directions = window.L.mapquest.directions();
-
+    
+    directions.setLayerOptions({
+      startMarker: {
+        draggable: false
+            },
+      endMarker: {
+        draggable: false
+            },
+      routeRibbon: {
+        draggable: false
+            }
+    });
+    
     directions.route({
       start: routeProps.routeStart,
       end: routeProps.routeEnd,
@@ -79,7 +91,9 @@ class MapQuest extends Component {
         routeType: "pedestrian"
       }
     });
+
   }
+
 
   UNSAFE_componentWillUpdate(nextProps, nextState) {   
     // debugger 
