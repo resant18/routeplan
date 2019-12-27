@@ -62,3 +62,23 @@
   display: block;
   margin-bottom: 20px;
 }
+
+.share-container {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-container {
+  display: flex;
+}
+
+.share-btn {
+  margin: 0 10px;
+  opacity: 0.73;
+}
+
+.share-btn:hover {
+  cursor: pointer;
+  opacity: 1;
+}
