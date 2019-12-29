@@ -1,13 +1,14 @@
-import React, { Component } from "react";
-import ReactModal from "react-modal";
-import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
-import { addPoiToTrip } from "../../actions/poi_actions";
-import "./poi.css";
-import defaultSvg from "../../assets/default-place.svg";
-const axios = require("axios");
-const qs = require("qs");
-const API_KEY = require("../../config/api_keys");
+// poi_container.js => npm i react-modal
+import React, { Component } from 'react';
+import ReactModal from 'react-modal'
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { addPoiToTrip } from '../../actions/poi_actions';
+import './poi.css'
+import defaultSvg from '../../assets/default-place.svg'
+const axios = require('axios');
+const qs = require('qs');
+const API_KEY = require('../../config/api_keys');
 
 class PoiContainer extends Component {
   constructor(props) {
@@ -35,32 +36,32 @@ class PoiContainer extends Component {
     // Place holder for Yelp Fusion's API Key. Grab them
     // from https://www.yelp.com/developers/v3/manage_app
 
-    axios
-      .get(
-        `${"https://cors-anywhere.herokuapp.com/"}https://api.yelp.com/v3/businesses/search?location=${
-          this.props.city
-        }`,
-        {
-          headers: {
-            Authorization: `Bearer ${apiKey}`,
-            accept: "application/json",
-            "Access-Control-Allow-Origin": "*",
-            "X-Requested-With": "XMLHttpRequest"
-          },
-          params: {
-            term: this.props.name
-          },
-          paramsSerializer: params => {
-            return qs.stringify(params);
+      axios
+        .get(
+          `${"https://cors-anywhere.herokuapp.com/"}https://api.yelp.com/v3/businesses/search?location=${
+            this.props.city
+          }`,
+          {
+            headers: {
+              Authorization: `Bearer ${apiKey}`,
+              accept: "application/json",
+              "Access-Control-Allow-Origin": "*",
+              "X-Requested-With": "XMLHttpRequest"
+            },
+            params: {
+              term: this.props.name
+            },
+            paramsSerializer: params => {
+              return qs.stringify(params);
+            }
           }
-        }
-      )
-      .then(res => {
-        this.setState({ data: res.data.businesses[0] });
-      })
-      .catch(err => {
-        //console.log(err)
-      });
+        )
+        .then(res => {
+          this.setState({ data: res.data.businesses[0] });
+        })
+        .catch(err => {
+          //console.log(err)
+        });
   }
 
   ratingPic() {
@@ -88,7 +89,7 @@ class PoiContainer extends Component {
   }
 
   componentDidMount() {
-    // this.yelpCall();
+    this.yelpCall();
   }
 
   // This function pass selected POI up to Sidebar component
@@ -119,7 +120,7 @@ class PoiContainer extends Component {
         >
           <h3>{this.props.name}</h3>
           <p>
-            {`${this.props.address}, ${this.props.city}`}
+            {`${this.props.poi.fields.address}, ${this.props.city}`}
             <br></br>
             <i>Click for more info</i>
           </p>
@@ -135,6 +136,7 @@ class PoiContainer extends Component {
           shouldCloseOnOverlayClick={true}
           overlayClassName="popover"
           className="modal_content"
+          ariaHideApp={false}
         >
           <div
             style={{
@@ -144,13 +146,13 @@ class PoiContainer extends Component {
               margin: "10px"
             }}
           >
+            <h3>{this.props.name}</h3>
             <p style={{ textAlign: "center" }}>
-              <h3>{this.props.name}</h3>
-              {`${this.props.address}, ${this.props.city}`}
+              {`${this.props.poi.fields.address}, ${this.props.city}`}
               <br></br>
-              {this.state.data.display_phone}
+              {this.state.data && this.state.data.display_phone}
             </p>
-            <a href={this.state.data.url} target="_blank">
+            <a href={this.state.data && this.state.data.url} target="_blank">
               Yelp Page
             </a>
             <img className="poi-pic" src={defaultImg}></img>
@@ -163,18 +165,17 @@ class PoiContainer extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  tripId: ownProps.match.params.tripId,
-  poi: ownProps.poi,
-  key: ownProps.key,
-  name: ownProps.name,
-  city: ownProps.city,
-  selectedPois: ownProps.selectedPois
+    tripId: ownProps.match.params.tripId,
+    poi: ownProps.poi,
+    key: ownProps.key,
+    name: ownProps.name,
+    city: ownProps.city,
+    address: ownProps.address,
+    selectedPois: ownProps.selectedPois
 });
 
 const mapDispatchToProps = dispatch => ({
-  addPoiToTrip: poi => dispatch(addPoiToTrip(poi))
+    addPoiToTrip: (poi) => dispatch(addPoiToTrip(poi))
 });
 
-export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(PoiContainer)
-);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PoiContainer));
