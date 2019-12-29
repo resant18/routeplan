@@ -22,7 +22,7 @@ Routeplan is an app for creating walking trips. Users can select a start and end
 
 Try it out: [Heroku link](https://pure-stream-29700.herokuapp.com/#/)
 
-<img src="http://www.giphy.com/gifs/WUNismFJx4ghFYrTBH">
+<img src="https://media.giphy.com/media/JSXscMwmXXbuBrpdeK/giphy.gif">
 
 ### Features
 - User authentication (signup, login, logout)
