@@ -19,7 +19,7 @@ exports.addPoiToTrip = (req, res) => {
       } else {
         console.log(trip);
         return res
-          .status(400)
+          .status(404)
           .json({ poi: "That place already exists in your list" });
       }
       // console.log(req.body.poi.id);
