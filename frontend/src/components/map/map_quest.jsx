@@ -96,7 +96,6 @@ class MapQuest extends Component {
 
 
   UNSAFE_componentWillUpdate(nextProps, nextState) {   
-    // debugger 
     const boundingBoxParam = this._setBoundingBox(nextProps);
     this.fetchMapData(boundingBoxParam);
     

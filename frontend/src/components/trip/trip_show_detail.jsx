@@ -31,7 +31,6 @@ class TripShowDetail extends Component {
 
     const shareUrl = window.location.href;
     
-    // debugger
     return (
       <div className="trip-show-detail" style={{ paddingLeft: "15px" }}>
         <div className="share-container" style={{ display: "flex" }}>
