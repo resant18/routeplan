@@ -5,7 +5,7 @@
 // }
 
 module.exports = {
-  MAP_KEY: "GtJj838k2uUMChaJbStq3F7qM0WobjXf",
+  MAP_KEY: "mTgjAkaYmLIwYIArAqLEEyzYJkTegQC4",
   YELP_KEY:
-    'mOp_g5UnBzGDCmW5_fpxXmCCaitoXrzlIwxKlEEL8Dvre40PECjRrMVWqNLMaZBeILGQWGEZ6KQyyATXlfgVAwHvw_UuzBSDVV-kDwGsR-fzmzkvgeSyL5xQeG3YXXYx'
+    "mOp_g5UnBzGDCmW5_fpxXmCCaitoXrzlIwxKlEEL8Dvre40PECjRrMVWqNLMaZBeILGQWGEZ6KQyyATXlfgVAwHvw_UuzBSDVV-kDwGsR-fzmzkvgeSyL5xQeG3YXXYx"
 };

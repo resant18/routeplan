@@ -58,8 +58,8 @@ class LoginForm extends React.Component {
 
   render() {
     const demoUser = {
-      email: 'abc@abc.com',
-      password: 'aaaaaaaaaa'
+      email: 'demo@aa.io',
+      password: 'password'
     };
 
     return (

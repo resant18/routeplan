@@ -5,19 +5,13 @@ import './profile.css';
 class Profile extends React.Component {
   constructor(props) {
     super(props);
-
-    // this.state = {
-    //   tweets: []
-    // };
   }
 
   componentWillMount() {
     console.log(this.props.currentUser.id);
-    // this.props.fetchUserTweets(this.props.currentUser.id);
   }
 
   componentWillReceiveProps(newState) {
-    // this.setState({ tweets: newState.tweets });
   }
 
   componentDidMount() {
