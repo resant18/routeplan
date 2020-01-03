@@ -36,6 +36,10 @@ Try it out: [Heroku link](https://routeplan.herokuapp.com/#/)
 
 ### Creating the Trips Backend Routes with Express and Mongoose
 
+<div align="center">
+    <img width=80% src="https://media.giphy.com/media/gLF1aPzcNJ2tzx92IH/giphy.gif">
+</div>
+
 ```javascript
 const express = require('express');
 const router = express.Router();
