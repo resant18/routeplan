@@ -26,6 +26,158 @@ Try it out: [Heroku link](https://pure-stream-29700.herokuapp.com/#/)
 - State management: Redux
 - APIs: [MapQuest](https://developer.mapquest.com/), [Yelp Fusion](https://www.yelp.com/fusion)
 
+---
+
+### Creating the Trips Backend Routes with Express and Mongoose
+
+```javascript
+const express = require('express');
+const router = express.Router();
+const passport = require('passport');
+const tripsController = require('../../controllers/trips_controller');
+
+
+router.get('/', tripsController.getAllTrips);
+router.get('/:userId/:tripId', tripsController.getUserTrips);
+router.get('/:tripId', tripsController.getTrip);
+router.post('/new',
+  passport.authenticate('jwt', { session: false }),
+  tripsController.createTrip
+);
+router.patch('/:tripId', tripsController.updateTrip);
+router.delete('/:tripId', tripsController.deleteTrip);
+```
+
+And delegating responsabilities to **tripsController** (only showing *createTrip* and *deleteTrip* for readability)
+
+```javascript
+exports.createTrip = (req, res) => {
+    const { errors, isValid } = validateTrip(req.body);
+
+    if (!isValid) {
+      return res.status(400).json(errors);
+    }
+    const newTrip = new Trip({
+      user: req.user.id,
+      name: req.body.name,
+      origin: req.body.origin, 
+      destination: req.body.destination 
+    });
+
+    newTrip.save().then(trip => res.json(trip));
+};
+
+exports.deleteTrip = (req, res) => {
+    Trip.findById(req.params.tripId)
+      .then(trip => {
+        trip.remove().then(() => res.json(trip));
+      })
+      .catch(err =>
+        res.status(404).json({ notripfound: "No trip found with that ID" })
+      );
+};
+```
+
+---
+
+### Filtering POIs by Categories
+
+```javascript
+filterMap() {
+    for (let layer of this.markers) {
+      this.map.removeLayer(layer);
+    }
+    this.filteredPoints = [];
+    if (this.state.value.length > 0) {
+      for (let pt of this.pointsOfInterest) {
+        if (pt.fields.group_sic_code.startsWith(this.state.value)) {
+          this.filteredPoints.push(pt);
+          let curMarker = window.L.marker(pt.shapePoints, {
+            icon: window.L.mapquest.icons.marker({
+              shadow: false
+            }),
+            draggable: false,
+            opacity: 0.5
+          });
+          curMarker
+            .bindPopup(
+              pt.name + "<br/>" + pt.fields.address + ", " + pt.fields.city
+            )
+            .addTo(this.map);
+          this.markers.push(curMarker);
+        }
+      }
+    }
+  }
+  
+const options = [
+      { value: '5812', label: 'Restaurants' },
+      { value: '8412', label: 'Museums' },
+      { value: '799', label: 'Parks' },
+      { value: '5813', label: 'Bars' },
+      { value: '5942', label: 'Books' },
+      { value: '602101', label: 'ATM' },
+      { value: '5461', label: 'Bakeries' }
+];
+```
+
+---
+
+### Drawing the Map
+
+```javascript
+fetchMapData(boundingBoxParam) {
+    // fetch POI
+    const proxy_url = "https://cors-anywhere.herokuapp.com/";
+
+    axios
+      .get(`${proxy_url}https://www.mapquestapi.com/search/v2/rectangle`, {
+        params: {
+          key: this.props.apiKey,
+          boundingBox: boundingBoxParam,
+          maxMatches: 500
+        },
+        paramsSerializer: params => {
+          return qs.stringify(params);
+        }
+      })
+      .then(result => {
+        this.pointsOfInterest = result.data.searchResults;
+      })
+      .catch(error => {
+        this.setState({
+          error
+        });
+      });
+    }
+
+    drawRoute(routeProps) {
+        let directions = window.L.mapquest.directions();
+
+        directions.setLayerOptions({
+          startMarker: {
+            draggable: false
+                },
+          endMarker: {
+            draggable: false
+                },
+          routeRibbon: {
+            draggable: false
+                }
+    });
+    
+    directions.route({
+      start: routeProps.routeStart,
+      end: routeProps.routeEnd,
+      options: {
+        routeType: "pedestrian"
+      }
+    });
+}
+```
+
+---
+
 ###
 | File | Description |
 | --- | --- |
