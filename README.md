@@ -40,6 +40,8 @@ Try it out: [Heroku link](https://routeplan.herokuapp.com/#/)
     <img width=80% src="https://media.giphy.com/media/gLF1aPzcNJ2tzx92IH/giphy.gif">
 </div>
 
+<br>
+
 ```javascript
 const express = require('express');
 const router = express.Router();
@@ -91,6 +93,12 @@ exports.deleteTrip = (req, res) => {
 ---
 
 ### Filtering POIs by Categories
+
+<div align="center">
+    <img width=80% src="https://media.giphy.com/media/kGvJlUvJC2xgrH1BPY/giphy.gif">
+</div>
+
+<br>
 
 ```javascript
 filterMap() {
