@@ -15,7 +15,7 @@ Try it out: [Heroku link](https://routeplan.herokuapp.com/#/)
 
 ---
 
-### Features
+## Features
 - User authentication (signup, login, logout)
 - Display points of interest within a start and end point, filtered by category
 - View additional information (from Yelp) about a POI
@@ -24,7 +24,7 @@ Try it out: [Heroku link](https://routeplan.herokuapp.com/#/)
 
 ---
 
-### Languages/tech
+## Languages/tech
 - Database: MongoDB
 - Web framework: Express
 - Front-end framework: React
@@ -34,7 +34,7 @@ Try it out: [Heroku link](https://routeplan.herokuapp.com/#/)
 
 ---
 
-### Creating the Trips Backend Routes with Express and Mongoose
+## Creating the Trips Backend Routes with Express and Mongoose
 
 <div align="center">
     <img width=80% src="https://media.giphy.com/media/gLF1aPzcNJ2tzx92IH/giphy.gif">
@@ -92,7 +92,7 @@ exports.deleteTrip = (req, res) => {
 
 ---
 
-### Filtering POIs by Categories
+## Filtering POIs by Categories
 
 <div align="center">
     <img width=80% src="https://media.giphy.com/media/kGvJlUvJC2xgrH1BPY/giphy.gif">
@@ -141,7 +141,7 @@ const options = [
 
 ---
 
-### Drawing the Map
+## Drawing the Map
 
 ```javascript
 fetchMapData(boundingBoxParam) {
@@ -196,7 +196,7 @@ fetchMapData(boundingBoxParam) {
 
 ---
 
-###
+##
 | File | Description |
 | --- | --- |
 | [components](https://github.com/alfredosumosav/routeplan/tree/master/frontend/src/components) | Container and presentational components |
@@ -209,7 +209,7 @@ fetchMapData(boundingBoxParam) {
 
 ---
 
-### Team
+## Team
 - [Alfredo Sumosa](https://github.com/alfredosumosav)
 - [Renata Santoso](https://github.com/resant18)
 - [Tim Scatterday](https://github.com/timscatterday)
