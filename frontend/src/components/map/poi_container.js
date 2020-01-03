@@ -35,6 +35,10 @@ class PoiContainer extends Component {
     const apiKey = API_KEY.YELP_KEY;
     // Place holder for Yelp Fusion's API Key. Grab them
     // from https://www.yelp.com/developers/v3/manage_app
+    let name = this.props.name;
+    if (name.split(' ').length > 2) {
+      name = name.split(' ').slice(0,2).join(' ');
+    }
 
       axios
         .get(
@@ -49,7 +53,7 @@ class PoiContainer extends Component {
               "X-Requested-With": "XMLHttpRequest"
             },
             params: {
-              term: this.props.name
+              term: name
             },
             paramsSerializer: params => {
               return qs.stringify(params);
@@ -57,6 +61,7 @@ class PoiContainer extends Component {
           }
         )
         .then(res => {
+          debugger
           this.setState({ data: res.data.businesses[0] });
         })
         .catch(err => {
@@ -89,7 +94,7 @@ class PoiContainer extends Component {
   }
 
   componentDidMount() {
-    this.yelpCall();
+    // this.yelpCall();
   }
 
   // This function pass selected POI up to Sidebar component
@@ -152,9 +157,13 @@ class PoiContainer extends Component {
               <br></br>
               {this.state.data && this.state.data.display_phone}
             </p>
-            <a href={this.state.data && this.state.data.url} target="_blank">
+            {this.state.data && <a href={this.state.data.url} target="_blank">
               Yelp Page
-            </a>
+            </a>}
+            {!this.state.data && <span>
+              <strong>Yelp page not found</strong>
+              </span>}
+              <br></br>
             <img className="poi-pic" src={defaultImg}></img>
             <img src={this.ratingPic()}></img>
           </div>
