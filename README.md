@@ -2,7 +2,9 @@
 
 Routeplan is an app for creating walking trips. Users can select a start and end point on the map, then add points of interest on their trip.
 
-Try it out: [Heroku link](https://pure-stream-29700.herokuapp.com/#/)
+Try it out: [Heroku link](https://routeplan.herokuapp.com/#/)
+
+---
 
 ## Visualize Navigation Proccess
 <div align="center">
@@ -11,12 +13,16 @@ Try it out: [Heroku link](https://pure-stream-29700.herokuapp.com/#/)
 
 <br>
 
+---
+
 ### Features
 - User authentication (signup, login, logout)
 - Display points of interest within a start and end point, filtered by category
 - View additional information (from Yelp) about a POI
 - Create trips and add POIs to trips (bound within a start and end point)
 - View all trips
+
+---
 
 ### Languages/tech
 - Database: MongoDB
@@ -189,5 +195,10 @@ fetchMapData(boundingBoxParam) {
 | [models](https://github.com/alfredosumosav/routeplan/tree/master/models) | Defines the schema for users, trips, and points of interest |
 | [routes](https://github.com/alfredosumosav/routeplan/tree/master/routes/api) | Declares URIs for the backend. These are the endpoints hit by the util functions. |
 
+---
+
 ### Team
-[Alfredo Sumosa](https://github.com/alfredosumosav), [Renata Santoso](https://github.com/resant18), [Tim Scatterday](https://github.com/timscatterday), [Lance Wong](https://github.com/LanceSanity)
+- [Alfredo Sumosa](https://github.com/alfredosumosav)
+- [Renata Santoso](https://github.com/resant18)
+- [Tim Scatterday](https://github.com/timscatterday)
+- [Lance Wong](https://github.com/LanceSanity)
