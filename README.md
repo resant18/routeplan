@@ -2,7 +2,7 @@
 
 Routeplan is an app for creating walking trips. Users can select a start and end point on the map, then add points of interest on their trip.
 
-Try it out: [Heroku link](https://routeplan.herokuapp.com/#/)
+Try it out: [**Heroku link**](https://routeplan.herokuapp.com/#/)
 
 ---
 
