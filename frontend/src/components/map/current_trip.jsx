@@ -1,15 +1,11 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
 export default class CurrentTrip extends Component {
-    constructor(props) {
-        super(props);
-    }
+  constructor(props) {
+    super(props);
+  }
 
-    render() {
-        return (
-            <div>
-                curr trip items get inserted here
-            </div>
-        )
-    }
+  render() {
+    return <div>curr trip items get inserted here</div>;
+  }
 }

@@ -1,7 +1,7 @@
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import { fetchTrip } from '../../actions/trip_actions';
-import TripShowDetail from './trip_show_detail';
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import { fetchTrip } from "../../actions/trip_actions";
+import TripShowDetail from "./trip_show_detail";
 
 const mapStateToProps = (state, ownProps) => {
   let tripId = ownProps.match.params.tripId;
@@ -11,7 +11,7 @@ const mapStateToProps = (state, ownProps) => {
     loggedIn: state.session.isAuthenticated,
     currentUser: state.session.user,
     tripId,
-    trip,  
+    trip
   };
 };
 
@@ -21,4 +21,6 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(TripShowDetail));
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(TripShowDetail)
+);

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
-import './login_form.css';
+import "./login_form.css";
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -58,8 +58,8 @@ class LoginForm extends React.Component {
 
   render() {
     const demoUser = {
-      email: 'demo@aa.io',
-      password: 'password'
+      email: "demo@aa.io",
+      password: "password"
     };
 
     return (
@@ -84,14 +84,27 @@ class LoginForm extends React.Component {
               />
             </div>
             <div className="submit-container">
-              <input id="submit-btn" className="btn" type="submit" value="Submit" />
+              <input
+                id="submit-btn"
+                className="btn"
+                type="submit"
+                value="Submit"
+              />
             </div>
             {this.renderErrors()}
           </div>
         </form>
         <ul className="bottom-form-link">
-          <button id="submit-btn" className="btn" onClick={() => this.props.login(demoUser)}>Demo User</button>
-          <Link id="toggle-form" className="btn" to={'/signup'} >Sign up for an account</Link>
+          <button
+            id="submit-btn"
+            className="btn"
+            onClick={() => this.props.login(demoUser)}
+          >
+            Demo User
+          </button>
+          <Link id="toggle-form" className="btn" to={"/signup"}>
+            Sign up for an account
+          </Link>
         </ul>
       </div>
     );

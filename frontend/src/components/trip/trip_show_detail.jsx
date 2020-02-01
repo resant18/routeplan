@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   FacebookShareButton,
   TwitterShareButton,
@@ -10,27 +10,26 @@ import {
 
 class TripShowDetail extends Component {
   constructor(props) {
-    super(props);       
+    super(props);
   }
 
-  componentDidMount() {        
-      this.props.fetchTrip(this.props.tripId);          
+  componentDidMount() {
+    this.props.fetchTrip(this.props.tripId);
   }
 
-  componentDidUpdate(prevProps) {    
+  componentDidUpdate(prevProps) {
     if (this.props.selectedPois !== prevProps.selectedPois) {
-      this.props.fetchTrip(this.props.tripId);      
+      this.props.fetchTrip(this.props.tripId);
     }
   }
 
   render() {
-    
     if (this.props.trip === undefined) return null;
-    
+
     const { name, origin, destination, pois } = this.props.trip;
 
     const shareUrl = window.location.href;
-    
+
     return (
       <div className="trip-show-detail" style={{ paddingLeft: "15px" }}>
         <div className="share-container" style={{ display: "flex" }}>
@@ -47,9 +46,9 @@ class TripShowDetail extends Component {
             </EmailShareButton>
           </div>
         </div>
-        <br/>
-        <hr/>
-        <br/>
+        <br />
+        <hr />
+        <br />
         <h3>Trip Detail</h3>
         <h4>{name}</h4>
         {pois === undefined

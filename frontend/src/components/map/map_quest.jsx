@@ -1,14 +1,11 @@
-import React, { Component } from 'react';
-import Sidebar from './sidebar'
-import Select from 'react-select'
-import TripShowDetail from '../trip/trip_show_detail';
-import './sidebar.css'
-const axios = require('axios');
-var qs = require('qs');
-var assert = require('assert');
-
-// import '../../lib/mapquest-js';
-// import '../../lib/mapquest-js.css';
+import React, { Component } from "react";
+import Sidebar from "./sidebar";
+import Select from "react-select";
+import TripShowDetail from "../trip/trip_show_detail";
+import "./sidebar.css";
+const axios = require("axios");
+var qs = require("qs");
+var assert = require("assert");
 
 class MapQuest extends Component {
   constructor(props) {
@@ -71,19 +68,19 @@ class MapQuest extends Component {
 
   drawRoute(routeProps) {
     let directions = window.L.mapquest.directions();
-    
+
     directions.setLayerOptions({
       startMarker: {
         draggable: false
-            },
+      },
       endMarker: {
         draggable: false
-            },
+      },
       routeRibbon: {
         draggable: false
-            }
+      }
     });
-    
+
     directions.route({
       start: routeProps.routeStart,
       end: routeProps.routeEnd,
@@ -91,14 +88,12 @@ class MapQuest extends Component {
         routeType: "pedestrian"
       }
     });
-
   }
 
-
-  UNSAFE_componentWillUpdate(nextProps, nextState) {   
+  UNSAFE_componentWillUpdate(nextProps, nextState) {
     const boundingBoxParam = this._setBoundingBox(nextProps);
     this.fetchMapData(boundingBoxParam);
-    
+
     this.drawRoute(nextProps);
   }
 
@@ -113,7 +108,7 @@ class MapQuest extends Component {
 
   handleChange = selectedOption => {
     this.setState({ value: selectedOption.value });
-  }
+  };
 
   filterMap() {
     for (let layer of this.markers) {
@@ -152,25 +147,28 @@ class MapQuest extends Component {
     };
 
     const options = [
-      { value: '5812', label: 'Restaurants' },
-      { value: '8412', label: 'Museums' },
-      { value: '799', label: 'Parks' },
-      { value: '5813', label: 'Bars' },
-      { value: '5942', label: 'Books' },
-      { value: '602101', label: 'ATM' },
-      { value: '5461', label: 'Bakeries' }
+      { value: "5812", label: "Restaurants" },
+      { value: "8412", label: "Museums" },
+      { value: "799", label: "Parks" },
+      { value: "5813", label: "Bars" },
+      { value: "5942", label: "Books" },
+      { value: "602101", label: "ATM" },
+      { value: "5461", label: "Bakeries" }
     ];
 
     return (
       <div className="col-right">
         <div id="map" style={mapStyle}></div>
         <div className="trip-details">
-          <div style={{width: "300px"}}>
-            <Select options={options} placeholder="--Filter by category--" onChange={this.handleChange}/>
+          <div style={{ width: "300px" }}>
+            <Select
+              options={options}
+              placeholder="--Filter by category--"
+              onChange={this.handleChange}
+            />
           </div>
 
-            <Sidebar pointsOfInterest={this.filteredPoints} />
-
+          <Sidebar pointsOfInterest={this.filteredPoints} />
         </div>
       </div>
     );

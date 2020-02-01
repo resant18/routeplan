@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import Profile from "./profile";
-import { requireUser } from '../../actions/user_actions';
+import { requireUser } from "../../actions/user_actions";
 
 const mapStateToProps = state => {
   return {

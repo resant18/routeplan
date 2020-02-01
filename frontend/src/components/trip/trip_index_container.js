@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { fetchTrips, destroyTrip } from "../../actions/trip_actions";
-import TripIndex from '../trip/trip_index';
+import TripIndex from "../trip/trip_index";
 
 const mapStateToProps = state => ({
   loggedIn: state.session.isAuthenticated,
@@ -9,7 +9,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   fetchTrips: () => dispatch(fetchTrips()),
-  destroyTrip: dataId => dispatch(destroyTrip(dataId)),
+  destroyTrip: dataId => dispatch(destroyTrip(dataId))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TripIndex);

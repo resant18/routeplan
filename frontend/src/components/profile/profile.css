@@ -1,45 +1,47 @@
 .profile-wrapper {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .profile-container {
-    border: 1px solid #fafbfc;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  border: 1px solid #fafbfc;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .profile-title h1 {
-    color: white;
-    text-align: center;
+  color: white;
+  text-align: center;
 }
 
 .profile-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: rgba(255,255,255,0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.5);
 }
 
-.p-username, .p-email {
-    width: 50%;
-    display: flex;
-    justify-content: space-between;
+.p-username,
+.p-email {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
 }
 
-.p-value, .p-label {
-    padding: 15px;
-    border: 1px solid transparent;
-    border-radius: 3px;
-    font-size: 24px;
-    font-weight: 700;
-    margin-left: 20px;
-    margin-bottom: 20px;
+.p-value,
+.p-label {
+  padding: 15px;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  font-size: 24px;
+  font-weight: 700;
+  margin-left: 20px;
+  margin-bottom: 20px;
 }
 
 .p-value:hover {
-    cursor: pointer;
-    background: rgba(255,255,255,0.5);
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.5);
 }

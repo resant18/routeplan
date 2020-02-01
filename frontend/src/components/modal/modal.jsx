@@ -1,23 +1,23 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { hideModal } from '../../actions/modal_actions';
-import TripFormContainer from '../trip/trip_form_container';
-import './modal.css';
+import React from "react";
+import { connect } from "react-redux";
+import { hideModal } from "../../actions/modal_actions";
+import TripFormContainer from "../trip/trip_form_container";
+import "./modal.css";
 
-const Modal = ({ modal, hideModal }) => {  
+const Modal = ({ modal, hideModal }) => {
   let component;
 
   switch (modal) {
-    case 'trip-form':
+    case "trip-form":
       component = <TripFormContainer />;
-      break;    
+      break;
     default:
       return null;
   }
 
   return (
-    <div className='modal' onClick={hideModal}>
-      <section className='modal-content' onClick={e => e.stopPropagation()}>
+    <div className="modal" onClick={hideModal}>
+      <section className="modal-content" onClick={e => e.stopPropagation()}>
         {component}
       </section>
     </div>

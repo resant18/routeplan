@@ -1,6 +1,6 @@
-import * as APIUtil from '../util/trip_poi_api_util';
+import * as APIUtil from "../util/trip_poi_api_util";
 
-export const RECEIVE_TRIP_POIS = 'RECEIVE_TRIP_POIS';
+export const RECEIVE_TRIP_POIS = "RECEIVE_TRIP_POIS";
 export const REMOVE_TRIP_POIS = "REMOVE_TRIP_POIS";
 export const RECEIVE_TRIP_ERRORS = "RECEIVE_TRIP_ERRORS";
 
@@ -21,9 +21,9 @@ export const receiveTripErrors = errors => ({
 
 // thunk action creator
 export const addPoiToTrip = data => dispatch =>
-    APIUtil.addPoiToTrip(data)
-        .then(trip => dispatch(receiveTripPois(trip)))
-        .catch(err => dispatch(receiveTripErrors(err)));
+  APIUtil.addPoiToTrip(data)
+    .then(trip => dispatch(receiveTripPois(trip)))
+    .catch(err => dispatch(receiveTripErrors(err)));
 
 export const removePoiFromTrip = data => dispatch =>
   APIUtil.removePoiFromTrip(data)

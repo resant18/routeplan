@@ -47,10 +47,6 @@ class TripForm extends React.Component {
       });
   }
 
-  // renderErrors() {
-      
-  // }
-
   render() {
     return (
       <div>

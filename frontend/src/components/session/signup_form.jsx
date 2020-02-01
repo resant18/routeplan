@@ -93,13 +93,20 @@ class SignupForm extends React.Component {
               />
             </div>
             <div className="submit-container">
-              <input id="submit-btn" className="btn" type="submit" value="Submit" />
+              <input
+                id="submit-btn"
+                className="btn"
+                type="submit"
+                value="Submit"
+              />
             </div>
             {this.renderErrors()}
           </div>
         </form>
         <ul className="bottom-form-link">
-          <Link id="toggle-form" className="btn" to={'/login'} >Already have an account? Log in</Link>
+          <Link id="toggle-form" className="btn" to={"/login"}>
+            Already have an account? Log in
+          </Link>
         </ul>
       </div>
     );
