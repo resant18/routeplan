@@ -52,6 +52,13 @@ module.exports = {
 
 ### Architecture
 The architecture of this application is based on a typical 3-tier MVC model. 
+<div align="center">
+    <img width=80% src="https://2.bp.blogspot.com/-cJrZfbVrH-0/WtT7O9CyTEI/AAAAAAAAGZw/znD9Yxlf5VYjRAGvoQjRizN_EXsMREKeQCLcBGAs/s640/mern%2Bstack%2Bdevelopment.png">
+</div>
+
+<br>
+
+*(image source: Top Zenith)*
 
 ##### View
 The Client tier (View) is written in JavaScript, HTML and CSS using ReactJS as the framework. This level of the architecture is what the user will interact with to access the features of the application. This application using Redux for state management.
