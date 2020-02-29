@@ -1,5 +1,6 @@
 .body {
   font-family: Arial;
+  margin: 0;
 }
 .modal {  
   position: fixed;
