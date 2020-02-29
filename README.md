@@ -58,7 +58,7 @@ The architecture of this application is based on a typical 3-tier MVC model.
 
 <br>
 
-*(image source: Top Zenith)*
+<div align="center"><em>(image source: Top Zenith)</em></div>
 
 ##### View
 The Client tier (View) is written in JavaScript, HTML and CSS using ReactJS as the framework. This level of the architecture is what the user will interact with to access the features of the application. This application using Redux for state management.
@@ -71,8 +71,9 @@ The Database Tier (Model) is hosted using MongoDB. This is where all of the cruc
 
 ### Challenge
 
-1. CORS Error<br>
+1. **CORS Error**<br>
 When working with MapBox API and Yelp API in the application code, there is CORS error `....has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource`. This is a common thing caused by same-origin policy to prevent cross-site request forgery. To fix this, the application using cors-anywhere proxy server to add CORS header to a request. The cors-anywhere proxy server operates in between the frontend web app making the request, and the server that responds with data.
+
 ```javascript
 axios
     .get(
@@ -95,10 +96,12 @@ axios
         }
     )
 ```
-2. Draw Map and Trip Route<br>
+
+2. **Draw Map and Trip Route**<br>
 The main challenge for this project is try to understand how to build map using MapBox, draw route based on start and end point of user input and collect the POIs along and near the route.
 
-    Draw Map
+    2.1. **Draw Map**
+
 ```javascript
 initializeMap() {
     window.L.mapquest.key = this.props.apiKey;
@@ -111,7 +114,8 @@ initializeMap() {
 }
 ```
 
-    Draw Route
+    2.2. **Draw Route**
+    
 ```javascript
 drawRoute(routeProps) {
     let directions = window.L.mapquest.directions();
