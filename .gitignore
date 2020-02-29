@@ -1,4 +1,6 @@
 /config/keys_dev.js
 /node_modules
 /frontend/node_modules
+/frontend/src/config/api_keys_dev.js
 /.vscode
+
