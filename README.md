@@ -100,7 +100,7 @@ axios
 2. **Draw Map and Trip Route**<br>
 The main challenge for this project is try to understand how to build map using MapBox, draw route based on start and end point of user input and collect the POIs along and near the route.
 
-    2.1. **Draw Map**
+    Draw Map
 
 ```javascript
 initializeMap() {
@@ -114,8 +114,8 @@ initializeMap() {
 }
 ```
 
-    2.2. **Draw Route**
-    
+    Draw Route
+
 ```javascript
 drawRoute(routeProps) {
     let directions = window.L.mapquest.directions();
