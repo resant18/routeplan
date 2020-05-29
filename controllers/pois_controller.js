@@ -3,7 +3,8 @@ const Trip = require("../models/Trip");
 exports.addPoiToTrip = (req, res) => {
   Trip.findById(req.body.tripId)
     .then(trip => {
-      let result = trip.pois.filter(poi => poi.id === req.body.poi.id);
+      
+      let result = trip.pois && trip.pois.filter(poi => poi.id === req.body.poi.id) || [];
 
       if (result.length === 0) {
         return Trip.updateOne(
@@ -18,8 +19,10 @@ exports.addPoiToTrip = (req, res) => {
           .json({ poi: "That place already exists in your list" });
       }
     })
-    .catch(err =>
+    .catch(err =>      {
+      console.log(err);
       res.status(404).json({ notripfound: "No trip found with that ID" })
+    }
     );
 };
 
