@@ -1,21 +1,21 @@
-.main {  
+.main {
   background-color: #333;
 }
 
 .navbar-content {
-    margin-right: 1.5rem;
+  margin-right: 1.5rem;
 }
 
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    min-height: 85px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 85px;
 }
 
 .header-name {
-    margin-right: 1.5rem;
-    color: #ffffff;
+  margin-right: 1.5rem;
+  color: #ffffff;
 }
 
 h3.title {
@@ -68,7 +68,7 @@ footer {
 }
 
 .btn-success {
-  background-color: #5AAC44;
+  background-color: #5aac44;
   border: 2px solid transparent;
   border-radius: 3px;
   color: #ffffff;
@@ -80,7 +80,7 @@ footer {
 
 .btn-success:hover {
   cursor: pointer;
-  background-color: #61BD4F;
+  background-color: #61bd4f;
 }
 
 .btn {
@@ -97,15 +97,20 @@ footer {
   padding: 6px 12px;
   font-size: 1.25rem;
   border-radius: 6px;
-  -webkit-transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  -webkit-transition: color 0.15s ease-in-out,
+    background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-.btn a:link, .btn a:visited {
+.btn a:link,
+.btn a:visited {
   color: #fff;
 }
 
-.btn:hover, .btn:focus {
+.btn:hover,
+.btn:focus {
   text-decoration: none;
 }
 
@@ -115,7 +120,8 @@ footer {
 /* line 272, /Users/alfredosumosav/Desktop/trallo/app/assets/stylesheets/static_pages.scss */
 .plus .btn {
   background: white;
-  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 /* line 279, /Users/alfredosumosav/Desktop/trallo/app/assets/stylesheets/static_pages.scss */
@@ -126,23 +132,23 @@ footer {
 }
 
 .logo-thumb {
-    border: 1px solid transparent;
-    border-radius: 50%;
-    width: 70px;
-    height: 70px;
-    margin: 7px;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  margin: 7px;
 }
 
 /* IDs */
 
 #welcome {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #welcome .title {
-    color: #fff;
+  color: #fff;
 }
 
 #session-actions-container {
@@ -154,8 +160,8 @@ footer {
 #login {
   color: #ffffff;
   border: 1px solid transparent;
-  border-radius: .2rem;
-  padding: .25rem;
+  border-radius: 0.2rem;
+  padding: 0.25rem;
 }
 
 #logo {
@@ -170,11 +176,11 @@ footer {
   color: #fff;
   border: 1px solid transparent;
   /* border-radius: .2rem; */
-  padding: .25rem;
+  padding: 0.25rem;
 }
 
 #signup a:visited {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 #signup:hover {

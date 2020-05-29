@@ -4,9 +4,8 @@ export const RECEIVE_TRIP = "RECEIVE_TRIP";
 export const RECEIVE_TRIPS = "RECEIVE_TRIPS";
 export const RECEIVE_USER_TRIPS = "RECEIVE_USER_TRIPS";
 export const RECEIVE_NEW_TRIP = "RECEIVE_NEW_TRIP";
-export const REMOVE_TRIP = 'REMOVE_TRIP';
+export const REMOVE_TRIP = "REMOVE_TRIP";
 export const RECEIVE_TRIP_ERRORS = "RECEIVE_TRIP_ERRORS";
-
 
 export const receiveTrips = trips => ({
   type: RECEIVE_TRIPS,
@@ -38,7 +37,6 @@ export const receiveTripErrors = errors => ({
   errors
 });
 
-
 // thunk action creators
 export const fetchTrips = () => dispatch =>
   APIUtil.getAllTrips()
@@ -50,11 +48,10 @@ export const fetchUserTrips = userId => dispatch =>
     .then(trips => dispatch(receiveUserTrips(trips)))
     .catch(err => console.log(err));
 
-export const fetchTrip = (tripId) => dispatch =>
+export const fetchTrip = tripId => dispatch =>
   APIUtil.getTrip(tripId)
     .then(trip => dispatch(receiveTrip(trip)))
     .catch(err => console.log(err));
-
 
 export const createTrip = data => dispatch =>
   APIUtil.makeTrip(data)
@@ -65,9 +62,8 @@ export const editTrip = data => dispatch => {
   return APIUtil.updateTrip(data)
     .then(trip => dispatch(receiveTrip(trip)))
     .catch(err => dispatch(receiveTripErrors(err)));
-}
+};
 
 export const destroyTrip = dataId => dispatch => {
-  return APIUtil.deleteTrip(dataId)
-    .then(() => dispatch(removeTrip(dataId)));
-}
+  return APIUtil.deleteTrip(dataId).then(() => dispatch(removeTrip(dataId)));
+};

@@ -1,8 +1,8 @@
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import { createTrip } from '../../actions/trip_actions';
-import { hideModal } from '../../actions/modal_actions';
-import TripForm from './trip_form';
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import { createTrip } from "../../actions/trip_actions";
+import { hideModal } from "../../actions/modal_actions";
+import TripForm from "./trip_form";
 
 const mapStateToProps = state => {
   return {
@@ -18,4 +18,6 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(TripForm));
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(TripForm)
+);

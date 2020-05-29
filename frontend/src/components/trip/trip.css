@@ -13,7 +13,7 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  background: rgba(0,0,0,0.35);
+  background: rgba(0, 0, 0, 0.35);
 }
 
 .item-container {
@@ -37,7 +37,7 @@
 }
 
 .t-action:hover {
-  background: rgba(255,255,255,0.25);
+  background: rgba(255, 255, 255, 0.25);
 }
 
 #place-search-input {

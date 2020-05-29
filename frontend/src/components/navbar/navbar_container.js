@@ -1,8 +1,8 @@
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { logout } from '../../actions/session_actions';
-import { showModal, hideModal } from '../../actions/modal_actions';
-import NavBar from './navbar';
+import { logout } from "../../actions/session_actions";
+import { showModal, hideModal } from "../../actions/modal_actions";
+import NavBar from "./navbar";
 
 const mapStateToProps = state => {
   return {
@@ -17,6 +17,4 @@ const mapDispatchToProps = dispatch => ({
   hideModal: () => dispatch(hideModal)
 });
 
-
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NavBar));
-

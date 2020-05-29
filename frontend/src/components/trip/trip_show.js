@@ -1,6 +1,6 @@
 import React from "react";
-import MapQuest from '../map/map_quest';
-import {getTrip} from '../../util/trip_api_util'
+import MapQuest from "../map/map_quest";
+import { getTrip } from "../../util/trip_api_util";
 const keys = require("../../config/api_keys");
 
 class TripShow extends React.Component {
@@ -10,19 +10,17 @@ class TripShow extends React.Component {
     this.state = {
       origin: [],
       destination: []
-    }
+    };
   }
 
-  componentDidMount() {  
+  componentDidMount() {
     getTrip(this.props.tripId).then(res => {
       this.setState({
         origin: res.data.origin,
         destination: res.data.destination
-      })
-    })
-    // this.props.fetchTrip(this.props.tripId)
+      });
+    });
   }
-
 
   render() {
     let origin = this.state.origin;
@@ -41,9 +39,6 @@ class TripShow extends React.Component {
             apiKey={keys.MAP_KEY}
             maxMatches={500}
           />
-        </div>
-        <div>
-          {/* <TripShowDetailContainer /> */}
         </div>
       </div>
     );

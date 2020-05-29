@@ -1,5 +1,5 @@
-import axios from 'axios';
+import axios from "axios";
 
 export const fetchUser = userId => {
-    return axios.get(`/api/users/${userId}`);
+  return axios.get(`/api/users/${userId}`);
 };

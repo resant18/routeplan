@@ -1,14 +1,14 @@
 // poi_container.js => npm i react-modal
-import React, { Component } from 'react';
-import ReactModal from 'react-modal'
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import { addPoiToTrip } from '../../actions/poi_actions';
-import './poi.css'
-import defaultSvg from '../../assets/default-place.svg'
-const axios = require('axios');
-const qs = require('qs');
-const API_KEY = require('../../config/api_keys');
+import React, { Component } from "react";
+import ReactModal from "react-modal";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import { addPoiToTrip } from "../../actions/poi_actions";
+import "./poi.css";
+import defaultSvg from "../../assets/default-place.svg";
+const axios = require("axios");
+const qs = require("qs");
+const API_KEY = require("../../config/api_keys");
 
 class PoiContainer extends Component {
   constructor(props) {
@@ -35,33 +35,41 @@ class PoiContainer extends Component {
     const apiKey = API_KEY.YELP_KEY;
     // Place holder for Yelp Fusion's API Key. Grab them
     // from https://www.yelp.com/developers/v3/manage_app
+    let name = this.props.name;
+    if (name.split(" ").length > 2) {
+      name = name
+        .split(" ")
+        .slice(0, 2)
+        .join(" ");
+    }
 
-      axios
-        .get(
-          `${"https://cors-anywhere.herokuapp.com/"}https://api.yelp.com/v3/businesses/search?location=${
-            this.props.city
-          }`,
-          {
-            headers: {
-              Authorization: `Bearer ${apiKey}`,
-              accept: "application/json",
-              "Access-Control-Allow-Origin": "*",
-              "X-Requested-With": "XMLHttpRequest"
-            },
-            params: {
-              term: this.props.name
-            },
-            paramsSerializer: params => {
-              return qs.stringify(params);
-            }
+    axios
+      .get(
+        `${"https://cors-anywhere.herokuapp.com/"}https://api.yelp.com/v3/businesses/search?location=${
+          this.props.city
+        }`,
+        {
+          headers: {
+            Authorization: `Bearer ${apiKey}`,
+            accept: "application/json",
+            "Access-Control-Allow-Origin": "*",
+            "X-Requested-With": "XMLHttpRequest"
+          },
+          params: {
+            term: name
+          },
+          paramsSerializer: params => {
+            return qs.stringify(params);
           }
-        )
-        .then(res => {
-          this.setState({ data: res.data.businesses[0] });
-        })
-        .catch(err => {
-          //console.log(err)
-        });
+        }
+      )
+      .then(res => {
+        debugger;
+        this.setState({ data: res.data.businesses[0] });
+      })
+      .catch(err => {
+        //console.log(err)
+      });
   }
 
   ratingPic() {
@@ -82,14 +90,6 @@ class PoiContainer extends Component {
       return rateMapping[this.state.data.rating];
     }
     return "https://i.imgur.com/T7Rlhll.png";
-  }
-
-  componentDidUpdate() {
-    // this.yelpCall();
-  }
-
-  componentDidMount() {
-    this.yelpCall();
   }
 
   // This function pass selected POI up to Sidebar component
@@ -152,9 +152,17 @@ class PoiContainer extends Component {
               <br></br>
               {this.state.data && this.state.data.display_phone}
             </p>
-            <a href={this.state.data && this.state.data.url} target="_blank">
-              Yelp Page
-            </a>
+            {this.state.data && (
+              <a href={this.state.data.url} target="_blank">
+                Yelp Page
+              </a>
+            )}
+            {!this.state.data && (
+              <span>
+                <strong>Yelp page not found</strong>
+              </span>
+            )}
+            <br></br>
             <img className="poi-pic" src={defaultImg}></img>
             <img src={this.ratingPic()}></img>
           </div>
@@ -165,17 +173,19 @@ class PoiContainer extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-    tripId: ownProps.match.params.tripId,
-    poi: ownProps.poi,
-    key: ownProps.key,
-    name: ownProps.name,
-    city: ownProps.city,
-    address: ownProps.address,
-    selectedPois: ownProps.selectedPois
+  tripId: ownProps.match.params.tripId,
+  poi: ownProps.poi,
+  key: ownProps.key,
+  name: ownProps.name,
+  city: ownProps.city,
+  address: ownProps.address,
+  selectedPois: ownProps.selectedPois
 });
 
 const mapDispatchToProps = dispatch => ({
-    addPoiToTrip: (poi) => dispatch(addPoiToTrip(poi))
+  addPoiToTrip: poi => dispatch(addPoiToTrip(poi))
 });
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PoiContainer));
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(PoiContainer)
+);

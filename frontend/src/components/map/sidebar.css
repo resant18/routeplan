@@ -1,21 +1,20 @@
-.col-right{
-    display: flex;
-};
-
-.form_btn{
-    position: relative;
+.col-right {
+  display: flex;
 }
 
-.trip-details{
-    position: relative;
+.form_btn {
+  position: relative;
 }
 
-.trip-detail-container{
-    position: relative;
-    top: 7px;
-    width: 292px;
-    right: -5px;
-    overflow-y: scroll;
-    height: 69vh;
+.trip-details {
+  position: relative;
+}
 
-};
+.trip-detail-container {
+  position: relative;
+  top: 7px;
+  width: 292px;
+  right: -5px;
+  overflow-y: scroll;
+  height: 69vh;
+}

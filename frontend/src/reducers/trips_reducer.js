@@ -3,11 +3,14 @@ import {
   RECEIVE_USER_TRIPS,
   RECEIVE_TRIP,
   RECEIVE_NEW_TRIP,
-  REMOVE_TRIP,
+  REMOVE_TRIP
 } from "../actions/trip_actions";
 import { RECEIVE_TRIP_POIS, REMOVE_TRIP_POIS } from "../actions/poi_actions";
 
-const TripsReducer = ( state = { all: {}, user: {}, selected: undefined }, action ) => {
+const TripsReducer = (
+  state = { all: {}, user: {}, selected: undefined },
+  action
+) => {
   Object.freeze(state);
   let newState = Object.assign({}, state);
 
@@ -25,7 +28,11 @@ const TripsReducer = ( state = { all: {}, user: {}, selected: undefined }, actio
       newState.selected = action.trip.data;
       return newState;
     case REMOVE_TRIP:
-      delete newState.all[newState.all.indexOf(newState.all.filter(e => e._id === action.tripId)[0])];
+      delete newState.all[
+        newState.all.indexOf(
+          newState.all.filter(e => e._id === action.tripId)[0]
+        )
+      ];
       return newState;
     case (RECEIVE_TRIP_POIS, REMOVE_TRIP_POIS):
       newState.selected = action.trip.data;
