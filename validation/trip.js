@@ -19,7 +19,7 @@ module.exports = function validateTripInput(data) {
     errors.text = "Origin field is required";
   }
 
-  if (!Validator.isLatLong(String(data.origin))) {
+  if (!Validator.isLatLong(data.origin.lat + "," + data.origin.lng)) {
     errors.origin = "Origin field is invalid";
   }
 
@@ -27,7 +27,7 @@ module.exports = function validateTripInput(data) {
     errors.text = "Destination field is required";
   }
 
-  if (!Validator.isLatLong(String(data.destination))) {
+  if (!Validator.isLatLong(data.destination.lat + "," + data.destination.lng)) {
     errors.destination = "Destination field is invalid";
   }
 
