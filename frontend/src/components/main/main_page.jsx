@@ -6,10 +6,8 @@ class MainPage extends React.Component {
   render() {
     let component = <TripIndexContainer />;
 
-    return (
-      <div>
-        <main>{component}</main>
-      </div>
+    return (        
+      <main>{component}</main>      
     );
   }
 }
