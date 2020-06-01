@@ -157,20 +157,16 @@ class MapQuest extends Component {
     ];
 
     return (
-      <div className="main-content">
-        <div id="map" style={mapStyle}></div>
-        <div className="trip-details">
-          <div style={{ width: "300px" }}>
-            <Select
-              options={options}
-              placeholder="--Filter by category--"
-              onChange={this.handleChange}
-            />
-          </div>
+       <div className='main-content'>
+          <div id='map' style={mapStyle}></div>
+          <div className='trip-details'>
+             <div className='trip-details-list'>
+                <Select options={options} placeholder='--Filter by category--' onChange={this.handleChange} />
+             </div>
 
-          <Sidebar pointsOfInterest={this.filteredPoints} />
-        </div>
-      </div>
+             <Sidebar pointsOfInterest={this.filteredPoints} />
+          </div>
+       </div>
     );
   }
 }

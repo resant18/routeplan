@@ -6,6 +6,7 @@ html {
 body {
   font-family: "Helvetica Neue";
   height: 100%;
+  margin: 0;
 }
 
 #root {
