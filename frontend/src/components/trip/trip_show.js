@@ -30,10 +30,9 @@ class TripShow extends React.Component {
     let originPos = [origin.lat, origin.lng];
     let destinationPos = [destination.lat, destination.lng];
 
-    return (
-      <div>
-        <div>
-          <MapQuest
+    return (      
+      <div className="main-wrapper">
+        <MapQuest
             center={origin}
             baseLayer={"map"}
             zoom={12}
@@ -41,9 +40,8 @@ class TripShow extends React.Component {
             routeEnd={destinationPos}
             apiKey={keys.MAP_KEY}
             maxMatches={500}
-          />
-        </div>
-      </div>
+        />
+      </div>      
     );
   }
 }
