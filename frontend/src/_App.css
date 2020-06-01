@@ -21,6 +21,16 @@
   color: #09d3ac;
 }
 
+html {
+  height: 100%;
+  overflow: hidden;
+}
+
 body {
   font-family: "Helvetica Neue";
+  height: 100%;
+}
+
+#root {
+  width: 100%;
 }
