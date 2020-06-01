@@ -15,7 +15,7 @@
 }
 
 .trip-container:hover, .trip-container:focus {
-  border-radius: 10px;
+  border-radius: 10px; 
 }
 
 .item-link:link,

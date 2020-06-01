@@ -18,20 +18,20 @@ class TripItem extends React.Component {
     let img;
     img = <img src={this.props.im} className="bbg" alt=""></img>;
     return (
-      <div className="trip-container">
-        <Link to={`/trips/${_id}`} className="item-link">
-          <div className="overlay"></div>
-          {/* {img} */}
-          <div className="item-container">
-            <div className="t-title">{name}</div>
-            <div className="item-actions">
-              <div onClick={e => this.handleDelete(e)} className="t-action">
-                &#x1f5d1;
-              </div>
-            </div>
-          </div>
-        </Link>
-      </div>
+       <div className='trip-container'>          
+          <Link to={`/trips/${_id}`} className='item-link'>
+             <div className='overlay'></div>
+             {/* {img} */}
+             <div className='item-container'>
+                <div className='t-title'>{name}</div>
+                <div className='item-actions'>
+                   <div onClick={(e) => this.handleDelete(e)} className='t-action'>
+                      &#x1f5d1;
+                   </div>
+                </div>
+             </div>
+          </Link>
+       </div>
     );
   }
 }

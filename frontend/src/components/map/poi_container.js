@@ -11,165 +11,168 @@ const qs = require("qs");
 const API_KEY = require("../../config/api_keys");
 
 class PoiContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: [],
-      selectedPois: [],
-      showModal: false
-    };
-    this.handleOpenModal = this.handleOpenModal.bind(this);
-    this.handleCloseModal = this.handleCloseModal.bind(this);
-  }
+   constructor(props) {
+      super(props);
+      this.state = {
+         data: [],
+         selectedPois: [],
+         showModal: false,
+         showPoiDetail: false,
+      };
+      this.handleOpenModal = this.handleOpenModal.bind(this);
+      this.handleCloseModal = this.handleCloseModal.bind(this);
+      this.handleTogglePoiDetail = this.handleTogglePoiDetail.bind(this);
+   }
 
-  handleOpenModal() {
-    this.yelpCall();
-    this.setState({ showModal: true });
-  }
+   handleOpenModal() {
+      this.yelpCall();
+      this.setState({ showModal: true });
+   }
 
-  handleCloseModal() {
-    this.setState({ showModal: false });
-  }
+   handleCloseModal() {
+      this.setState({ showModal: false });
+   }
 
-  yelpCall() {
-    const apiKey = API_KEY.YELP_KEY;
-    // Place holder for Yelp Fusion's API Key. Grab them
-    // from https://www.yelp.com/developers/v3/manage_app
-    let name = this.props.name;
-    if (name.split(" ").length > 2) {
-      name = name
-        .split(" ")
-        .slice(0, 2)
-        .join(" ");
-    }
+   yelpCall() {
+      const apiKey = API_KEY.YELP_KEY;
+      // Place holder for Yelp Fusion's API Key. Grab them
+      // from https://www.yelp.com/developers/v3/manage_app
+      let name = this.props.name;
+      if (name.split(" ").length > 2) {
+         name = name.split(" ").slice(0, 2).join(" ");
+      }
 
-    axios
-      .get(
-        `${"https://cors-anywhere.herokuapp.com/"}https://api.yelp.com/v3/businesses/search?location=${
-          this.props.city
-        }`,
-        {
-          headers: {
-            Authorization: `Bearer ${apiKey}`,
-            accept: "application/json",
-            "Access-Control-Allow-Origin": "*",
-            "X-Requested-With": "XMLHttpRequest"
-          },
-          params: {
-            term: name
-          },
-          paramsSerializer: params => {
-            return qs.stringify(params);
-          }
-        }
-      )
-      .then(res => {
-        
-        this.setState({ data: res.data.businesses[0] });
-      })
-      .catch(err => {
-        //console.log(err)
-      });
-  }
+      axios
+         .get(
+            `${"https://cors-anywhere.herokuapp.com/"}https://api.yelp.com/v3/businesses/search?location=${
+               this.props.city
+            }`,
+            {
+               headers: {
+                  Authorization: `Bearer ${apiKey}`,
+                  accept: "application/json",
+                  "Access-Control-Allow-Origin": "*",
+                  "X-Requested-With": "XMLHttpRequest",
+               },
+               params: {
+                  term: name,
+               },
+               paramsSerializer: (params) => {
+                  return qs.stringify(params);
+               },
+            }
+         )
+         .then((res) => {
+            this.setState({ data: res.data.businesses[0] });
+         })
+         .catch((err) => {
+            //console.log(err)
+         });
+   }
 
-  ratingPic() {
-    // https://imgur.com/a/r89Zfjk
-    const rateMapping = {
-      1: "https://i.imgur.com/APOFtVe.png",
-      1.5: "https://i.imgur.com/MluSqV6.png",
-      2: "https://i.imgur.com/njznajS.png",
-      2.5: "https://i.imgur.com/Fe66UB8.png",
-      3: "https://i.imgur.com/W40BlGO.png",
-      3.5: "https://i.imgur.com/3bdhkhV.png",
-      4: "https://i.imgur.com/wEnzfos.png",
-      4.5: "https://i.imgur.com/YsW2hsg.png",
-      5: "https://i.imgur.com/w66Vcol.png"
-    };
+   ratingPic() {
+      // https://imgur.com/a/r89Zfjk
+      const rateMapping = {
+         1: "https://i.imgur.com/APOFtVe.png",
+         1.5: "https://i.imgur.com/MluSqV6.png",
+         2: "https://i.imgur.com/njznajS.png",
+         2.5: "https://i.imgur.com/Fe66UB8.png",
+         3: "https://i.imgur.com/W40BlGO.png",
+         3.5: "https://i.imgur.com/3bdhkhV.png",
+         4: "https://i.imgur.com/wEnzfos.png",
+         4.5: "https://i.imgur.com/YsW2hsg.png",
+         5: "https://i.imgur.com/w66Vcol.png",
+      };
 
-    if (this.state.data && this.state.data.rating) {
-      return rateMapping[this.state.data.rating];
-    }
-    return "https://i.imgur.com/T7Rlhll.png";
-  }
+      if (this.state.data && this.state.data.rating) {
+         return rateMapping[this.state.data.rating];
+      }
+      return "https://i.imgur.com/T7Rlhll.png";
+   }
 
-  // This function pass selected POI up to Sidebar component
-  handleAddToTrip(poi) {
-    this.props
-      .addPoiToTrip({
-        tripId: this.props.tripId,
-        poi: poi.fields
-      })
-      .then(() => {
-        this.props.selectedPois(poi);
-      });
-  }
+   // This function pass selected POI up to Sidebar component
+   handleAddToTrip(poi) {
+      this.props
+         .addPoiToTrip({
+            tripId: this.props.tripId,
+            poi: poi.fields,
+         })
+         .then(() => {
+            this.props.selectedPois(poi);
+         });
+   }
 
-  render() {
-    let defaultImg = defaultSvg;
-    if (this.state.data && this.state.data.image_url) {
-      defaultImg = this.state.data.image_url;
-    }
+   handleTogglePoiDetail(e) {
+      e.stopPropagation();
+      this.setState({ ...this.state, showPoiDetail: !this.state.showPoiDetail });
+   }
 
-    // https://imgur.com/a/r89Zfjk
-    return (
-      <div>
-        <div
-          className="poi-item"
-          aria-label="Click for more info"
-          onClick={this.handleOpenModal}
-        >
-          <h3>{this.props.name}</h3>
-          <p>
-            {`${this.props.poi.fields.address}, ${this.props.city}`}
-            <br></br>
-            <i>Click for more info</i>
-          </p>
-          <button onClick={this.handleAddToTrip.bind(this, this.props.poi)}>
-            Add to trip
-          </button>
-        </div>
+   render() {
+      let defaultImg = defaultSvg;
+      if (this.state.data && this.state.data.image_url) {
+         defaultImg = this.state.data.image_url;
+      }
 
-        <ReactModal
-          isOpen={this.state.showModal}
-          contentLabel="POI info"
-          onRequestClose={this.handleCloseModal}
-          shouldCloseOnOverlayClick={true}
-          overlayClassName="popover"
-          className="modal_content"
-          ariaHideApp={false}
-        >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              flexDirection: "column",
-              margin: "10px"
-            }}
-          >
-            <h3>{this.props.name}</h3>
-            <p style={{ textAlign: "center" }}>
-              {`${this.props.poi.fields.address}, ${this.props.city}`}
-              <br></br>
-              {this.state.data && this.state.data.display_phone}
-            </p>
-            {this.state.data && (
-              <a href={this.state.data.url} target="_blank">
-                Yelp Page
-              </a>
-            )}
-            {!this.state.data && (
-              <span>
-                <strong>Yelp page not found</strong>
-              </span>
-            )}
-            <br></br>
-            <img className="poi-pic" src={defaultImg}></img>
-            <img src={this.ratingPic()}></img>
-          </div>
-        </ReactModal>
-      </div>
-    );
-  }
+      // https://imgur.com/a/r89Zfjk
+      return (
+         <div>
+            <div className='poi-item' aria-label='Click for more info' onClick={this.handleOpenModal}>
+               <div onClick={this.handleTogglePoiDetail}>
+                  <h3>{this.props.name}</h3>
+               </div>
+               {this.state.showPoiDetail && (
+                  <div>
+                     <p>
+                        {`${this.props.poi.fields.address}, ${this.props.city}`}
+                        <br></br>
+                        <i>Click for more info</i>
+                     </p>
+                     <button onClick={this.handleAddToTrip.bind(this, this.props.poi)}>Add to trip</button>
+                  </div>
+               )}
+            </div>
+
+            <ReactModal
+               isOpen={this.state.showModal}
+               contentLabel='POI info'
+               onRequestClose={this.handleCloseModal}
+               shouldCloseOnOverlayClick={true}
+               overlayClassName='popover'
+               className='modal_content'
+               ariaHideApp={false}
+            >
+               <div
+                  style={{
+                     display: "flex",
+                     alignItems: "center",
+                     flexDirection: "column",
+                     margin: "10px",
+                  }}
+               >
+                  <h3>{this.props.name}</h3>
+                  <p style={{ textAlign: "center" }}>
+                     {`${this.props.poi.fields.address}, ${this.props.city}`}
+                     <br></br>
+                     {this.state.data && this.state.data.display_phone}
+                  </p>
+                  {this.state.data && (
+                     <a href={this.state.data.url} target='_blank'>
+                        Yelp Page
+                     </a>
+                  )}
+                  {!this.state.data && (
+                     <span>
+                        <strong>Yelp page not found</strong>
+                     </span>
+                  )}
+                  <br></br>
+                  <img className='poi-pic' src={defaultImg}></img>
+                  <img src={this.ratingPic()}></img>
+               </div>
+            </ReactModal>
+         </div>
+      );
+   }
 }
 
 const mapStateToProps = (state, ownProps) => ({
