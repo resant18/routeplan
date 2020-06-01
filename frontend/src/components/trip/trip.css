@@ -13,7 +13,11 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  background: rgba(0, 0, 0, 0.35);
+  background: rgba(0, 0, 0, 0.35);  
+}
+
+.item-actions:hover {
+  border-radius: 10px;
 }
 
 .item-container {
@@ -22,6 +26,11 @@
   height: 100%;
   flex-direction: column;
   justify-content: space-between;
+  border-radius:3px;
+}
+
+.item-container:hover {
+  border-radius: 10px;
 }
 
 .t-action {
@@ -36,8 +45,9 @@
   border-radius: 3px;
 }
 
-.t-action:hover {
+.t-action:hover, .t-action:focus {
   background: rgba(255, 255, 255, 0.25);
+  border-radius: 0 0 10px 0;
 }
 
 #place-search-input {

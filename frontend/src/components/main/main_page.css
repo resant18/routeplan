@@ -14,6 +14,10 @@
   min-width: 250px;
 }
 
+.trip-container:hover, .trip-container:focus {
+  border-radius: 10px;
+}
+
 .item-link:link,
 .item-link:visited {
   text-align: center;
@@ -31,6 +35,7 @@
   height: 160px;
   background: #454545;
   padding-top: 1.5em;
+  opacity: 0.95;
 }
 
 .item-link {
@@ -41,10 +46,8 @@
   z-index: 0;
 }
 
-.overlay:hover {
-  margin: -1px;
-  border: 1px solid #454545;
-  border-radius: 5px;
+.item-link:hover, .item-link:focus {
+  border-radius: 10px;
 }
 
 .overlay {
@@ -60,8 +63,11 @@
   z-index: 0;
 }
 
-.overlay:hover {
+.overlay, overlay:focus {
   background: rgba(0, 0, 0, 0.2);
+  margin: -1px;
+  /* border: 1px solid #454545; */
+  border-radius: 10px;
 }
 
 .t-title {

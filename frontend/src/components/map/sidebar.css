@@ -1,6 +1,7 @@
 .main-content {
   display: flex;
   height: 100%;
+  justify-content: center;
 }
 
 .form_btn {
@@ -25,5 +26,5 @@
   width: 292px;
   right: -5px;
   overflow-y: scroll;
-  height: 74vh;
+  height: 78vh;
 }

@@ -19,7 +19,7 @@ main {
 }
 
 .main-wrapper {
-  height: calc(100vh - 185px);
+  height: calc(100vh - 165px);
   background-color: #333;
 }
 
