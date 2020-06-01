@@ -53,17 +53,25 @@ class TripShowDetail extends Component {
           <hr />
           <br />
           <h3>My Trip</h3>
-          <h4>{name}</h4>
-          <div className='place-label'>
-             <img src={gmarker} alt='Origin' />
+          <div className='trip-name'>{name}</div>
+          <div className='row'>
+             <div className='place-icon'>
+                <img src={gmarker} alt='Origin' />
+             </div>
+             <div className='place-info'>
+                <div className='place-name'>{origin.name}</div>
+                <div className='place-detail'>{origin.detail.replace(origin.name + ", ", "")}</div>
+             </div>
           </div>
-          <div className='place-name'>{origin.name}</div>
-          <div className='place-detail'>{origin.detail.replace(origin.name + ", ", "")}</div>
-          <div className='place-label'>
-             <img src={rmarker} alt='Destination' />
+          <div className='row'>
+             <div className='place-icon'>
+                <img src={rmarker} alt='Destination' />
+             </div>
+             <div className='place-info'>
+                <div className='place-name'>{destination.name}</div>
+                <div className='place-detail'>{destination.detail.replace(destination.detail, "")}</div>
+             </div>
           </div>
-          <div className='place-name'>{destination.name}</div>
-          <div className='place-detail'>{destination.detail.replace(destination.detail, "")}</div>
           {pois === undefined
              ? null
              : pois.map((poi, i) => {
