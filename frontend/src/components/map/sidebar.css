@@ -1,5 +1,6 @@
-.col-right {
+.main-content {
   display: flex;
+  height: 100%;
 }
 
 .form_btn {
@@ -16,5 +17,5 @@
   width: 292px;
   right: -5px;
   overflow-y: scroll;
-  height: 69vh;
+  height: 74vh;
 }

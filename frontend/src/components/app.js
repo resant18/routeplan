@@ -8,9 +8,10 @@ import LoginFormContainer from "./session/login_form_container";
 import SignupFormContainer from "./session/signup_form_container";
 import TripShowContainer from "./trip/trip_show_container";
 import ProfileContainer from "./profile/profile_container";
+import "./app.css";
 
 const App = () => (
-  <div className="main">
+  <div className="content">    
     <NavBarContainer />
 
     <Modal />

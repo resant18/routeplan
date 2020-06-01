@@ -83,16 +83,24 @@
   opacity: 1;
 }
 
-.place-label {
-  font-size: 0.9em;
-  font-weight: 700;
+.trip-name {
+  padding-bottom: 8px;
+}
+
+.row {
+  display: flex; 
+  padding-bottom: 5px; 
+}
+
+.place-info {
+  margin-left: 5px;
 }
 
 .place-name {
-  font-size: 0.75em;
+  font-size: 0.8em;
   font-weight: 700;
 }
 
 .place-detail {
-  font-size: 0.6em;  
+  font-size: 0.65em;  
 }

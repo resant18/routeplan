@@ -141,7 +141,7 @@ class MapQuest extends Component {
     this.filterMap();
 
     const mapStyle = {
-      height: "75vh",
+      height: "100%",
       width: "80%",
       zIndex: 1
     };
@@ -157,7 +157,7 @@ class MapQuest extends Component {
     ];
 
     return (
-      <div className="col-right">
+      <div className="main-content">
         <div id="map" style={mapStyle}></div>
         <div className="trip-details">
           <div style={{ width: "300px" }}>
