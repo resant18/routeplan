@@ -21,7 +21,7 @@ class TripItem extends React.Component {
       <div className="trip-container">
         <Link to={`/trips/${_id}`} className="item-link">
           <div className="overlay"></div>
-          {img}
+          {/* {img} */}
           <div className="item-container">
             <div className="t-title">{name}</div>
             <div className="item-actions">
