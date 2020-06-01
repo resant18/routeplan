@@ -78,7 +78,10 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: #fafbfc;
+  background-image: url(/static/media/bg_map.343210ae.jpg);
+  background-size: cover;
+  height: calc(100% - 185px);
+  background-position: center center;
 }
 
 .trips-index {
