@@ -13,7 +13,8 @@ class MapQuest extends Component {
 
     this.state = {
       error: null,
-      value: ""
+      value: "",
+      icon:"",
     };
     this.pointsOfInterest = [];
     this.filteredPoints = [];
@@ -107,7 +108,10 @@ class MapQuest extends Component {
   }
 
   handleChange = selectedOption => {
-    this.setState({ value: selectedOption.value });
+    this.setState({ 
+      value: selectedOption.value,
+      icon: selectedOption.label
+     });
   };
 
   filterMap() {
@@ -147,13 +151,13 @@ class MapQuest extends Component {
     };
 
     const options = [
-      { value: "5812", label: "Restaurants" },
-      { value: "8412", label: "Museums" },
-      { value: "799", label: "Parks" },
-      { value: "5813", label: "Bars" },
-      { value: "5942", label: "Books" },
-      { value: "602101", label: "ATM" },
-      { value: "5461", label: "Bakeries" }
+       { value: "5812", label: "Restaurants" },
+       { value: "8412", label: "Museums" },
+       { value: "799", label: "Parks" },
+       { value: "5813", label: "Bars" },
+       { value: "5942", label: "Books"},
+       { value: "602101", label: "ATMs" },
+       { value: "5461", label: "Bakeries" },
     ];
 
     return (
@@ -161,10 +165,10 @@ class MapQuest extends Component {
           <div id='map' style={mapStyle}></div>
           <div className='trip-details'>
              <div className='trip-details-list'>
-                <Select options={options} placeholder='--Filter by category--' onChange={this.handleChange} />
+                <Select options={options} placeholder='--Filter by category--' onChange={this.handleChange} style={`cursor: 'pointer'`}/>
              </div>
 
-             <Sidebar pointsOfInterest={this.filteredPoints} />
+             <Sidebar pointsOfInterest={this.filteredPoints} selectedPoiCategoryIcon={this.state.icon}/>
           </div>
        </div>
     );

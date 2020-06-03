@@ -31,13 +31,14 @@ export default class Sidebar extends Component {
       component = "";
     } else {
       component = this.props.pointsOfInterest.map((pt, i) => (
-        <PoiContainer
-          poi={pt}
-          key={i}
-          name={pt.name}
-          city={pt.fields.city}
-          selectedPois={this.handleAddPoiToTrip}
-        />
+         <PoiContainer
+            poi={pt}
+            key={i}
+            name={pt.name}
+            city={pt.fields.city}
+            selectedPois={this.handleAddPoiToTrip}
+            selectedPoiCategoryIcon={this.props.selectedPoiCategoryIcon}
+         />
       ));
     }
 

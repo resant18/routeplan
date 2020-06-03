@@ -1,6 +1,9 @@
 .poi-item {
-  text-align: center;
   cursor: pointer;
+  font-size: .875rem;
+  line-height: 1.4;
+  white-space: nowrap;
+  padding: 4px;    
 }
 
 .poi-item:hover {
@@ -10,6 +13,15 @@
 .poi-pic {
   width: 200px;
   margin-bottom: 10px;
+}
+
+.poi-header {
+  display: flex;
+}
+
+.poi-name {
+  margin-left: 5px;
+  font-size: 1em;
 }
 
 .popover {

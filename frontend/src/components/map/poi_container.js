@@ -6,9 +6,27 @@ import { withRouter } from "react-router-dom";
 import { addPoiToTrip } from "../../actions/poi_actions";
 import "./poi.css";
 import defaultSvg from "../../assets/default-place.svg";
+import restaurantIcon from "../../assets/icons/icons8-restaurant.png";
+import museumIcon from "../../assets/icons/icons8-museum.png";
+import parkIcon from "../../assets/icons/icons8-park.png";
+import bookIcon from "../../assets/icons/icons8-book.png";
+import barIcon from "../../assets/icons/icons8-bar.png";
+import atmIcon from "../../assets/icons/icons8-atm.png";
+import bakeryIcon from "../../assets/icons/icons8-bakery.png";
+
 const axios = require("axios");
 const qs = require("qs");
 const API_KEY = require("../../config/api_keys");
+
+const icons = {
+   "Restaurants": restaurantIcon,
+   "Museums": museumIcon,
+   "Parks": parkIcon,
+   "Books": bookIcon,
+   "Bars": barIcon,
+   "ATMs": atmIcon,
+   "Bakeries": bakeryIcon
+}
 
 class PoiContainer extends Component {
    constructor(props) {
@@ -105,20 +123,29 @@ class PoiContainer extends Component {
    handleTogglePoiDetail(e) {
       e.stopPropagation();
       this.setState({ ...this.state, showPoiDetail: !this.state.showPoiDetail });
-   }
+   }  
 
    render() {
       let defaultImg = defaultSvg;
       if (this.state.data && this.state.data.image_url) {
          defaultImg = this.state.data.image_url;
-      }
+      }      
 
       // https://imgur.com/a/r89Zfjk
       return (
          <div>
             <div className='poi-item' aria-label='Click for more info' onClick={this.handleOpenModal}>
-               <div onClick={this.handleTogglePoiDetail}>
-                  <h3>{this.props.name}</h3>
+               <div className='poi-header'>
+                  <div className='poi-category-icon'>
+                     <img src={icons[`${this.props.selectedPoiCategoryIcon}`]} alt='icon' width='12' height='12' />
+                  </div>
+                  <div
+                     className='poi-name'
+                     onClick={this.handleTogglePoiDetail}
+                     style={{ fontWeight: this.state.showPoiDetail ? "700" : "400" }}
+                  >
+                     {this.props.name}
+                  </div>
                </div>
                {this.state.showPoiDetail && (
                   <div>
