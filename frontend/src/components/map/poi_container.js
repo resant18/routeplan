@@ -135,15 +135,11 @@ class PoiContainer extends Component {
       return (
          <div>
             <div className='poi-item' aria-label='Click for more info' onClick={this.handleOpenModal}>
-               <div className='poi-header'>
+               <div className='poi-header' onClick={this.handleTogglePoiDetail}>
                   <div className='poi-category-icon'>
                      <img src={icons[`${this.props.selectedPoiCategoryIcon}`]} alt='icon' width='12' height='12' />
                   </div>
-                  <div
-                     className='poi-name'
-                     onClick={this.handleTogglePoiDetail}
-                     style={{ fontWeight: this.state.showPoiDetail ? "700" : "400" }}
-                  >
+                  <div className='poi-name' style={{ fontWeight: this.state.showPoiDetail ? "700" : "400" }}>
                      {this.props.name}
                   </div>
                </div>
