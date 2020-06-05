@@ -58,7 +58,7 @@ class TripShowDetail extends Component {
              <div className='my-trip-label'>
                 <h3>My Trip</h3>
              </div>
-             <div className='my-trip=share'>
+             <div className='my-trip-share'>
                 <nav className='menu'>
                    <input type='checkbox' href='#' className='menu-open' name='menu-open' id='menu-open' />
                    <label class='menu-open-button' for='menu-open'>

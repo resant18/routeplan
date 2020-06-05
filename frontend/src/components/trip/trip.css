@@ -95,11 +95,16 @@
 
 .trip-name {
   padding-bottom: 8px;
+  font-weight: 700;
 }
 
 .row {
   display: flex; 
   padding-bottom: 5px; 
+}
+
+.place-icon {
+  padding-top: 2px;
 }
 
 .place-info {
@@ -120,6 +125,10 @@
 
 .my-trip-label {
   min-width: 75px;
+}
+
+.my-trip-share {
+  height: 20px;
 }
 
 .menu-open{
@@ -150,15 +159,9 @@
 
 .menu{
   filter:url('#goo');  
-  width:380px;
-  height:250px;
   position:absolute;
-  left:50%;
-  margin-left:-180;
-  padding-top:20px;
-  padding-left:180;
-  width:380px;
-  height:250px;
+  left:125px;  
+  padding-top:20px;  
   box-sizing:border-box;
   font-size:20px;
   text-align:left;
@@ -197,20 +200,20 @@
 .menu-open:checked~.menu-item:nth-child(3) {
     -webkit-transition-duration: 280ms;
     transition-duration: 280ms;
-    -webkit-transform: translate3d(52.54827px, -90.90478px, 0);
-    transform: translate3d(52.54827px, -90.90478px, 0);
+    -webkit-transform: translate3d(42.54827px, -40.90478px, 0);
+    transform: translate3d(42.54827px, -40.90478px, 0);
 }
 
 .menu-open:checked~.menu-item:nth-child(4) {
     -webkit-transition-duration: 180ms;
     transition-duration: 180ms;
-    -webkit-transform: translate3d(104.99947px, 0.33446px, 0);
-    transform: translate3d(104.99947px, 0.33446px, 0);
+    -webkit-transform: translate3d(84.99947px, 0.33446px, 0);
+    transform: translate3d(84.99947px, 0.33446px, 0);
 }
 
 .menu-open:checked~.menu-item:nth-child(5) {
     -webkit-transition-duration: 380ms;
     transition-duration: 380ms;
-    -webkit-transform: translate3d(-52.69298px, -90.82098px, 0);
-    transform: translate3d(52.54827px, 90.90478px, 0);
+    -webkit-transform: translate3d(42.54827px, 40.90478px, 0);
+    transform: translate3d(42.54827px, 40.90478px, 0);
 }
