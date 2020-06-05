@@ -36,7 +36,7 @@ class TripShowDetail extends Component {
 
     return (
        <div className='trip-show-detail' style={{ paddingLeft: "15px" }}>
-          <div className='share-container' style={{ display: "flex" }}>
+          {/* <div className='share-container' style={{ display: "flex" }}>
              <h3>Share your trip!</h3>
              <div className='btn-container'>
                 <TwitterShareButton className='share-btn' url={shareUrl}>
@@ -53,7 +53,7 @@ class TripShowDetail extends Component {
 
           <br />
           <hr />
-          <br />
+          <br /> */}
           <div className='my-trip-header'>
              <div className='my-trip-label'>
                 <h3>My Trip</h3>
