@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import Sidebar from "./sidebar";
 import Select from "react-select";
-import TripShowDetail from "../trip/trip_show_detail";
 import "./sidebar.css";
+
 const axios = require("axios");
 var qs = require("qs");
-var assert = require("assert");
 
 class MapQuest extends Component {
   constructor(props) {

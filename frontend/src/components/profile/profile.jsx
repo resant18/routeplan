@@ -2,10 +2,6 @@ import React from "react";
 import "./profile.css";
 
 class Profile extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentWillMount() {
     console.log(this.props.currentUser.id);
   }

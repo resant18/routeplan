@@ -13,10 +13,6 @@ import rmarker from "../../assets/marker-red.png";
 import shareIcon from "../../assets/icons/icons8-share.png";
 
 class TripShowDetail extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
     this.props.fetchTrip(this.props.tripId);
   }
@@ -61,7 +57,7 @@ class TripShowDetail extends Component {
              <div className='my-trip-share'>
                 <nav className='menu'>
                    <input type='checkbox' href='#' className='menu-open' name='menu-open' id='menu-open' />
-                   <label class='menu-open-button' for='menu-open'>
+                   <label className='menu-open-button' htmlFor='menu-open'>
                       <img src={shareIcon} alt='Share Trip' />
                    </label>                   
                    <TwitterShareButton className='menu-item share-btn' url={shareUrl}>

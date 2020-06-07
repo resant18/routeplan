@@ -179,7 +179,7 @@ class PoiContainer extends Component {
                      {this.state.data && this.state.data.display_phone}
                   </p>
                   {this.state.data && (
-                     <a href={this.state.data.url} target='_blank'>
+                     <a href={this.state.data.url} target='_blank' rel='noopener noreferrer'>
                         Yelp Page
                      </a>
                   )}
@@ -189,8 +189,8 @@ class PoiContainer extends Component {
                      </span>
                   )}
                   <br></br>
-                  <img className='poi-pic' src={defaultImg}></img>
-                  <img src={this.ratingPic()}></img>
+                  <img className='poi-pic' src={defaultImg} alt={this.props.name}></img>
+                  <img src={this.ratingPic()} alt='rating'></img>
                </div>
             </ReactModal>
          </div>
