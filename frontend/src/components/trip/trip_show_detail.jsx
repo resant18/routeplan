@@ -63,22 +63,18 @@ class TripShowDetail extends Component {
                    <input type='checkbox' href='#' className='menu-open' name='menu-open' id='menu-open' />
                    <label class='menu-open-button' for='menu-open'>
                       <img src={shareIcon} alt='Share Trip' />
-                   </label>
-                   {/* <a href='#' className='menu-item'> */}
+                   </label>                   
                    <TwitterShareButton className='menu-item share-btn' url={shareUrl}>
                       <TwitterIcon style={{ cursor: "pointer" }} size={32} round />
                    </TwitterShareButton>{" "}
-                   {/* </a> */}
-                   <a href='#' class='menu-item'>
-                      <FacebookShareButton className='share-btn' url={shareUrl}>
-                         <FacebookIcon style={{ cursor: "pointer" }} size={32} round />
-                      </FacebookShareButton>
-                   </a>
-                   <a href='#' class='menu-item'>
-                      <EmailShareButton className='share-btn' url={shareUrl}>
-                         <EmailIcon style={{ cursor: "pointer" }} size={32} round />
-                      </EmailShareButton>
-                   </a>
+                   
+                  <FacebookShareButton className='menu-item share-btn' url={shareUrl}>
+                     <FacebookIcon style={{ cursor: "pointer" }} size={32} round />
+                  </FacebookShareButton>
+               
+                  <EmailShareButton className='menu-item share-btn' url={shareUrl}>
+                     <EmailIcon style={{ cursor: "pointer" }} size={32} round />
+                  </EmailShareButton>                   
                 </nav>
 
                 <svg xmlns='http://www.w3.org/2000/svg' version='1.1'>
