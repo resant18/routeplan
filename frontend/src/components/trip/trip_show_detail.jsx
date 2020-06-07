@@ -59,18 +59,16 @@ class TripShowDetail extends Component {
                    <input type='checkbox' href='#' className='menu-open' name='menu-open' id='menu-open' />
                    <label className='menu-open-button' htmlFor='menu-open'>
                       <img src={shareIcon} alt='Share Trip' />
-                   </label>                   
+                   </label>
                    <TwitterShareButton className='menu-item share-btn' url={shareUrl}>
                       <TwitterIcon style={{ cursor: "pointer" }} size={32} round />
                    </TwitterShareButton>{" "}
-                   
-                  <FacebookShareButton className='menu-item share-btn' url={shareUrl}>
-                     <FacebookIcon style={{ cursor: "pointer" }} size={32} round />
-                  </FacebookShareButton>
-               
-                  <EmailShareButton className='menu-item share-btn' url={shareUrl}>
-                     <EmailIcon style={{ cursor: "pointer" }} size={32} round />
-                  </EmailShareButton>                   
+                   <FacebookShareButton className='menu-item share-btn' url={shareUrl}>
+                      <FacebookIcon style={{ cursor: "pointer" }} size={32} round />
+                   </FacebookShareButton>
+                   <EmailShareButton className='menu-item share-btn' url={shareUrl}>
+                      <EmailIcon style={{ cursor: "pointer" }} size={32} round />
+                   </EmailShareButton>
                 </nav>
 
                 <svg xmlns='http://www.w3.org/2000/svg' version='1.1'>
@@ -127,24 +125,27 @@ class TripShowDetail extends Component {
                 <div className='place-detail'>{destination.detail.replace(destination.detail, "")}</div>
              </div>
           </div>
-          {pois === undefined
-             ? null
-             : pois.map((poi, i) => {
-                  return (
-                     <div key={poi.name} className='poi'>
-                        <div>
-                           <strong>{poi.name}</strong>
+          <ul className='poi-list'>
+             {pois === undefined
+                ? null
+                : pois.map((poi, i) => (                     
+                     <li key={poi.name + i} className='poi'>
+                        <span></span>
+                        <div className='poi-detail'>
+                           <div>
+                              <strong>{poi.name}</strong>
+                           </div>
+                           <div>{poi.phone}</div>
+                           <div>{poi.address}</div>
+                           <div>{poi.city}</div>
+                           <div>
+                              {poi.state}, {poi.postal_code}
+                           </div>
+                           <div>{poi.country}</div>
                         </div>
-                        <div>{poi.phone}</div>
-                        <div>{poi.address}</div>
-                        <div>{poi.city}</div>
-                        <div>
-                           {poi.state}, {poi.postal_code}
-                        </div>
-                        <div>{poi.country}</div>
-                     </div>
-                  );
-               })}
+                     </li>
+                ))}
+          </ul>
        </div>
     );
   }
