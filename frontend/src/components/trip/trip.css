@@ -200,20 +200,20 @@
 .menu-open:checked~.menu-item:nth-child(3) {
     -webkit-transition-duration: 280ms;
     transition-duration: 280ms;
-    -webkit-transform: translate3d(42.54827px, -40.90478px, 0);
-    transform: translate3d(42.54827px, -40.90478px, 0);
+    -webkit-transform: translate3d(42.54827px, 0.33446px, 0);
+    transform: translate3d(42.54827px, 0.33446px, 0);
 }
 
 .menu-open:checked~.menu-item:nth-child(4) {
-    -webkit-transition-duration: 180ms;
-    transition-duration: 180ms;
+    -webkit-transition-duration: 380ms;
+    transition-duration: 380ms;
     -webkit-transform: translate3d(84.99947px, 0.33446px, 0);
     transform: translate3d(84.99947px, 0.33446px, 0);
 }
 
 .menu-open:checked~.menu-item:nth-child(5) {
-    -webkit-transition-duration: 380ms;
-    transition-duration: 380ms;
-    -webkit-transform: translate3d(42.54827px, 40.90478px, 0);
-    transform: translate3d(42.54827px, 40.90478px, 0);
+    -webkit-transition-duration: 480ms;
+    transition-duration: 480ms;
+    -webkit-transform: translate3d(127.54827px, 0.33446px, 0);
+    transform: translate3d(127.54827px, 0.33446px, 0);
 }
