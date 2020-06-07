@@ -18,24 +18,24 @@ class NavBar extends React.Component {
 
   // Selectively render links dependent on whether the user is logged in
   getLinks() {
-    if (this.props.loggedIn) {
+    if (this.props.loggedIn) {      
       return (
-        <div id="welcome">
-          <h3 className="title">Hi, {this.props.currentUser.username}</h3>
-          <div className="plus">
-            <button id="new-trip-btn" className="btn" onClick={this.showModal}>
-              New Trip +
-            </button>
-          </div>
-          <div className="btn-container">
-            <button
-              className="header-button btn-logout"
-              onClick={this.logoutUser}
-            >
-              Logout
-            </button>
-          </div>
-        </div>
+         <div id='welcome'>
+            <h3 className='title'>
+               Hi,
+               <Link to={`/trips/user/${this.props.currentUser.id}`}> {this.props.currentUser.username} </Link>
+            </h3>
+            <div className='plus'>
+               <button id='new-trip-btn' className='btn' onClick={this.showModal}>
+                  New Trip +
+               </button>
+            </div>
+            <div className='btn-container'>
+               <button className='header-button btn-logout' onClick={this.logoutUser}>
+                  Logout
+               </button>
+            </div>
+         </div>
       );
     } else {
       return (

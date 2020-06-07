@@ -8,7 +8,7 @@ exports.getAllTrips = (req, res) => {
     .catch(err => res.status(404).json({ notripsfound: "No trips found" }));
 };
 
-exports.getUserTrips = (req, res) => {
+exports.getUserTrips = (req, res) => {  
   Trip.find({ user: { _id: req.params.userId } })
     .then(trips => res.json(trips))
     .catch(err =>

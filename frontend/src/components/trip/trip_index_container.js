@@ -1,14 +1,18 @@
 import { connect } from "react-redux";
-import { fetchTrips, destroyTrip } from "../../actions/trip_actions";
+import { fetchTrips, fetchUserTrips, destroyTrip } from "../../actions/trip_actions";
 import TripIndex from "../trip/trip_index";
 
-const mapStateToProps = state => ({
-  loggedIn: state.session.isAuthenticated,
-  trips: Object.values(state.trips.all) || []
-});
+const mapStateToProps = (state, ownProps) => {
+   return {
+      loggedIn: state.session.isAuthenticated,
+      userId: ownProps.match === undefined ? null : ownProps.match.params.userId, 
+      trips: Object.values(state.trips.all) || [],
+   };
+};
 
 const mapDispatchToProps = dispatch => ({
   fetchTrips: () => dispatch(fetchTrips()),
+  fetchUserTrips: userId => fetchUserTrips(userId),
   destroyTrip: dataId => dispatch(destroyTrip(dataId))
 });
 

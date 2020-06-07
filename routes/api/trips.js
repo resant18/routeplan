@@ -4,6 +4,7 @@ const passport = require("passport");
 const tripsController = require("../../controllers/trips_controller");
 
 router.get("/", tripsController.getAllTrips);
+router.get("/trips/user/:userId", tripsController.getUserTrips);
 router.get("/:userId/:tripId", tripsController.getUserTrips);
 router.get("/:tripId", tripsController.getTrip);
 router.post(

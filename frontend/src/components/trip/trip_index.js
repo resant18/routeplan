@@ -3,8 +3,12 @@ import TripItem from "./trip_item";
 import bgImage from "../../assets/bg_map.jpg";
 
 export default class TripIndex extends React.Component {
-  componentDidMount() {
-    this.props.fetchTrips();
+  componentDidMount() {      
+    if (this.props.userId) {
+       this.props.fetchUserTrips(this.props.userId);
+    } else {
+       this.props.fetchTrips();
+    }
   }
 
   render() {

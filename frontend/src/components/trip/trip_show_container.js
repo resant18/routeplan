@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import { fetchTrip } from "../../actions/trip_actions";
 import TripShow from "./trip_show";
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state, ownProps) => {  
   let tripId = ownProps.match.params.tripId;
   let origin = [];
   let destination = [];

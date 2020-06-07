@@ -12,3 +12,11 @@ body {
 #root {
   height: 100%;
 }
+
+a:hover, a:focus {
+  color: #AF305C;
+}
+
+a:visited {
+  color: #ffffff;
+}
