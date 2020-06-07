@@ -1,5 +1,6 @@
 import React from "react";
 import TripItem from "./trip_item";
+import bgImage from "../../assets/bg_map.jpg";
 
 export default class TripIndex extends React.Component {
   componentDidMount() {
