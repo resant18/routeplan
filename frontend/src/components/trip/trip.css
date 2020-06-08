@@ -225,6 +225,10 @@
   margin-left: 18px;
 }
 
+.poi-list {
+  position: relative;
+}
+
 .poi-list:before {
   content: "";
   height: 100%;
