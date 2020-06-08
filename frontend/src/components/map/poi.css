@@ -1,3 +1,7 @@
+.poi-container {
+  padding-left: 10px;
+}
+
 .poi-item {
   cursor: pointer;
   font-size: .875rem;
