@@ -27,17 +27,14 @@ class TripShow extends React.Component {
     
     if (!(Object.values(origin).length && Object.values(destination).length)) return null;      
 
-    let originPos = [origin.lat, origin.lng];
-    let destinationPos = [destination.lat, destination.lng];
-
     return (      
       <div className="main-wrapper">
         <MapQuest
             center={origin}
             baseLayer={"map"}
             zoom={12}
-            routeStart={originPos}
-            routeEnd={destinationPos}
+            routeStart={origin.detail}
+            routeEnd={destination.detail}
             apiKey={keys.MAP_KEY}
             maxMatches={500}
         />
