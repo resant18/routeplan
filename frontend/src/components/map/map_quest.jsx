@@ -28,7 +28,9 @@ class MapQuest extends Component {
 
   _setBoundingBox(routeProps) {
     const { routeStart, routeEnd } = routeProps;
-    return String(routeStart.concat(routeEnd));
+    const routeStartPos = [routeStart.lat, routeStart.lng];
+    const routeEndPos = [routeEnd.lat, routeEnd.lng];
+    return String(routeStartPos.concat(routeEndPos));
   }
 
   initializeMap() {
@@ -82,11 +84,11 @@ class MapQuest extends Component {
     });
 
     directions.route({
-      start: routeProps.routeStart,
-      end: routeProps.routeEnd,
-      options: {
-        routeType: "pedestrian"
-      }
+       start: routeProps.routeStart.detail,
+       end: routeProps.routeEnd.detail,
+       options: {
+          routeType: "pedestrian",
+       },
     });
   }
 

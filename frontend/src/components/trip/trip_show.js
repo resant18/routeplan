@@ -36,8 +36,8 @@ class TripShow extends React.Component {
             center={origin}
             baseLayer={"map"}
             zoom={12}
-            routeStart={originPos}
-            routeEnd={destinationPos}
+            routeStart={origin}
+            routeEnd={destination}
             apiKey={keys.MAP_KEY}
             maxMatches={500}
         />

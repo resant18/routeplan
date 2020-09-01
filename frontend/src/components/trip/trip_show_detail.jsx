@@ -122,7 +122,7 @@ class TripShowDetail extends Component {
              </div>
              <div className='place-info'>
                 <div className='place-name'>{destination.name}</div>
-                <div className='place-detail'>{destination.detail.replace(destination.detail, "")}</div>
+                <div className='place-detail'>{destination.detail.replace(destination.name + ", ", "")}</div>
              </div>
           </div>
           <ul className='poi-list'>
