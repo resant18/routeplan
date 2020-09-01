@@ -116,9 +116,10 @@ class MapQuest extends Component {
   };
 
   filterMap() {
-    for (let layer of this.markers) {
+    for (let layer of this.markers) {      
       this.map.removeLayer(layer);
     }
+
     this.filteredPoints = [];
     if (this.state.value.length > 0) {
       for (let pt of this.pointsOfInterest) {
@@ -142,8 +143,24 @@ class MapQuest extends Component {
     }
   }
 
+  addSelectedPois() {   
+    
+    if (this.props.selectedPois === undefined || this.props.selectedPois.length === 0) return;
+    
+    for (const poi of this.props.selectedPois) {      
+      let lat = poi.lat;
+      let lng = poi.lng;
+      let poiName = poi.name;
+      window.L.marker([lat, lng], {
+         icon: window.L.mapquest.icons.marker(),
+         draggable: false,
+      }).bindPopup(poiName).addTo(this.map);      
+    }
+  }
+
   render() {
     this.filterMap();
+    this.addSelectedPois();
 
     const mapStyle = {
       height: "100%",

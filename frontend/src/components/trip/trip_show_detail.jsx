@@ -126,24 +126,23 @@ class TripShowDetail extends Component {
              </div>
           </div>
           <ul className='poi-list'>
-             {pois === undefined
-                ? null
-                : pois.map((poi, i) => (                     
-                     <li key={poi.name + i} className='poi'>
-                        <span></span>
-                        <div className='poi-detail'>
-                           <div>
-                              <strong>{poi.name}</strong>
-                           </div>
-                           <div>{poi.phone}</div>
-                           <div>{poi.address}</div>
-                           <div>{poi.city}</div>
-                           <div>
-                              {poi.state}, {poi.postal_code}
-                           </div>
-                           <div>{poi.country}</div>
+             {pois &&
+               pois.map((poi, i) => (                     
+                  <li key={poi.name + i} className='poi'>
+                     <span></span>
+                     <div className='poi-detail'>
+                        <div>
+                           <strong>{poi.name}</strong>
                         </div>
-                     </li>
+                        <div>{poi.phone}</div>
+                        <div>{poi.address}</div>
+                        <div>{poi.city}</div>
+                        <div>
+                           {poi.state}, {poi.postal_code}
+                        </div>
+                        <div>{poi.country}</div>
+                     </div>
+                  </li>
                 ))}
           </ul>
        </div>

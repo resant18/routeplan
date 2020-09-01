@@ -11,24 +11,24 @@ class TripShow extends React.Component {
       origin: {},
       destination: {}      
     };    
+
+    this.selectedPois = [];
   }
 
   componentDidMount() {    
     getTrip(this.props.tripId).then(res => {            
       this.setState({
         origin: res.data.origin,
-        destination: res.data.destination
-      });
+        destination: res.data.destination        
+      });      
+      this.selectedPois = res.data.pois;
     });
   }
 
   render() {
-    let { origin, destination } = this.state;
+    let { origin, destination, selectedPois } = this.state;
     
-    if (!(Object.values(origin).length && Object.values(destination).length)) return null;      
-
-    let originPos = [origin.lat, origin.lng];
-    let destinationPos = [destination.lat, destination.lng];
+    if (!(Object.values(origin).length && Object.values(destination).length)) return null;          
 
     return (      
       <div className="main-wrapper">
@@ -38,6 +38,7 @@ class TripShow extends React.Component {
             zoom={12}
             routeStart={origin}
             routeEnd={destination}
+            selectedPois={this.selectedPois}
             apiKey={keys.MAP_KEY}
             maxMatches={500}
         />
