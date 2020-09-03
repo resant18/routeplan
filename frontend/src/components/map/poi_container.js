@@ -117,7 +117,9 @@ class PoiContainer extends Component {
          })
          .then(() => {
             this.props.selectedPois(poi);
-         });
+         })
+         .then(() => window.location.reload(false));
+         
    }
 
    handleTogglePoiDetail(e) {

@@ -97,7 +97,8 @@ class MapQuest extends Component {
 
     directions.route({
        start: routeProps.routeStart.detail,
-       end: routeProps.routeEnd.detail,       
+       end: routeProps.routeEnd.detail,
+       
        waypoints: waypoints
     });
   }
