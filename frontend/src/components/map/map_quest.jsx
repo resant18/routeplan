@@ -97,10 +97,7 @@ class MapQuest extends Component {
 
     directions.route({
        start: routeProps.routeStart.detail,
-       end: routeProps.routeEnd.detail,
-       options: {
-          routeType: "pedestrian",
-       },
+       end: routeProps.routeEnd.detail,       
        waypoints: waypoints
     });
   }
