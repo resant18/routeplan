@@ -15,7 +15,7 @@ class MapQuest extends Component {
       value: "",
       icon:"",
     };
-    this.pointsOfInterest = [];
+    this.pointsOfInterest = [];    
     this.filteredPoints = [];
     this.markers = [];
     this.handleChange = this.handleChange.bind(this);
@@ -68,8 +68,20 @@ class MapQuest extends Component {
       });
   }
 
-  drawRoute(routeProps) {
-    let directions = window.L.mapquest.directions();
+  fetchWaypoints() {          
+    if (this.props.waypoints === undefined || this.props.waypoints.length === 0) return;
+
+    let waypoints = [];
+    for (const w of this.props.waypoints) {
+       waypoints.push(w.name + ", " + w.address + ", " + w.city);
+    }   
+    
+    return waypoints; 
+  }
+
+  drawRoute(routeProps) {    
+    let directions = window.L.mapquest.directions();    
+    let waypoints = this.fetchWaypoints();    
 
     directions.setLayerOptions({
       startMarker: {
@@ -89,6 +101,7 @@ class MapQuest extends Component {
        options: {
           routeType: "pedestrian",
        },
+       waypoints: waypoints
     });
   }
 
@@ -102,7 +115,6 @@ class MapQuest extends Component {
   componentDidMount() {
     const boundingBoxParam = this._setBoundingBox(this.props);
     this.fetchMapData(boundingBoxParam);
-
     this.initializeMap();
     this.drawRoute(this.props);
     this.map.addControl(window.L.mapquest.locatorControl());
@@ -121,7 +133,7 @@ class MapQuest extends Component {
     }
 
     this.filteredPoints = [];
-    if (this.state.value.length > 0) {
+    if (this.state.value.length > 0) {    
       for (let pt of this.pointsOfInterest) {
         if (pt.fields.group_sic_code.startsWith(this.state.value)) {
           this.filteredPoints.push(pt);
@@ -143,8 +155,7 @@ class MapQuest extends Component {
     }
   }
 
-  addSelectedPois() {   
-    
+  addSelectedPois() {       
     if (this.props.selectedPois === undefined || this.props.selectedPois.length === 0) return;
     
     for (const poi of this.props.selectedPois) {      

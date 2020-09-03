@@ -131,6 +131,9 @@ class TripShowDetail extends Component {
                   <li key={poi.name + i} className='poi'>
                      <span></span>
                      <div className='poi-detail'>
+                        {/* <div>
+                           { i + 2 }{'.'}
+                        </div> */}
                         <div>
                            <strong>{poi.name}</strong>
                         </div>

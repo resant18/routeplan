@@ -80,7 +80,7 @@ class PoiContainer extends Component {
                },
             }
          )
-         .then((res) => {
+         .then((res) => {            
             this.setState({ data: res.data.businesses[0] });
          })
          .catch((err) => {

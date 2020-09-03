@@ -9,40 +9,39 @@ class TripShow extends React.Component {
 
     this.state = {
       origin: {},
-      destination: {}      
+      destination: {},
+      selectedPois: undefined      
     };    
-
-    this.selectedPois = [];
   }
 
-  componentDidMount() {    
+  componentDidMount() {        
     getTrip(this.props.tripId).then(res => {            
       this.setState({
         origin: res.data.origin,
-        destination: res.data.destination        
-      });      
-      this.selectedPois = res.data.pois;
+        destination: res.data.destination,
+        selectedPois: res.data.pois 
+      });                
     });
   }
 
-  render() {
-    let { origin, destination, selectedPois } = this.state;
+  render() {    
+    let { origin, destination, selectedPois } = this.state;    
     
-    if (!(Object.values(origin).length && Object.values(destination).length)) return null;          
-
-    return (      
-      <div className="main-wrapper">
-        <MapQuest
-            center={origin}
-            baseLayer={"map"}
-            zoom={12}
-            routeStart={origin}
-            routeEnd={destination}
-            selectedPois={this.selectedPois}
-            apiKey={keys.MAP_KEY}
-            maxMatches={500}
-        />
-      </div>      
+    if (!(Object.values(origin).length && Object.values(destination).length)) return null;              
+    
+    return (
+       <div className='main-wrapper'>
+          <MapQuest
+             center={origin}
+             baseLayer={"map"}
+             zoom={12}
+             routeStart={origin}
+             routeEnd={destination}
+             waypoints={selectedPois}
+             apiKey={keys.MAP_KEY}
+             maxMatches={500}
+          />
+       </div>
     );
   }
 }
