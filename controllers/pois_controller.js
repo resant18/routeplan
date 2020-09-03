@@ -26,7 +26,7 @@ exports.addPoiToTrip = (req, res) => {
     );
 };
 
-exports.removePoiFromTrip = (req, res) => {
+exports.removePoiFromTrip = (req, res) => {  
   Trip.findById(req.body.tripId)
     .then(trip => {
       Trip.updateOne({ _id: trip.id }, { $pull: { pois: [req.body.poiId] } })
