@@ -93,6 +93,10 @@
   opacity: 1;
 }
 
+.trip-show-container {
+  margin-bottom: 20px;
+}
+
 .trip-name {
   padding-bottom: 8px;
   font-weight: 700;
