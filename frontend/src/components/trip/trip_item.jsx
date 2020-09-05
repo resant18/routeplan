@@ -2,6 +2,8 @@ import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import "./trip.css";
 
+const deleteIcon = require('../../assets/trash-32.png');
+
 class TripItem extends React.Component {
   handleDelete(e) {
     e.stopPropagation();
@@ -19,13 +21,12 @@ class TripItem extends React.Component {
     return (
        <div className='trip-container'>          
           <Link to={`/trips/${_id}`} className='item-link'>
-             <div className='overlay'></div>
-             {/* {img} */}
+             <div className='overlay'></div>             
              <div className='item-container'>
                 <div className='t-title'>{name}</div>
                 <div className='item-actions'>
                    <div onClick={(e) => this.handleDelete(e)} className='t-action'>
-                      &#x1f5d1;
+                      <img src={deleteIcon} alt='Delete trip' />
                    </div>
                 </div>
              </div>
