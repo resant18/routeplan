@@ -185,12 +185,7 @@ class MapQuest extends Component {
        { value: "5942", label: "Books"},
        { value: "602101", label: "ATMs" },
        { value: "5461", label: "Bakeries" },
-    ];
-
-    const optionsStyles = {
-      cursor: "pointer",
-      zIndex: 10
-    }
+    ];    
 
     return (
        <div className='main-content'>
