@@ -236,7 +236,7 @@
 .poi-list div.waypoint-number {
   position: absolute;
   left: 0;
-  z-index: 10;
+  z-index: 3;
 }
 
 .poi-list:before {

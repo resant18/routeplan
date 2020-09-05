@@ -187,15 +187,25 @@ class MapQuest extends Component {
        { value: "5461", label: "Bakeries" },
     ];
 
+    const optionsStyles = {
+      cursor: "pointer",
+      zIndex: 10
+    }
+
     return (
        <div className='main-content'>
           <div id='map' style={mapStyle}></div>
           <div className='trip-details'>
              <div className='trip-details-list'>
-                <Select options={options} placeholder='--Filter by category--' onChange={this.handleChange} style={`cursor: 'pointer'`}/>
+                <Select
+                   options={options}
+                   placeholder='--Filter by category--'
+                   onChange={this.handleChange}
+                   className='poi-category'
+                />
              </div>
 
-             <Sidebar pointsOfInterest={this.filteredPoints} selectedPoiCategoryIcon={this.state.icon}/>
+             <Sidebar pointsOfInterest={this.filteredPoints} selectedPoiCategoryIcon={this.state.icon} />
           </div>
        </div>
     );
