@@ -5,8 +5,7 @@
   justify-content: flex-start;
   align-items: center;
   margin: 0;
-  width: 70%;
-  min-height: 1px;
+  width: 70%;  
 }
 
 .trip-container {
@@ -80,11 +79,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  background-image: url(/static/media/bg_map.343210ae.jpg);
-  background-size: cover;
-  height: calc(100% - 165px);
-  background-position: center center;
+  align-items: center;  
 }
 
 .trips-index {
@@ -92,6 +87,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  margin-top: 85px;
+  justify-content: center;  
+  overflow-y: scroll;
 }
