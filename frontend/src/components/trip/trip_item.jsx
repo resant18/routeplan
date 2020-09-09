@@ -5,35 +5,62 @@ import "./trip.css";
 const deleteIcon = require('../../assets/trash-32.png');
 
 class TripItem extends React.Component {
-  handleDelete(e) {
-    e.stopPropagation();
-    e.preventDefault();
-    if (this.props.loggedIn) {
-      this.props.destroyTrip(this.props.trip._id);
-    } else {
-      this.props.history.push("/login");
-    }
-  }
+   constructor(props) {
+      super(props);
+      this.state = {
+         onHovered: false,
+      };
 
-  render() {
-    const { _id, name } = this.props.trip;
-    
-    return (
-       <div className='trip-container'>          
-          <Link to={`/trips/${_id}`} className='item-link'>
-             <div className='overlay'></div>             
-             <div className='item-container'>
-                <div className='t-title'>{name}</div>
-                <div className='item-actions'>
-                   <div onClick={(e) => this.handleDelete(e)} className='t-action'>
-                      <img src={deleteIcon} alt='Delete trip' />
-                   </div>
-                </div>
-             </div>
-          </Link>
-       </div>
-    );
-  }
+      this.handleHover = this.handleHover.bind(this);
+   }
+
+   handleHover(hoverState) {
+      this.setState({ onHovered: hoverState });
+   }
+
+   handleDelete(e) {
+      e.stopPropagation();
+      e.preventDefault();
+      if (this.props.loggedIn) {
+         this.props.destroyTrip(this.props.trip._id);
+      } else {
+         this.props.history.push("/login");
+      }
+   }
+
+   render() {
+      const { _id, name } = this.props.trip;
+
+      return (
+         <div
+            className={`trip-container card ${this.state.onHovered ? 'active' : ''}`}
+            onMouseEnter={this.handleHover.bind(this, true)}
+            onMouseLeave={this.handleHover.bind(this, false)}
+         >
+            <Link to={`/trips/${_id}`} className='item-link'>
+               <div className='item-container face face1'>
+                  <div className='content'>
+                     <h3 className='t-title'>{name}</h3>
+                     {/* <div className='item-actions'>
+                      <div onClick={(e) => this.handleDelete(e)} className='t-action'>
+                         <img src={deleteIcon} alt='Delete trip' />
+                      </div>
+                   </div> */}
+                  </div>
+               </div>
+               <div className='face face2'>
+                  <div className='content'>
+                     <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cum cumque minus iste veritatis
+                        provident at.
+                     </p>
+                     {/* <a href='#'>Read More</a> */}
+                  </div>
+               </div>
+            </Link>
+         </div>
+      );
+   }
 }
 
 export default withRouter(TripItem);

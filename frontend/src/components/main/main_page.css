@@ -1,20 +1,17 @@
 .trips-list {
   border: 1px solid transparent;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-wrap: wrap;  
   align-items: center;
   margin: 0;
-  width: 70%;  
+  width: 60%;      
+  position: relative;  
+  justify-content: space-between;
 }
 
-.trip-container {
-  width: 25%;  
-  min-width: 250px;
-}
-
-.trip-container:hover, .trip-container:focus {
-  border-radius: 10px; 
+.trip-container {  
+  width: 300px;
+  margin: 20px 0;
 }
 
 .item-link:link,
@@ -28,8 +25,7 @@
   font-size: 16px;
   font-weight: 700;
   cursor: pointer;
-  border: 0px solid transparent;
-  border-radius: 3px;
+  border: 0px solid transparent;  
   text-decoration: none;
   height: 160px;
   background: #454545;
@@ -38,15 +34,10 @@
 }
 
 .item-link {
-  line-height: 20px;
-  margin: 8px;
+  line-height: 20px;  
   position: relative;
   min-height: 1px;
   z-index: 0;
-}
-
-.item-link:hover, .item-link:focus {
-  border-radius: 10px;
 }
 
 .overlay {
@@ -80,13 +71,103 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;  
+  height: max-content;
 }
 
 .trips-index {
-  width: 100%;
+  width: 100%;  
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;  
   overflow-y: scroll;
+}
+
+.card {
+  position: relative;
+  cursor: pointer;
+}
+
+.card .face {
+  width: 300px;
+  height: 200px;
+  transition: 0.5s;
+}
+
+.card .face.face1 {
+  position: relative;
+  background: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  transform: translateY(100px); 
+}
+
+.card:hover .face.face1{
+    background: #ff0057;
+    transform: translateY(0);
+}
+
+.card .face.face1 .content{
+    opacity: 0.75;
+    transition: 0.5s;
+    width: 100%;
+    height: 100%;
+}
+
+.card:hover .face.face1 .content{
+    opacity: 1;
+}
+
+.card .face.face1 .content img{
+    max-width: 100px;
+}
+
+.card .face.face1 .content h3{
+    margin: 10px 0 0;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+.card .face.face2{
+    position: relative;
+    background: #454545;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+    transform: translateY(-100px);   
+    
+}
+
+.card:hover .face.face2{
+    transform: translateY(0);
+}
+
+.card .face.face2 .content p{
+    margin: 0;
+    padding: 0;
+}
+
+.card .face.face2 .content a{
+    margin: 15px 0 0;
+    display:  inline-block;
+    text-decoration: none;
+    font-weight: 900;
+    color: #333;
+    padding: 5px;
+    border: 1px solid #333;
+}
+
+.card .face.face2 .content a:hover{    
+    color: #fff;
+}
+
+.card.active {
+    z-index: 10;
 }
