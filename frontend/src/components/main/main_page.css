@@ -98,7 +98,7 @@
 }
 
 .card:hover .face.face1{
-    background: #ff0057;
+    background: #aa2d53;
     transform: translateY(0) scale(1.1);
 }
 
@@ -145,6 +145,7 @@
 .card .face.face2 .content p{
     margin: 0;
     padding: 0;
+    font-weight: normal;
 }
 
 .card .face.face2 .content a{
@@ -159,6 +160,13 @@
 
 .card .face.face2 .content a:hover{    
     color: #fff;
+}
+
+.card .face .content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
 }
 
 .card.active {
