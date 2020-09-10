@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "./navbar.css";
 import logo from "../../assets/logo.jpg";
 
@@ -23,7 +23,7 @@ class NavBar extends React.Component {
          <div id='welcome'>
             <h3 className='title'>
                Hi,
-               <Link to={`/trips/user/${this.props.currentUser.id}`}> {this.props.currentUser.username} </Link>
+               <NavLink activeClassName='username' to={`/trips/user/${this.props.currentUser.id}`}> {this.props.currentUser.username} </NavLink>
             </h3>
             <div className='plus'>
                <button id='new-trip-btn' className='btn' onClick={this.showModal}>

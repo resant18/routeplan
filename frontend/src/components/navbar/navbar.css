@@ -166,6 +166,10 @@ footer {
   color: #fff;
 }
 
+#welcome .title .username:visited {
+  color: #fff;
+}
+
 #session-actions-container {
   display: flex;
   justify-content: center;
