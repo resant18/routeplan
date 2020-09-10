@@ -4,9 +4,12 @@ import TripIndex from "../trip/trip_index";
 
 const mapStateToProps = (state, ownProps) => {
    return {
-      loggedIn: state.session.isAuthenticated,
-      userId: ownProps.match === undefined ? null : ownProps.match.params.userId, 
-      trips: Object.values(state.trips.all) || [],
+      loggedIn: state.session.isAuthenticated,      
+      userId: (ownProps.match && ownProps.match.params.userId) || null,
+      trips:
+         ownProps.match && ownProps.match.params.userId
+            ? Object.values(state.trips.user)
+            : Object.values(state.trips.all),
    };
 };
 
