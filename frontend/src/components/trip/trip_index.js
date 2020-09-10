@@ -15,21 +15,23 @@ export default class TripIndex extends React.Component {
     if (this.props.trips === []) return null;
 
     return (
-      <div className="trips-container">
-        <div className="trips-index">
-          <div className="trips-list">
-            {this.props.trips.map((trip, idx) =>                             
-                <TripItem
-                  loggedIn={this.props.loggedIn}
-                  destroyTrip={this.props.destroyTrip}
-                  editTrip={this.props.editTrip}                  
-                  trip={trip}
-                  key={idx}
-                />              
-            )}
+       <main>
+          <div className='trips-container'>
+             <div className='trips-index'>
+                <div className='trips-list'>
+                   {this.props.trips.map((trip, idx) => (
+                      <TripItem
+                         loggedIn={this.props.loggedIn}
+                         destroyTrip={this.props.destroyTrip}
+                         editTrip={this.props.editTrip}
+                         trip={trip}
+                         key={idx}
+                      />
+                   ))}
+                </div>
+             </div>
           </div>
-        </div>
-      </div>
+       </main>
     );
   }
 }
