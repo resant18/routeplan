@@ -9,45 +9,8 @@
   z-index: -1;
 }
 
-.item-actions {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  background: rgba(0, 0, 0, 0.35);  
-}
-
-.item-actions:hover {
-  border-radius: 10px;
-}
-
-/* .item-container {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  flex-direction: column;
-  justify-content: space-between;
-  border-radius:3px;
-}
-
-.item-container:hover {
-  border-radius: 10px;
-} */
-
-.t-action {
-  z-index: 1;
-  width: 50%;
-  font-size: 24px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid transparent;
-  border-radius: 3px;
-}
-
-.t-action:hover, .t-action:focus {
-  background: rgba(255, 255, 255, 0.25);
-  border-radius: 0 0 10px 0;
+.card .delete {
+  margin-top: 5px;
 }
 
 #place-search-input {

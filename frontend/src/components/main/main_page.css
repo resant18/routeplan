@@ -164,9 +164,23 @@
 
 .card .face .content {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 10px;
+}
+
+.card .face .action {  
+  display: flex;
+  margin-top: 15px;
+}
+
+.card .face .action button {
+  margin: 0 5px;  
+}
+
+.card .face .action button:hover {
+  background-color: #5aac44;
 }
 
 .card.active {

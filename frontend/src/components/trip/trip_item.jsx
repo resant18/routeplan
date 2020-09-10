@@ -9,9 +9,7 @@ class TripItem extends React.Component {
       super(props);
       this.state = {
          onHovered: false,
-      };
-
-      this.handleHover = this.handleHover.bind(this);
+      };      
    }
 
    handleHover(hoverState) {
@@ -28,12 +26,18 @@ class TripItem extends React.Component {
       }
    }
 
+   handleViewDetails(id, e) {     
+     e.stopPropagation();
+     e.preventDefault();     
+    this.props.history.push(`/trips/${id}`);     
+   }
+
    render() {
       const { _id, name } = this.props.trip;
 
       return (
          <div
-            className={`trip-container card ${this.state.onHovered ? 'active' : ''}`}
+            className={`trip-container card ${this.state.onHovered ? "active" : ""}`}
             onMouseEnter={this.handleHover.bind(this, true)}
             onMouseLeave={this.handleHover.bind(this, false)}
          >
@@ -41,11 +45,6 @@ class TripItem extends React.Component {
                <div className='item-container face face1'>
                   <div className='content'>
                      <h3 className='t-title'>{name}</h3>
-                     {/* <div className='item-actions'>
-                      <div onClick={(e) => this.handleDelete(e)} className='t-action'>
-                         <img src={deleteIcon} alt='Delete trip' />
-                      </div>
-                   </div> */}
                   </div>
                </div>
                <div className='face face2'>
@@ -54,7 +53,17 @@ class TripItem extends React.Component {
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cum cumque minus iste veritatis
                         provident at.
                      </p>
-                     {/* <a href='#'>Read More</a> */}
+                     <div className='action'>
+                        {
+                        this.props.loggedIn &&
+                          <button onClick={this.handleDelete.bind(this)} className='btn'>
+                            Delete
+                          </button>
+                        }
+                        <button onClick={this.handleViewDetails.bind(this, _id)} className='btn'>
+                           View Details
+                        </button>
+                     </div>
                   </div>
                </div>
             </Link>
