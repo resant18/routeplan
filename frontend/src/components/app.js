@@ -20,10 +20,10 @@ const App = () => (
          <AuthRoute exact path='/login' component={LoginFormContainer} />
          <AuthRoute exact path='/signup' component={SignupFormContainer} />
          <ProtectedRoute exact path='/trip' component={TripShowContainer} />
+         <ProtectedRoute exact path='/trips/user/:userId' component={TripIndexContainer} />
          <ProtectedRoute exact path='/trips/:tripId' component={TripShowContainer} />
          <ProtectedRoute exact path='/users/:userId' component={ProfileContainer} />
          <Route exact path='/' component={MainPage} />
-         <ProtectedRoute exact path='/trips/user/:userId' component={TripIndexContainer} />
       </Switch>
       <footer>Copyright Alfredo - Lance - Renata - Timothy</footer>
    </div>
