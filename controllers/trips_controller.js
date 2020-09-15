@@ -9,7 +9,11 @@ exports.getAllTrips = (req, res) => {
 };
 
 exports.getUserTrips = (req, res) => {  
-  Trip.find({ user: { _id: req.params.userId } })
+  const { userId, page } = req.params;
+
+  Trip.find({ user: { _id: userId } })
+    .skip( page > 0 ? (page - 1) * 6 : 0)
+    .limit(6)
     .then(trips => res.json(trips))
     .catch(err =>
       res.status(404).json({ notripsfound: "No trip found with that ID" })

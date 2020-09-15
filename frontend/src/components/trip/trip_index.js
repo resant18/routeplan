@@ -4,8 +4,10 @@ import bgImage from "../../assets/bg_map.jpg";
 
 export default class TripIndex extends React.Component {
   componentDidMount() {      
+     debugger
     if (this.props.userId) {
-       this.props.fetchUserTrips(this.props.userId);
+       this.props.fetchUserTrips(this.props.userId, 1);
+       debugger
     } else {
        this.props.fetchTrips();
     }

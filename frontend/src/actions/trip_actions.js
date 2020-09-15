@@ -43,10 +43,11 @@ export const fetchTrips = () => dispatch =>
     .then(trips => dispatch(receiveTrips(trips)))
     .catch(err => console.log(err));
 
-export const fetchUserTrips = userId => dispatch =>
-  APIUtil.getUserTrips(userId)
+export const fetchUserTrips = (userId, page) => dispatch => {  
+  return APIUtil.getUserTrips(userId, page)
     .then(trips => dispatch(receiveUserTrips(trips)))
     .catch(err => console.log(err));
+}
 
 export const fetchTrip = tripId => dispatch =>
   APIUtil.getTrip(tripId)
