@@ -9,7 +9,8 @@ exports.getAllTrips = (req, res) => {
 };
 
 exports.getUserTrips = (req, res) => {  
-  const { userId, page } = req.params;
+  const userId = req.params.userId;
+  const page = parseInt(req.query.page);
 
   Trip.find({ user: { _id: userId } })
     .skip( page > 0 ? (page - 1) * 6 : 0)

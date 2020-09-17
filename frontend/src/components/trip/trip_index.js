@@ -3,38 +3,62 @@ import TripItem from "./trip_item";
 import bgImage from "../../assets/bg_map.jpg";
 
 export default class TripIndex extends React.Component {
-  componentDidMount() {      
-     debugger
-    if (this.props.userId) {
-       this.props.fetchUserTrips(this.props.userId, 1);
-       debugger
-    } else {
-       this.props.fetchTrips();
-    }
-  }
+   constructor(props) {
+      super(props);
+      this.state = {
+         trips: [],
+         page: 1,
+      };
 
-  render() {
-    if (this.props.trips === []) return null;
+      this.loadMore = this.loadMore.bind(this);
+   }
 
-    return (
-       <main>
-          <div className='trips-container'>
-             <div className='trips-index'>
-                <div className='trips-list'>
-                   {this.props.trips.map((trip, idx) => (
-                      <TripItem
-                         loggedIn={this.props.loggedIn}
-                         creatorId={trip.user}
-                         destroyTrip={this.props.destroyTrip}
-                         editTrip={this.props.editTrip}
-                         trip={trip}
-                         key={idx}
-                      />
-                   ))}
-                </div>
-             </div>
-          </div>
-       </main>
-    );
-  }
+   async loadMore() {         
+      this.fetchItems();
+   }
+
+   fetchItems() {      
+      this.props.fetchUserTrips(this.props.userId, this.state.page).then((res) => {         
+         this.setState({
+            trips: this.state.trips.concat(res.trips.data),
+            page: this.state.page + 1,
+         });         
+      });      
+   }
+
+   componentDidMount() {
+      if (this.props.userId) {
+         this.fetchItems();
+      } else {
+         this.props.fetchTrips();
+      }
+   }
+
+   render() {          
+      if (this.state.trips === []) return null;
+
+      return (
+         <main>
+            <div className='trips-container'>
+               <div className='trips-index'>
+                  <div className='trips-list'>
+                     {this.state.trips.map((trip, idx) => (
+                        <TripItem
+                           loggedIn={this.props.loggedIn}
+                           creatorId={trip.user}
+                           destroyTrip={this.props.destroyTrip}
+                           editTrip={this.props.editTrip}
+                           trip={trip}
+                           key={idx}
+                        />
+                     ))}
+                  </div>
+               </div>
+               <div>
+                  <button onClick={this.loadMore}>Load More</button>
+               </div>
+            </div>
+         </main>
+      );
+   }
 }

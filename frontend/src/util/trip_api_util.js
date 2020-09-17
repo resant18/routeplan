@@ -4,8 +4,12 @@ export const getAllTrips = () => {
   return axios.get("/api/trips");
 };
 
-export const getUserTrips = userId => {  
-  return axios.get(`/api/trips/user/${userId}`);
+export const getUserTrips = (userId, page) => {    
+  return axios.get(`/api/trips/user/${userId}`, {
+    params: {
+      page: page
+    }
+  });
 };
 
 export const getTrip = tripId => {
