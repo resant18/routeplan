@@ -10,6 +10,7 @@ import SignupFormContainer from "./session/signup_form_container";
 import TripShowContainer from "./trip/trip_show_container";
 import ProfileContainer from "./profile/profile_container";
 import "./app.css";
+import "./responsive.css";
 
 const App = () => (
    <div className='content'>

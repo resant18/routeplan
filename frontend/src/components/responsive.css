@@ -1,0 +1,11 @@
+@media screen and (min-width: 769px) {
+   .trips-list {
+      width: 70%;
+   }
+}
+
+@media screen and (max-width: 768px) {
+   .trips-list {
+      width: 80%;
+   }
+}
