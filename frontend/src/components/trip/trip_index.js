@@ -19,10 +19,12 @@ export default class TripIndex extends React.Component {
 
    fetchItems() {      
       this.props.fetchUserTrips(this.props.userId, this.state.page).then((res) => {         
-         this.setState({
-            trips: this.state.trips.concat(res.trips.data),
-            page: this.state.page + 1,
-         });         
+         if (res) {
+            this.setState({
+               trips: this.state.trips.concat(res.trips.data),
+               page: this.state.page + 1,
+            });         
+         }
       });      
    }
 
@@ -53,9 +55,13 @@ export default class TripIndex extends React.Component {
                         />
                      ))}
                   </div>
-               </div>
-               <div>
-                  <button onClick={this.loadMore}>Load More</button>
+                  {this.state.trips.length > 0 && (
+                     <div>
+                        <button id="load-btn" onClick={this.loadMore} className='load btn'>
+                           Load More
+                        </button>
+                     </div>
+                  )}
                </div>
             </div>
          </main>
