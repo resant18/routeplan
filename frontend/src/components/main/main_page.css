@@ -196,3 +196,17 @@
   font-size: 1.75em;
   padding: 10px 20px;
 }
+
+.fade-in {
+  animation: fadeIn .5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+    
+  to {
+    opacity: 1;
+  }
+}

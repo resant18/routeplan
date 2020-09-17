@@ -37,7 +37,7 @@ class TripItem extends React.Component {
 
       return (
          <div
-            className={`trip-container card ${this.state.onHovered ? "active" : ""}`}
+            className={`trip-container card fade-in ${this.state.onHovered ? "active" : ""}`}
             onMouseEnter={this.handleHover.bind(this, true)}
             onMouseLeave={this.handleHover.bind(this, false)}
          >
