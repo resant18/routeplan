@@ -16,7 +16,10 @@
 
 main {  
   display: flex;
-  height: 80%;  
+  height: 80%;    
+}
+
+.user_trips {
   background-image: url(/static/media/bg_map.343210ae.jpg);
   background-size: cover;  
   background-position: center center;

@@ -1,3 +1,39 @@
+.landing {
+  display: flex;
+  height: 80%;
+  padding: 0 3%;  
+  align-items: center;
+}
+
+.landing-text {
+  width: 45vw;
+}
+
+.landing-text h1 {
+  font-family: 'Patua One', cursive;    
+  font-size: 6rem;
+  color:#a8312d;
+  margin-block-start: 0.5em;
+  margin-block-end: 0.5em;
+}
+
+p.desc {
+  font-size: 2rem;
+}
+
+.landing-image {
+  width: 55vw;
+}
+
+.btn.get-started {
+  font-size: 2em;
+  color: #000;
+  background-color: #5aac44;
+  border: 1px solid transparent;
+  /* border-radius: .2rem; */
+  padding: 0.5em 0.75em;
+}
+
 .trips-list {
   border: 1px solid transparent;
   display: grid;    

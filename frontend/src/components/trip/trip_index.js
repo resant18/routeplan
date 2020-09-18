@@ -49,7 +49,7 @@ export default class TripIndex extends React.Component {
       if (this.state.trips === []) return null;
 
       return (
-         <main>
+         <main className='user_trips'>
             <div className='trips-container'>
                <div className='trips-index'>
                   <div className='trips-list'>
