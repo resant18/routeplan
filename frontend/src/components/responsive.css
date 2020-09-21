@@ -1,16 +1,4 @@
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media screen and (min-width: 769px) {
-   .trips-list {
-      width: 70%;
-   }
-}
-
-/* Medium devices (landscape tablets, 768px and up) */
-@media screen and (max-width: 768px) {
-   .trips-list {
-      width: 80%;
-   }
-
+@media screen and (max-aspect-ratio: 1/1) { 
    .landing {
       flex-direction: column-reverse;
       justify-content: center;
@@ -19,18 +7,44 @@
    .landing-image {
       width: 100%;
    }
+
    .landing-text {
       width: 98%;
    }
 }
 
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
    .landing-text h1 {
-      font-size: 9vmin;
+      font-size: 7vh;
    }
 
    p.desc, .btn.get-started {
-      font-size: 4vmin;
+      font-size: 2.5vh;
+   }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 769px) {
+   .trips-list {
+      width: 70%;
+   }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+   .trips-list {
+      width: 80%;
+   }      
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+   .landing-text h1 {
+      font-size: 7vmin;
+   }
+
+   p.desc, .btn.get-started {
+      font-size: 2.5vmin;
    }
 }
