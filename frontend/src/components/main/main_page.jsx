@@ -12,13 +12,11 @@ const MainPage = () => (
             Travel More.
          </h1>
          <p className='desc'>
-            Plan your route so you spend less time wandering around and more time doing.
-            <br />
-            Walk Route planner will helps you find <br /> the fastest itinerary along multiple stops. <br />
-            Find amazing places, and take fascinating detours for your route with the world's #1 road trip planning
-            platform.
+            Plan your route so you spend less time wandering around and more time doing.             
+            Walk Route planner will helps you find the fastest itinerary along multiple stops. 
+            Find amazing places, and take fascinating detours for your route with the world's #1 road trip planning platform.
          </p>
-         <div>
+         <div>              
             <Link className='btn get-started' to={"/signup"}>
                Get Started
             </Link>

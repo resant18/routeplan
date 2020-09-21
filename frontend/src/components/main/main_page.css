@@ -11,14 +11,14 @@
 
 .landing-text h1 {
   font-family: 'Patua One', cursive;    
-  font-size: 6rem;
+  font-size: 7vmin;
   color:#a8312d;
-  margin-block-start: 0.5em;
+  margin-block-start: 0;
   margin-block-end: 0.5em;
 }
 
 p.desc {
-  font-size: 2rem;
+  font-size: 2.5vmin;
 }
 
 .landing-image {
@@ -26,7 +26,7 @@ p.desc {
 }
 
 .btn.get-started {
-  font-size: 2em;
+  font-size: 2.5vmin;
   color: #000;
   background-color: #5aac44;
   border: 1px solid transparent;
