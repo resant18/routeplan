@@ -1,9 +1,10 @@
 import React from "react";
+import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
 import "./main_page.css";
 import walkImage from '../../assets/walk.jpg';
 
-const MainPage = () => (
+const MainPage = (props) => (
    <main className='landing'>
       <div className='landing-text'>
          <h1>
@@ -16,10 +17,18 @@ const MainPage = () => (
             Walk Route planner will helps you find the fastest itinerary along multiple stops. 
             Find amazing places, and take fascinating detours for your route with the world's #1 road trip planning platform.
          </p>
-         <div>              
-            <Link className='btn get-started' to={"/signup"}>
-               Get Started
-            </Link>
+         <div>  
+            {
+               props.loggedIn ? 
+               (
+                  <Link className='btn get-started' to={`/trips/user/${props.currentUser.id}`} >View My Trips</Link>
+               )
+               :
+               (
+                  <Link className='btn get-started' to={"/signup"}>Get Started</Link>
+
+               )
+            }            
          </div>
       </div>
       <div className='landing-image'>
@@ -28,4 +37,11 @@ const MainPage = () => (
    </main>
 );
 
-export default MainPage;
+const mapStateToProps = (state) => {
+   return {
+      loggedIn: state.session.isAuthenticated,
+      currentUser: state.session.user
+   };
+};
+
+export default connect(mapStateToProps, null)(MainPage);
