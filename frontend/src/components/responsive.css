@@ -23,16 +23,32 @@
       font-size: 2.5vh;
    }
 
+   .title {
+      font-size: 14px;
+   }
+
    .navbar span {
       display: none;
    }
 
-   .new-trip .new-trip-btn {
+   .new-trip .btn {
       background: transparent;      
    }
 
    .new-trip i {
       background: url("/new-trip-icon.png") no-repeat center center;
+      background-size: cover;
+      display: block;
+      width: 40px;
+      height: 40px;
+   }
+
+   .logout .btn {
+      border-radius: 10px; 
+   }  
+
+   .logout i {
+      background: url("/sign-out-icon.png") no-repeat center center;
       background-size: cover;
       display: block;
       width: 32px;

@@ -21,22 +21,23 @@ class NavBar extends React.Component {
     if (this.props.loggedIn) {      
       return (
          <div id='welcome'>
-            <h3 className='title'>
+            <div className='title'>
                Hello,
                <NavLink activeClassName='username' to={`/trips/user/${this.props.currentUser.id}`}>
                   {" "}
                   {this.props.currentUser.username}{" "}
                </NavLink>
-            </h3>
+            </div>
             <div className='new-trip'>
-               <button className='btn new-trip-btn' onClick={this.showModal}>
-                  <i className='new-trip'></i>
+               <button className='btn' onClick={this.showModal} alt='Create new trip'>
+                  <i></i>
                   <span>New Trip +</span>
                </button>
             </div>
             <div className='logout'>
                <button className='btn btn-logout' onClick={this.logoutUser}>
-                  Logout
+                  <i></i>
+                  <span>Logout</span>
                </button>
             </div>
          </div>
@@ -68,7 +69,7 @@ class NavBar extends React.Component {
                 <span>RoutePlan</span>
              </Link>
           </div>
-          <div className='navbar-content'>{this.getLinks()}</div>
+          <div>{this.getLinks()}</div>
        </nav>
     );
   }

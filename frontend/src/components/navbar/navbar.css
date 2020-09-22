@@ -2,10 +2,6 @@
   height: 100%;
 }
 
-.navbar-content {
-  margin-right: 1.5rem;
-}
-
 .navbar {
   background-color: #333;
   display: flex;
@@ -33,12 +29,7 @@ main {
   background-color: #333;
 }
 
-.header-name {
-  margin-right: 1.5rem;
-  color: #ffffff;
-}
-
-h3.title {
+.title {
   font-size: 1.25rem;
   letter-spacing: 1px;
   margin: 0;
@@ -71,18 +62,13 @@ footer {
   width: 100%;
 }
 
-.btn-logout {
+.logout .btn {
   background-color: #cf513d;
-  border: 2px solid transparent;
-  border-radius: 3px;
-  color: #ffffff;
-  width: 100%;
-  padding: 6px 12px;
-  font-size: 14px;
-  line-height: 20px;
+  border: 2px solid transparent;  
+  color: #ffffff;  
 }
 
-.btn-logout:hover {
+.logout .btn:hover {
   background-color: #eb5a46;
   cursor: pointer;
 }
