@@ -34,6 +34,38 @@ p.desc {
   padding: 0.5em 0.75em;
 }
 
+.no-trips {
+  margin: auto;
+  text-align: center;
+  background-color: #ddd;
+  padding: 30px 5px;
+  opacity: 0.9;
+  width: 80vw;
+}
+
+.no-trips h3 {
+  font-size: 6vmin; 
+  font-weight: normal; 
+  color: #000;
+  margin-block-start: 0;  
+}
+
+.no-trips button {
+  font-size: 8vmin;
+  cursor: pointer;
+  border-bottom: 3px solid #cf513d;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  background: transparent;  
+  outline: 0;
+}
+
+.no-trips button:hover {
+  color: #cf513d;
+  outline: 0;
+}
+
 .trips-list {
   border: 1px solid transparent;
   display: grid;    

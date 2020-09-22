@@ -1,5 +1,6 @@
 import React from "react";
 import TripItem from "./trip_item";
+import { Link } from "react-router-dom";
 import bgImage from "../../assets/bg_map.jpg";
 
 export default class TripIndex extends React.Component {
@@ -12,6 +13,7 @@ export default class TripIndex extends React.Component {
       };
 
       this.loadMore = this.loadMore.bind(this);
+      this.showModal = this.showModal.bind(this);
    }
 
    async loadMore() {         
@@ -45,8 +47,19 @@ export default class TripIndex extends React.Component {
       }
    }
 
+   showModal() {      
+      this.props.showModal("trip-form");
+   }
+
    render() {          
-      if (this.state.trips === []) return null;
+      if (this.state.trips.length === 0) return (
+         <main className='user_trips'>
+            <div className='no-trips'>
+               <h3>You have not save any route plan yet.</h3>
+               <button onClick={this.showModal}>Let's make one!</button>               
+            </div>
+         </main>
+      );
 
       return (
          <main className='user_trips'>

@@ -3,7 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import { AuthRoute, ProtectedRoute } from "../util/route_util";
 import NavBarContainer from "./navbar/navbar_container";
 import Modal from "./modal/modal";
-import MainPage from "./main/main_page_container";
+import MainPageContainer from "./main/main_page_container";
 import TripIndexContainer from "./trip/trip_index_container";
 import LoginFormContainer from "./session/login_form_container";
 import SignupFormContainer from "./session/signup_form_container";
@@ -24,7 +24,7 @@ const App = () => (
          <ProtectedRoute exact path='/trips/user/:userId' component={TripIndexContainer} />
          <ProtectedRoute exact path='/trips/:tripId' component={TripShowContainer} />
          <ProtectedRoute exact path='/users/:userId' component={ProfileContainer} />
-         <Route exact path='/' component={MainPage} />
+         <Route exact path='/' component={MainPageContainer} />
       </Switch>
       <footer>Copyright Alfredo - Lance - Renata - Timothy</footer>
    </div>
