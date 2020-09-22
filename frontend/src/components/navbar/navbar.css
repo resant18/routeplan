@@ -12,6 +12,8 @@
   justify-content: space-between;
   align-items: center;
   height: 10%;
+  padding-left: 3%;  
+  padding-right: 3%;
 }
 
 main {  
@@ -44,10 +46,10 @@ h3.title {
 
 #logo-container {
   display: flex;
+  height: 100%;
   justify-content: center;
-  align-items: center;
-  margin-left: 1.5rem;
-  color: #fff;
+  align-items: center;  
+  color: #fff;  
 }
 
 #logo-container > i {
@@ -152,10 +154,10 @@ footer {
 .logo-thumb {
   border: 1px solid transparent;
   border-radius: 50%;
-  width: 70px;
-  height: 70px;
-  margin: 7px;
+  height: 90%;
 }
+
+
 
 /* IDs */
 
@@ -189,7 +191,7 @@ footer {
 #logo {
   color: #ffffff;
   font-size: 1.5625rem;
-  margin: 1.5rem;
+  height: 100%;
   text-decoration: none;
 }
 

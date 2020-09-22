@@ -22,12 +22,16 @@ class NavBar extends React.Component {
       return (
          <div id='welcome'>
             <h3 className='title'>
-               Hi,
-               <NavLink activeClassName='username' to={`/trips/user/${this.props.currentUser.id}`}> {this.props.currentUser.username} </NavLink>
+               Hello,
+               <NavLink activeClassName='username' to={`/trips/user/${this.props.currentUser.id}`}>
+                  {" "}
+                  {this.props.currentUser.username}{" "}
+               </NavLink>
             </h3>
             <div className='plus'>
                <button id='new-trip-btn' className='btn' onClick={this.showModal}>
-                  New Trip +
+                  <i className='new-trip'></i>
+                  <span>New Trip +</span>
                </button>
             </div>
             <div className='btn-container'>
@@ -57,15 +61,15 @@ class NavBar extends React.Component {
 
   render() {
     return (
-      <nav className="navbar">
-        <div id="logo-container">
-          <img className="logo-thumb" src={logo} alt="Route Plan logo"></img>
-          <Link id="logo" to={"/"}>
-            RoutePlan
-          </Link>
-        </div>
-        <div className="navbar-content">{this.getLinks()}</div>
-      </nav>
+       <nav className='navbar'>
+          <div id='logo-container'>
+             <Link id='logo' to={"/"}>
+                <img className='logo-thumb' src={logo} alt='Route Plan' />
+                <span>RoutePlan</span>
+             </Link>
+          </div>
+          <div className='navbar-content'>{this.getLinks()}</div>
+       </nav>
     );
   }
 }

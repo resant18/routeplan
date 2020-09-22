@@ -22,6 +22,22 @@
    p.desc, .btn.get-started {
       font-size: 2.5vh;
    }
+
+   .navbar span {
+      display: none;
+   }
+
+   #new-trip-btn {
+      background: transparent;      
+   }
+
+   .new-trip {
+      background: url("/new-trip-icon.png") no-repeat center center;
+      background-size: cover;
+      display: block;
+      width: 32px;
+      height: 32px;
+   }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
