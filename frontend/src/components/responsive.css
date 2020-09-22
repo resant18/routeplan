@@ -27,11 +27,11 @@
       display: none;
    }
 
-   #new-trip-btn {
+   .new-trip .new-trip-btn {
       background: transparent;      
    }
 
-   .new-trip {
+   .new-trip i {
       background: url("/new-trip-icon.png") no-repeat center center;
       background-size: cover;
       display: block;

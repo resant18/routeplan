@@ -134,18 +134,23 @@ footer {
   text-decoration: none;
 }
 
-.plus {
+.new-trip {
   margin: 6px 12px;
 }
+
+.new-trip i {
+  display: none;
+}
+
 /* line 272, /Users/alfredosumosav/Desktop/trallo/app/assets/stylesheets/static_pages.scss */
-.plus .btn {
+.new-trip .btn {
   background: white;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 /* line 279, /Users/alfredosumosav/Desktop/trallo/app/assets/stylesheets/static_pages.scss */
-.plus:hover .btn {
+.new-trip:hover .btn {
   border: 1px solid #454545;
   background: rgba(0, 0, 0, 0.4);
   color: white;

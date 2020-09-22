@@ -28,14 +28,14 @@ class NavBar extends React.Component {
                   {this.props.currentUser.username}{" "}
                </NavLink>
             </h3>
-            <div className='plus'>
-               <button id='new-trip-btn' className='btn' onClick={this.showModal}>
+            <div className='new-trip'>
+               <button className='btn new-trip-btn' onClick={this.showModal}>
                   <i className='new-trip'></i>
                   <span>New Trip +</span>
                </button>
             </div>
-            <div className='btn-container'>
-               <button className='header-button btn-logout' onClick={this.logoutUser}>
+            <div className='logout'>
+               <button className='btn btn-logout' onClick={this.logoutUser}>
                   Logout
                </button>
             </div>
