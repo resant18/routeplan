@@ -146,6 +146,8 @@ footer {
   border: 1px solid transparent;
   border-radius: 50%;
   height: 90%;
+  vertical-align: middle;
+  margin-right: 20px;
 }
 
 
@@ -181,9 +183,11 @@ footer {
 
 #logo {
   color: #ffffff;
-  font-size: 1.5625rem;
+  font-size: 2.5rem;
   height: 100%;
   text-decoration: none;
+  display: flex;
+  align-items: center;  
 }
 
 #signup {

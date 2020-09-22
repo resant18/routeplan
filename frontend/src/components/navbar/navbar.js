@@ -66,7 +66,7 @@ class NavBar extends React.Component {
           <div id='logo-container'>
              <Link id='logo' to={"/"}>
                 <img className='logo-thumb' src={logo} alt='Route Plan' />
-                <span>RoutePlan</span>
+                <span>Route Plan</span>
              </Link>
           </div>
           <div>{this.getLinks()}</div>
