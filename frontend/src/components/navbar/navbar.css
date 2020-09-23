@@ -175,8 +175,7 @@ footer {
   align-items: center;
 }
 
-#login {
-  color: #ffffff;
+#login {  
   border: 1px solid transparent;
   border-radius: 0.2rem;
   padding: 0.25rem;
@@ -192,8 +191,7 @@ footer {
 }
 
 #signup {
-  /* background-color: white; */
-  color: #fff;
+  /* background-color: white; */  
   border: 1px solid transparent;
   /* border-radius: .2rem; */
   padding: 0.25rem;
