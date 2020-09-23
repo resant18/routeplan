@@ -20,3 +20,25 @@ a:hover, a:focus {
 a:visited, a:active {
   color: #ffffff;
 }
+
+footer .content {
+  height: auto;
+  display: flex;
+  align-items: center;
+}
+
+footer .content span {
+  margin: 0 5px;
+}
+
+footer .content > a {
+  display: inline-block;  
+}
+
+footer .content.large {
+  height: 150px;
+}
+
+footer .content.small .avatar {
+  height: 32px;
+}

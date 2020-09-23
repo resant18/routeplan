@@ -4,10 +4,9 @@ import timAvatar from "../../assets/profile/tim.png";
 import lanceAvatar from "../../assets/profile/lance.png";
 import alfredoAvatar from "../../assets/profile/alfredo.png"
 
-
 const Footer = (props) => (
    <footer>
-      <div>
+      <div className={`content ${props.isMainPage ? 'large' : 'small'}`}>
          <span>Copyright</span>
          <a href=''>
             <img className='avatar' src={alfredoAvatar} alt='Alfredo' />
@@ -23,7 +22,7 @@ const Footer = (props) => (
          </a>
          <span>Image Credit</span>
       </div>
-   </footer>
+   </footer>   
 );
 
 Footer.defaultProps = {

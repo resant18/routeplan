@@ -27,7 +27,10 @@ const App = () => (
          <ProtectedRoute exact path='/users/:userId' component={ProfileContainer} />
          <Route exact path='/' component={MainPageContainer} />
       </Switch>
-      <Footer isMainPage={true} />
+      <Switch>         
+         <Route exact path='/' component={Footer} />
+         <Route path='/' component={() => <Footer isMainPage={false} />} />
+      </Switch>
    </div>
 );
 
