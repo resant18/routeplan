@@ -9,12 +9,9 @@ import LoginFormContainer from "./session/login_form_container";
 import SignupFormContainer from "./session/signup_form_container";
 import TripShowContainer from "./trip/trip_show_container";
 import ProfileContainer from "./profile/profile_container";
+import Footer from "./footer/footer";
 import "./app.css";
 import "./responsive.css";
-import renataAvatar from '../assets/profile/renata.png';
-import timAvatar from "../assets/profile/tim.png";
-import lanceAvatar from "../assets/profile/lance.png";
-import alfredoAvatar from "../assets/profile/alfredo.png";
 
 const App = () => (
    <div className='content'>
@@ -30,24 +27,7 @@ const App = () => (
          <ProtectedRoute exact path='/users/:userId' component={ProfileContainer} />
          <Route exact path='/' component={MainPageContainer} />
       </Switch>
-      <footer>
-         <div>
-            <span>Copyright</span>
-            <a href=''>
-               <img className='avatar' src={alfredoAvatar} alt='Alfredo' />
-            </a>
-            <a href=''>
-               <img className='avatar' src={lanceAvatar} alt='Lance' />
-            </a>
-            <a href='https://github.com/resant18' target='_blank'>
-               <img className='avatar' src={renataAvatar} alt='Renata' />
-            </a>
-            <a href=''>
-               <img className='avatar' src={timAvatar} alt='Tim' />
-            </a>
-            <span>Image Credit</span>
-         </div>
-      </footer>
+      <Footer isMainPage={true} />
    </div>
 );
 
