@@ -36,7 +36,7 @@
    }
 
    .new-trip i {
-      background: url("/new-trip-icon.png") no-repeat center center;
+      background: url("/new-trip-icon.png") no-repeat center center;      
       background-size: cover;
       display: block;
       width: 40px;
@@ -58,26 +58,43 @@
    .avatar {
       height: 32px;      
    }
+
+   #session-form {
+      width: 50vmin;
+   }
 }
+
+
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
    .trips-list {
-      width: 70%;
+      width: 650px;
    }
 
    footer {
       font-size: 16px;      
-   }   
+   }      
 
+   #session-form {
+      width: 40vmin;
+   }
 
    .avatar {
-      z-index: 10;      
+      height: 75px;
+   }
+
+   #logo {
+      font-size: 1.5rem;
    }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
+   .trips-list {
+      width: 75%;
+   }
+
    .landing-text h1 {
       font-size: 7vmin;
    }
