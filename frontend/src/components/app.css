@@ -17,6 +17,10 @@ a:hover, a:focus {
   color: #AF305C;
 }
 
+a:visited {
+  color: #fff;
+}
+
 footer .content {
   height: auto;
   display: flex;
@@ -37,4 +41,8 @@ footer .content.large {
 
 footer .content.small .avatar {
   height: 32px;
+}
+
+.avatar {
+  z-index: 10;
 }

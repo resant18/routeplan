@@ -131,7 +131,8 @@ footer {
 
 /* line 272, /Users/alfredosumosav/Desktop/trallo/app/assets/stylesheets/static_pages.scss */
 .new-trip .btn {
-  background: white;
+  color: #000;
+  background-color: white;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }

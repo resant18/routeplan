@@ -259,6 +259,7 @@ p.desc {
 }
 
 #load-btn {
+  color: #000;
   margin-top: 170px;
   margin-bottom: 100px;
   font-size: 1.75em;
