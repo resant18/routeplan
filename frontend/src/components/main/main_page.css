@@ -84,7 +84,7 @@ p.desc {
 
 .trip-container {  
   width: 300px;
-  margin: 20px 10px;
+  margin: 20px auto;
 }
 
 .item-link:link,
