@@ -43,6 +43,10 @@
       height: 40px;
    }
 
+   .trips-list {
+      width: auto !important;
+   }
+
    .logout .btn {
       border-radius: 10px; 
    }  
@@ -56,13 +60,14 @@
    }   
 
    .avatar {
-      height: 32px;      
+      height: 32px !important;      
    }
 
    #session-form {
       width: 50vmin;
    }
 }
+
 
 /* Screen device 768px and down */
 @media only screen and (max-width: 768px) {
