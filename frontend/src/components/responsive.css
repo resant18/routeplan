@@ -64,28 +64,78 @@
    }
 }
 
-
-
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
-   .trips-list {
-      width: 650px;
+/* Screen device 768px and down */
+@media only screen and (max-width: 768px) {
+   #logo {
+      font-size: 1.5rem;
    }
-
-   footer {
-      font-size: 16px;      
-   }      
 
    #session-form {
       width: 40vmin;
    }
 
+   .trips-list {
+      width: 650px;
+   }   
+
+   .main-content {
+      display: flex;
+      flex-direction: column-reverse;
+   }
+
+   .trip-details {
+      width: 100%;
+   }
+
+   .trip-details-list {
+      width: 100%;
+   }
+
+   .trip-detail-container {
+      width: 100%;
+   }
+
+   #map {
+      width: 100%;
+   }
+
+   .trip-detail-container {
+      display: none;
+   }
+
+   .modal-content {
+      margin: 25vh auto;
+   }
+
+   footer {
+      font-size: 16px;      
+   }
+
    .avatar {
       height: 75px;
    }
+}
 
-   #logo {
-      font-size: 1.5rem;
+/* Medium devices (landscape tablets, 769px and up) */
+@media only screen and (min-width: 769px) {   
+   .main-content {
+      display: flex;         
+   }
+
+   #map {
+      width: 80%;
+   }
+
+    .trip-details-list {
+      width: 300px;
+   }
+
+   .trip-detail-container {
+      width: 292px;
+   }
+
+   .trip-details {
+      height: 100%;
    }
 }
 
@@ -101,6 +151,10 @@
 
    p.desc, .btn.get-started {
       font-size: 2.5vmin;
+   }
+
+   .avatar {
+      height: 150px;
    }
 }
 

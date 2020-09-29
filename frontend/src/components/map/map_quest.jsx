@@ -172,8 +172,7 @@ class MapQuest extends Component {
     this.addSelectedPois();
 
     const mapStyle = {
-      height: "100%",
-      width: "80%",
+      height: "100%",      
       zIndex: 1
     };
 
