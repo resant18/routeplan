@@ -66,6 +66,10 @@
    #session-form {
       width: 50vmin;
    }
+
+   .trip-control-bar button {
+      font-size: 14px !important;
+   }
 }
 
 
@@ -92,20 +96,28 @@
       width: 100%;
    }
 
+   .trip-control-bar {
+      display: flex;
+   }
+
+   .trip-control-bar button {
+      width: 20%;
+      font-size: 1.25em;
+   }
+
    .trip-details-list {
-      width: 100%;
-   }
-
-   .trip-detail-container {
-      width: 100%;
-   }
-
-   #map {
-      width: 100%;
+      width: 80%;
    }
 
    .trip-detail-container {
       display: none;
+      width: 100%;
+   }
+   
+      
+   
+   #map {
+      width: 100%;
    }
 
    .modal-content {
@@ -141,6 +153,10 @@
 
    .trip-details {
       height: 100%;
+   }
+
+   .trip-control-bar button {
+      display: none;
    }
 }
 

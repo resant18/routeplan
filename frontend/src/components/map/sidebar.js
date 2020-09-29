@@ -20,9 +20,10 @@ export default class Sidebar extends Component {
     });
   }
 
-  render() {
+  render() {    
     const sidebarStyle = {
-      backgroundColor: "white"
+      backgroundColor: "white",
+      display: this.props.visibility ? 'block' : 'none',
     };
 
     let component;
