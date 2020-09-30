@@ -7,13 +7,13 @@ export default class TripIndex extends React.Component {
    constructor(props) {
       super(props);
       this.state = {
-         trips: [],
+         trips: this.props.trips || [],
          page: 1,
          showLoadingMore: true
       };
 
       this.loadMore = this.loadMore.bind(this);
-      this.showModal = this.showModal.bind(this);
+      this.showModal = this.showModal.bind(this);      
    }
 
    async loadMore() {         
@@ -39,7 +39,7 @@ export default class TripIndex extends React.Component {
       });      
    }
 
-   componentDidMount() {
+   componentDidMount() {      
       if (this.props.userId) {
          this.fetchItems();
       } else {
@@ -51,7 +51,7 @@ export default class TripIndex extends React.Component {
       this.props.showModal("trip-form");
    }
 
-   render() {          
+   render() {                
       if (this.state.trips.length === 0) return (
          <main className='user_trips'>
             <div className='no-trips'>

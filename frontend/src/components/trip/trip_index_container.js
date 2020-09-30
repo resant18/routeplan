@@ -10,7 +10,7 @@ const mapStateToProps = (state, ownProps) => {
       trips:
          ownProps.match && ownProps.match.params.userId
             ? Object.values(state.trips.user)
-            : Object.values(state.trips.all),
+            : [],
    };
 };
 
