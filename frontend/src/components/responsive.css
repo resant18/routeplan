@@ -93,7 +93,8 @@
    }
 
    .trip-details {
-      width: 100%;
+      width: 99.5%;    
+      min-height: 40px;
    }
 
    .trip-control-bar {
@@ -111,7 +112,7 @@
 
    .trip-detail-container {
       display: none;
-      width: 100%;
+      width: 100%;      
    }
    
       
