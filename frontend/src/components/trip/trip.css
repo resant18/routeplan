@@ -207,8 +207,7 @@
   height: 100%;
   width: 5px;
   background: rgba(10, 146, 192, 0.5);
-  position: absolute;
-  left: 1%;
+  position: absolute;  
   transform: translateX(1%);
   top: -5px;  
 }
@@ -224,7 +223,7 @@
   display: block;
   background: rgba(0,0,0); /*  rgba(47,166,205, 0.5); */
   position: absolute;
-  left: -1%;  
+  left: -4px;  
   transform: translateX(-12%); 
 }
 

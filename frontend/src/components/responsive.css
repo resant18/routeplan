@@ -115,7 +115,9 @@
       width: 100%;      
    }
    
-      
+   .trip-show-detail {
+      padding-bottom: 50px;
+   } 
    
    #map {
       width: 100%;
