@@ -6,23 +6,23 @@ import alfredoAvatar from "../../assets/profile/alfredo.png"
 
 const Footer = (props) => (
    <footer>
-      <div className={`content ${props.isMainPage ? 'large' : 'small'}`}>
+      <div className={`content ${props.isMainPage ? "large" : "small"}`}>
          <span>Copyright</span>
-         <a href=''>
+         <a href='https://github.com/alfredosumosav' data-tooltip='Alfredo Sumosa' className='tooltip'>
             <img className='avatar' src={alfredoAvatar} alt='Alfredo' />
          </a>
-         <a href=''>
+         <a href='https://github.com/LanceSanity' data-tooltip='Lance Wong' className='tooltip'>
             <img className='avatar' src={lanceAvatar} alt='Lance' />
          </a>
-         <a href='https://github.com/resant18' target='_blank'>
+         <a href='https://github.com/resant18' target='_blank' data-tooltip='Renata Santoso' className='tooltip'>
             <img className='avatar' src={renataAvatar} alt='Renata' />
          </a>
-         <a href=''>
+         <a href='https://github.com/timscatterday' target='_blank' data-tooltip='Tim Scatterday' className='tooltip'>
             <img className='avatar' src={timAvatar} alt='Tim' />
          </a>
          <span>Image Credit</span>
       </div>
-   </footer>   
+   </footer>
 );
 
 Footer.defaultProps = {

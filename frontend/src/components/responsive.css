@@ -177,6 +177,50 @@
    .avatar {
       height: 150px;
    }
+
+   .tooltip {
+      position: relative;
+   }
+
+   .tooltip:before {      
+      content: attr(data-tooltip);
+      display: none;
+      position: absolute;
+      top: -65px;
+      width: 200px;
+      padding: 10px;
+      background-color: rgba(0, 0, 0, 0.8);
+      text-align: center;      
+   }
+
+   .tooltip:after {
+      content: "";
+      display: none;
+      position: absolute;      
+      top: -23px;
+      left: 50%;
+      border: 10px solid rgba(0, 0, 0, 0.8);
+      border-color: rgba(0, 0, 0, 0.8) transparent transparent transparent;
+   }
+
+   .tooltip:hover {
+      transform: translateY(-20px);
+   }
+
+   .tooltip:hover:before, .tooltip:hover:after {
+      display:block;
+      animation: fadeIn .5s ease-in;
+   }   
+
+   @keyframes fadeIn {
+      from {
+         opacity: 0;
+      }
+         
+      to {
+         opacity: 1;
+      }
+   }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
