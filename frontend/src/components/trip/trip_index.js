@@ -8,12 +8,13 @@ export default class TripIndex extends React.Component {
       super(props);
       this.state = {
          trips: this.props.trips || [],
+         isTripsFetched: false,
          page: 1,
          showLoadingMore: true
       };
 
       this.loadMore = this.loadMore.bind(this);
-      this.showModal = this.showModal.bind(this);      
+      this.showModal = this.showModal.bind(this);          
    }
 
    async loadMore() {         
@@ -24,34 +25,34 @@ export default class TripIndex extends React.Component {
       this.props.fetchUserTrips(this.props.userId, this.state.page).then((res) => {                  
          if (res) {
             if (res.trips.data.length > 0) {
-               this.setState({
-                  trips: this.state.trips.concat(res.trips.data),
-                  page: this.state.page + 1,
+               this.setState((prevState) => ({
+                  trips: prevState.trips.concat(res.trips.data),
+                  page: prevState.page + 1,
+                  isTripsFetched: true,
                   showLoadingMore: true
-               });         
+               }));         
             }
             else {
                this.setState({
+                  isTripsFetched: true,
                   showLoadingMore: false
-               })
+               });
             }
          }
       });      
    }
 
-   componentDidMount() {      
-      if (this.props.userId) {
-         this.fetchItems();
-      } else {
-         this.props.fetchTrips();
-      }
+   componentDidMount() {       
+      if (this.props.userId) this.fetchItems();
    }
 
    showModal() {      
       this.props.showModal("trip-form");
    }
 
-   render() {                
+   render() {            
+      if (!this.state.isTripsFetched) return null;
+
       if (this.state.trips.length === 0) return (
          <main className='user_trips'>
             <div className='no-trips'>

@@ -3,7 +3,7 @@ import { showModal } from "../../actions/modal_actions";
 import { fetchTrips, fetchUserTrips, destroyTrip } from "../../actions/trip_actions";
 import TripIndex from "../trip/trip_index";
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state, ownProps) => {   
    return {
       loggedIn: state.session.isAuthenticated,      
       userId: (ownProps.match && ownProps.match.params.userId) || null,
