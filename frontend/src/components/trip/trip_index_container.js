@@ -6,6 +6,7 @@ import TripIndex from "../trip/trip_index";
 const mapStateToProps = (state, ownProps) => {   
    return {
       loggedIn: state.session.isAuthenticated,      
+      loggedUserId: state.session.user.id,
       userId: (ownProps.match && ownProps.match.params.userId) || null,
       trips:
          ownProps.match && ownProps.match.params.userId

@@ -34,7 +34,7 @@ class TripItem extends React.Component {
 
    render() {
       const { _id, name } = this.props.trip;      
-
+      
       return (
          <div
             className={`trip-container card fade-in ${this.state.onHovered ? "active" : ""}`}
@@ -54,8 +54,8 @@ class TripItem extends React.Component {
                         provident at.
                      </p>
                      <div className='action'>
-                        {
-                         (this.props.creatorId === this.props.userId) &&
+                        {                           
+                         (this.props.creatorId === this.props.loggedUserId) &&
                           <button onClick={this.handleDelete.bind(this)} className='btn'>
                             Delete
                           </button>

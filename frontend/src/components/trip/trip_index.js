@@ -71,6 +71,7 @@ export default class TripIndex extends React.Component {
                         <TripItem
                            loggedIn={this.props.loggedIn}
                            creatorId={trip.user}
+                           loggedUserId={this.props.loggedUserId}
                            destroyTrip={this.props.destroyTrip}
                            editTrip={this.props.editTrip}
                            trip={trip}
