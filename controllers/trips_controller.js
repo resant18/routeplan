@@ -115,11 +115,32 @@ exports.updateTrip = (req, res) => {
 // };
 
 exports.deleteTrip = (req, res) => {
-  Trip.findById(req.params.tripId)
-    .then(trip => {
-      trip.remove().then(() => res.json(trip));
-    })
-    .catch(err =>
-      res.status(404).json({ notripfound: "No trip found with that ID" })
-    );
+  const id = req.params.tripId;
+  
+  Trip.deleteOne({ _id: id })
+  .then(result => {
+    if (result.deletedCount === 1) {
+       res.send({
+          message: "Trip was deleted successufully!",
+       });
+    } else {
+       res.send({
+          message: `No trip found with id=${id}.`,
+       });
+    }
+  })
+  .catch(err => {
+    res.status(500).send({
+      message: `Could not delete trip with id ${id}`
+    });
+  });
+
+
+  // Trip.findById(req.params.tripId)
+  //   .then(trip => {
+  //     trip.remove().then(() => res.json(trip));
+  //   })
+  //   .catch(err =>
+  //     res.status(404).json({ notripfound: "No trip found with that ID" })
+  //   );
 };

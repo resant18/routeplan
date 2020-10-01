@@ -27,9 +27,10 @@ export const receiveNewTrip = trip => ({
   trip
 });
 
-export const removeTrip = tripId => ({
+export const removeTrip = (tripId, response) => ({
   type: REMOVE_TRIP,
-  tripId
+  tripId,
+  result: response
 });
 
 export const receiveTripErrors = errors => ({
@@ -66,5 +67,9 @@ export const editTrip = data => dispatch => {
 };
 
 export const destroyTrip = dataId => dispatch => {
-  return APIUtil.deleteTrip(dataId).then(() => dispatch(removeTrip(dataId)));
+  return APIUtil.deleteTrip(dataId)
+     .then((response) => {     
+       return dispatch(removeTrip(dataId, response))
+      })
+     .catch((err) => dispatch(receiveTripErrors(err)));
 };

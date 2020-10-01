@@ -25,5 +25,7 @@ export const updateTrip = data => {
 };
 
 export const deleteTrip = dataId => {
-  return axios.delete(`/api/trips/${dataId}`, dataId);
+  return axios.delete(`/api/trips/${dataId}`, dataId)
+  .then(response => response)
+  .catch(error =>  error )
 };
