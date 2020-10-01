@@ -9,6 +9,7 @@ class TripItem extends React.Component {
       super(props);
       this.state = {
          onHovered: false,
+         trip: this.props.trip
       };      
    }
 
@@ -20,20 +21,26 @@ class TripItem extends React.Component {
       e.stopPropagation();
       e.preventDefault();
       if (this.props.loggedIn) {
-         this.props.destroyTrip(this.props.trip._id);
+         this.props.destroyTrip(this.state.trip._id)
+            .then((response) => {  
+               if (response.result.status === 200) this.setState({ trip: null });
+            });
       } else {
          this.props.history.push("/login");
-      }
+      }            
    }
 
    handleViewDetails(id, e) {     
      e.stopPropagation();
      e.preventDefault();     
-    this.props.history.push(`/trips/${id}`);     
+     this.props.history.push(`/trips/${id}`);     
    }
 
-   render() {
-      const { _id, name } = this.props.trip;      
+   
+
+   render() {   
+      if (!this.state.trip) return null;
+      const { _id, name } = this.state.trip;      
       
       return (
          <div
