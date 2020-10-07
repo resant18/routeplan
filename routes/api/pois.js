@@ -9,10 +9,14 @@ router.post(
   poisController.addPoiToTrip
 );
 
+/*
 router.delete(
   "/:tripId/:poiId",
   passport.authenticate("jwt", { session: false }),
   poisController.removePoiFromTrip
 );
+*/
+
+router.delete("/:poiId/:tripId", poisController.removePoiFromTrip);
 
 module.exports = router;
