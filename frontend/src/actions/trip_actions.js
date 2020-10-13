@@ -68,8 +68,6 @@ export const editTrip = data => dispatch => {
 
 export const destroyTrip = dataId => dispatch => {
   return APIUtil.deleteTrip(dataId)
-     .then((response) => {     
-       return dispatch(removeTrip(dataId, response))
-      })
+     .then((response) => dispatch(removeTrip(dataId, response)))      
      .catch((err) => dispatch(receiveTripErrors(err)));
 };
