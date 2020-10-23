@@ -134,13 +134,4 @@ exports.deleteTrip = (req, res) => {
       message: `Could not delete trip with id ${id}`
     });
   });
-
-
-  // Trip.findById(req.params.tripId)
-  //   .then(trip => {
-  //     trip.remove().then(() => res.json(trip));
-  //   })
-  //   .catch(err =>
-  //     res.status(404).json({ notripfound: "No trip found with that ID" })
-  //   );
 };
