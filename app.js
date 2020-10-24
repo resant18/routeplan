@@ -84,9 +84,9 @@ app.use(bodyParser.json());
 //     res.send('User is saved successfully');
 
 // });
-app.use("/api/users", users);
-app.use("/api/trips", trips);
-app.use("/api/pois", pois);
+  app.use("/api/users", users);
+  app.use("/api/trips", trips);
+  app.use("/api/pois", pois);
 
 //Set server port
 const port = process.env.PORT || 5000;

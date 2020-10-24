@@ -25,7 +25,14 @@ export const addPoiToTrip = data => dispatch =>
     .then(trip => dispatch(receiveTripPois(trip)))
     .catch(err => dispatch(receiveTripErrors(err)));
 
-export const removePoiFromTrip = data => dispatch =>
-  APIUtil.removePoiFromTrip(data)
-    .then(trip => dispatch(removeTripPois(trip)))
-    .catch(err => dispatch(receiveTripErrors(err)));
+export const removePoiFromTrip = (data) => (dispatch) =>
+   APIUtil.removePoiFromTrip(data)
+      .then((trip) => dispatch(receiveTripPois(trip)))
+      .catch((err) => dispatch(receiveTripErrors(err)));
+
+// export const removePoiFromTrip = data => dispatch => {  
+//   return APIUtil.removePoiFromTrip(data).then( 
+//     trip => dispatch(removeTripPois(trip)),
+//     err => dispatch(receiveTripErrors(err))
+//   );
+// }

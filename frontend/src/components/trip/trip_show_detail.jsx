@@ -13,8 +13,19 @@ import rmarker from "../../assets/marker-red.png";
 import shareIcon from "../../assets/icons/icons8-share.png";
 
 class TripShowDetail extends Component {
-   componentDidMount() {
-      this.props.fetchTrip(this.props.tripId);
+   constructor(props) {
+      super(props);
+
+      this.state = {
+         trip: props.trip
+      }
+   }
+
+   componentDidMount() {      
+      this.props.fetchTrip(this.props.tripId)
+         .then(() => {
+            this.setState({ trip: this.props.trip });
+         })
    }
 
    componentDidUpdate(prevProps) {
@@ -23,44 +34,36 @@ class TripShowDetail extends Component {
       }
    }
 
-   handleRemoveFromTrip(poiId) {      
-      if (!poiId) return;
-
-      this.props
-         .removePoiFromTrip({
-            tripId: this.props.tripId, 
-            poiId: poiId 
-         })
-         .then(() => window.location.reload(false));
+   async handleRemoveFromTrip(poiId) {        
+      if (poiId === undefined) return;
+      
+      try {
+         let response = await this.props.removePoiFromTrip({
+            tripId: this.state.trip._id,
+            poiId: poiId,
+         });                  
+         if (response.trip.status !== 200) {
+            throw new Error(`Poi delete error! status: ${response.status}`);
+         }
+         else {
+            this.setState({trip: response.trip.data});
+         }
+         // window.location.reload(false);
+      }
+      catch(error) {
+         console.log("Poi is not deleted successfully");
+      }
    }
 
    render() {
-      if (this.props.trip === undefined) return null;
+      if (this.state.trip === undefined) return null;
 
-      const { name, origin, destination, pois } = this.props.trip;
+      const { name, origin, destination, pois } = this.state.trip;
 
       const shareUrl = window.location.href;
 
       return (
-         <div className='trip-show-detail' style={{ paddingLeft: "15px" }}>
-            {/* <div className='share-container' style={{ display: "flex" }}>
-               <h3>Share your trip!</h3>
-               <div className='btn-container'>
-                  <TwitterShareButton className='share-btn' url={shareUrl}>
-                     <TwitterIcon style={{ cursor: "pointer" }} size={32} round />
-                  </TwitterShareButton>
-                  <FacebookShareButton className='share-btn' url={shareUrl}>
-                     <FacebookIcon style={{ cursor: "pointer" }} size={32} round />
-                  </FacebookShareButton>
-                  <EmailShareButton className='share-btn' url={shareUrl}>
-                     <EmailIcon style={{ cursor: "pointer" }} size={32} round />
-                  </EmailShareButton>
-               </div>
-            </div>
-
-            <br />
-            <hr />
-            <br /> */}
+         <div className='trip-show-detail' style={{ paddingLeft: "15px" }}>            
             <div className='my-trip-header'>
                <div className='my-trip-label'>
                   <h3>My Trip</h3>
@@ -138,27 +141,30 @@ class TripShowDetail extends Component {
             </div>
             <ul className='poi-list'>
                {pois &&
-                  pois.map((poi, i) => (
-                     <li key={poi.name + i} className='poi'>
-                        <div className='waypoint-number'>{i + 2}</div>
-                        <span></span>
-                        <div className='poi-detail'>
-                           <div>
-                              <strong>{poi.name}</strong>
+                  pois.map((poi, i) => {
+                     if (!poi) return;
+                     return (
+                        <li key={poi.name + i} className='poi'>
+                           <div className='waypoint-number'>{i + 1}</div>
+                           <span></span>
+                           <div className='poi-detail'>
+                              <div>
+                                 <strong>{poi.name}</strong>
+                              </div>
+                              <div>{poi.phone}</div>
+                              <div>{poi.address}</div>
+                              <div>{poi.city}</div>
+                              <div>
+                                 {poi.state}, {poi.postal_code}
+                              </div>
+                              <div>{poi.country}</div>
                            </div>
-                           <div>{poi.phone}</div>
-                           <div>{poi.address}</div>
-                           <div>{poi.city}</div>
                            <div>
-                              {poi.state}, {poi.postal_code}
+                              <button onClick={this.handleRemoveFromTrip.bind(this, i)}>Remove</button>
                            </div>
-                           <div>{poi.country}</div>
-                        </div>
-                        <div>
-                           <button onClick={this.handleRemoveFromTrip.bind(this, i)}>Remove</button>
-                        </div>
-                     </li>
-                  ))}
+                        </li>
+                     )
+                  })}
             </ul>
          </div>
       );
