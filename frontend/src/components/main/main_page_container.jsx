@@ -14,7 +14,7 @@ const MainPage = (props) => (
          </h1>
          <p className='desc'>
             Plan your route so you spend less time wandering around and more time doing.             
-            Walk Route planner will helps you find the fastest itinerary along multiple stops. 
+            Walk Route planner will helps you find the fastest itinerary along with multiple stops. 
             Find amazing places, and take fascinating detours for your route with the world's #1 road trip planning platform.
          </p>
          <div>  
