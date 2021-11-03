@@ -44,7 +44,7 @@
     "react-modal": "^3.11.1",
     "react-select": "^3.0.8",
     "react-share": "^3.0.1",
-    "validator": "^12.0.0",
+    "validator": "^13.7.0",
     "yelp-fusion": "^3.0.0"
   },
   "devDependencies": {
