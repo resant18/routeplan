@@ -1,3 +1,5 @@
+> 📣: Please note that this project is no longer being maintained.
+
 # Project Overview
 Routeplan is an app for creating walking trips. Users can select a start and end point on the map, then add points of interest on their trip.
 
